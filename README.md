@@ -18,10 +18,10 @@ Part II Computational Project: Tidal Tails
 	cmake .
 	make
 ```
-## Documentation
+## Documentation:
 	Project executable located in bin directory and is called main.
 	
-### License
+### License:
 
 MIT License
 
@@ -45,7 +45,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-### Acknowledgements
+### Acknowledgements:
 Files in cmake folder are used to help cmake locate the various libraries used by this project, these files were not created by me and thanks must go to their respective authors. License texts accompany each file at the top of each file's source code.
 
  
