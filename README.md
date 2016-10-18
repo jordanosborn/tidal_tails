@@ -3,13 +3,14 @@ Part II Computational Project: Tidal Tails
 
 ## Required:
 
-  1. C++ compiler (GNU g++)
-  1. SDL2
-  1. OpenGL
-  1. cmake
+1. C++ compiler (GNU g++)
+1. SDL2
+1. OpenGL
+1. cmake
   
 ## Todo:
-	1. Might not need FindOpenGL.cmake
+
+1. Might not need FindOpenGL.cmake
 
 ## Instructions to build project:
 
@@ -19,7 +20,8 @@ Part II Computational Project: Tidal Tails
 	make
 ```
 ## Documentation:
-	Project executable located in bin directory and is called main.
+
+Project executable located in bin directory and is called main.
 	
 ### License:
 
@@ -46,6 +48,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ### Acknowledgements:
+
 Files in cmake folder are used to help cmake locate the various libraries used by this project, these files were not created by me and thanks must go to their respective authors. License texts accompany each file at the top of each file's source code.
 
  
