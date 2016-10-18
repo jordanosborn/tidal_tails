@@ -7,6 +7,9 @@ Part II Computational Project: Tidal Tails
   1. SDL2
   1. OpenGL
   1. cmake
+  
+## Todo:
+	1. Might not need FindOpenGL.cmake
 
 ## Instructions to build project:
 
