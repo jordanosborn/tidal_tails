@@ -3,7 +3,7 @@ Part II Computational Project: Tidal Tails
 
 ## Required:
 
-  1. GNU g++
+  1. C++ compiler (GNU g++)
   1. SDL2
   1. OpenGL
   1. cmake
