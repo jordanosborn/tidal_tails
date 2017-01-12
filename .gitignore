@@ -1,10 +1,11 @@
 
 .idea/
 CMakeFiles/
-
+cmake-build-debug/
 CMakeCache.txt
 
 Makefile
 
 cmake_install.cmake
 bin/main.exe
+bin/main

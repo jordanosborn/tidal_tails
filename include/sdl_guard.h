@@ -1,8 +1,7 @@
 //
-//  sdl.h
-//  Learn SDL
+//  sdl_guard.h
 //
-//  Created by Jordan Osborn on 16/10/2016.
+//  Created by Jordan Osborn on 11/01/2016.
 //  Copyright © 2016 Jordan Osborn. All rights reserved.
 //
 
