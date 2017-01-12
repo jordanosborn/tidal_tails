@@ -8,3 +8,5 @@ Makefile
 
 cmake_install.cmake
 bin/main.exe
+cmake-build-debug/
+bin/main
