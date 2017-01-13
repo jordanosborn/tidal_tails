@@ -6,9 +6,9 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 INCLUDE_DIRECTORIES(include)
 
-file(GLOB SOURCES "src/*.cpp")
-file(GLOB HEADERS "include/*.h")
-add_executable(${PROJECT_NAME} ${SOURCES} )
+file(GLOB SOURCES "src/main.cpp" "src/**/*.cpp")
+file(GLOB HEADERS "include/**/*.h")
+add_executable(${PROJECT_NAME} ${SOURCES})
 
 find_package(SDL2 REQUIRED)
 #find_package(SDL2_image REQUIRED >=2.0.0)

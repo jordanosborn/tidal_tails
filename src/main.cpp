@@ -13,8 +13,14 @@
 
 // SDL2 Headers
 #include "sdl_guard.h"
+#include "capture/screenshot.h"
+#include "utilities/utilities.h"
 
-std::string programName = "Computer Project";
+std::string PROGRAMNAME = "Computer Project";
+GLint WIDTH=512;
+GLint HEIGHT = 800;
+GLdouble system_time = 0;
+
 
 // Our SDL_Window ( just like with SDL2 wihout OpenGL)
 SDL_Window *mainWindow;
@@ -27,8 +33,6 @@ void PrintSDL_GL_Attributes();
 void CheckSDLError(int line);
 void RunGame();
 void Cleanup();
-
-
 bool Init()
 {
     // Initialize SDL's Video subsystem
@@ -38,9 +42,8 @@ bool Init()
         return false;
     }
 
-    // Create our window centered at 512x512 resolution
-    mainWindow = SDL_CreateWindow(programName.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                                  512, 512, SDL_WINDOW_OPENGL);
+    mainWindow = SDL_CreateWindow(PROGRAMNAME.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+                                  WIDTH, HEIGHT, SDL_WINDOW_OPENGL);
 
     // Check that everything worked out okay
     if (!mainWindow)
@@ -95,10 +98,9 @@ int main(int argc, char *argv[])
     // 		SDL_SetRenderDrawColor(&renderer, 255, 0, 0, 255);
     // 		SDL_RenderClear(&renderer);
     //
-    glClearColor(0.5, 0.0, 0.0, 1.0);
+    glClearColor(0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     SDL_GL_SwapWindow(mainWindow);
-
     RunGame();
 
     Cleanup();
@@ -109,7 +111,6 @@ int main(int argc, char *argv[])
 void RunGame()
 {
     bool loop = true;
-
     while (loop)
     {
         SDL_Event event;
@@ -130,18 +131,24 @@ void RunGame()
                         glClearColor(1.0, 0.0, 0.0, 1.0);
                         glClear(GL_COLOR_BUFFER_BIT);
                         SDL_GL_SwapWindow(mainWindow);
+                        system_time+=6.1;
                         break;
                     case SDLK_g:
                         // Cover with green and update
                         glClearColor(0.0, 1.0, 0.0, 1.0);
                         glClear(GL_COLOR_BUFFER_BIT);
                         SDL_GL_SwapWindow(mainWindow);
+                        system_time+=6.1;
                         break;
                     case SDLK_b:
                         // Cover with blue and update
                         glClearColor(0.0, 0.0, 1.0, 1.0);
                         glClear(GL_COLOR_BUFFER_BIT);
                         SDL_GL_SwapWindow(mainWindow);
+                        system_time+=6.1;
+                        break;
+                    case SDLK_p:
+                        screenshot("screenshot."+ format_time(system_time)+".tga");
                         break;
                     default:
                         break;

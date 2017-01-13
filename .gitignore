@@ -11,3 +11,7 @@ bin/main.exe
 cmake-build-debug/
 bin/main
 *.cbp
+
+bin/texture.tga
+
+*.tga
