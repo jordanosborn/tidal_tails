@@ -6,12 +6,13 @@ Part II Computational Project: Tidal Tails
 1. C++ compiler (GNU g++)
 1. SDL2
 1. OpenGL
+1. GLEW
 1. cmake
   
 ## Todo:
 
 1. Might not need FindOpenGL.cmake
-1. Screenshot ability
+1. Screenshot ability ✓ 
 1. Camera controls (left click (pan), right click (rotate), scroll button (zoom)
 1. System init (start up arguments, N, distribution...)
 1. Particle class
@@ -22,12 +23,13 @@ Part II Computational Project: Tidal Tails
 1. Window controls (q (restart, press twice),w (screenshot), s (pause/play), e (start/stop record),  a (rewind), d (forward))
 1. Scale (G,mass,distance,time)
 
-## Instructions to build project:
+## Instructions to build and run project:
 
 ```bash
 	cd {project-directory}
 	cmake .
 	make
+	bin/main
 ```
 ## Documentation:
 
