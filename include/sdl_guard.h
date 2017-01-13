@@ -1,16 +1,19 @@
 //
-//  sdl_guard.h
+//  sdl.h
+//  Learn SDL
 //
-//  Created by Jordan Osborn on 11/01/2016.
+//  Created by Jordan Osborn on 16/10/2016.
 //  Copyright © 2016 Jordan Osborn. All rights reserved.
 //
 
 #ifndef sdl_h
 #define sdl_h
-#ifdef __APPLE__
-#include <SDL2/SDL.h>
-#else
-#include <SDL/SDL.h>
-#endif
+    #ifdef __APPLE__
+        #include <SDL2/SDL.h>
+    #elif __WIN32
+        #include <SDL/SDL.h>
+    #else
+        #include <SDL2/SDL.h>
+    #endif
 
 #endif /* sdl_h */
