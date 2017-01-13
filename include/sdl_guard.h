@@ -10,7 +10,7 @@
 #define sdl_h
     #ifdef __APPLE__
         #include <SDL2/SDL.h>
-    #elifdef __WIN32
+    #elif __WIN32
         #include <SDL/SDL.h>
     #else
         #include <SDL2/SDL.h>
