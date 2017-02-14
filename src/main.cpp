@@ -11,14 +11,20 @@
 #define GL3_PROTOTYPES 1
 #include <GL/glew.h>
 
+
 // SDL2 Headers
 #include "sdl_guard.h"
 #include "capture/screenshot.h"
 #include "utilities/utilities.h"
 
 std::string PROGRAMNAME = "Computer Project";
-GLint WIDTH=512;
+GLint WIDTH=800;
 GLint HEIGHT = 800;
+GLint N = 3;
+GLfloat R = 0.2;
+GLfloat THETA = 3.141926/4.0;
+GLfloat color[4]= {1,1,0,1};
+GLfloat X[3]={0,0,0};
 GLdouble system_time = 0;
 
 
@@ -33,6 +39,25 @@ void PrintSDL_GL_Attributes();
 void CheckSDLError(int line);
 void RunGame();
 void Cleanup();
+//should be in particle source file as render function
+void renderSphere(GLfloat, GLfloat, GLfloat, GLfloat,GLfloat* GLint, GLfloat);
+
+
+void renderSphere(GLfloat x, GLfloat y, GLfloat z, GLfloat radius, GLfloat* color_param, GLint subdivisions,GLfloat theta=0)
+{
+    //the same quadric can be re-used for drawing many spheres
+    GLUquadricObj *quadric=gluNewQuadric();
+    glColor4fv(color_param);
+    gluQuadricNormals(quadric, GLU_SMOOTH);
+    glPushMatrix();
+    glTranslatef( x,y,z );
+
+    gluSphere(quadric, radius, subdivisions,subdivisions);
+    glRotatef(theta,0.0,1.0,0.0);
+    glPopMatrix();
+    gluDeleteQuadric(quadric);
+}
+
 bool Init()
 {
     // Initialize SDL's Video subsystem
@@ -108,6 +133,8 @@ int main(int argc, char *argv[])
     return 0;
 }
 
+GLboolean rUP=true;
+GLboolean rDOWN=false;
 void RunGame()
 {
     bool loop = true;
@@ -126,24 +153,88 @@ void RunGame()
                     case SDLK_ESCAPE:
                         loop = false;
                         break;
-                    case SDLK_r:
+                    case SDLK_q:
                         // Cover with red and update
-                        glClearColor(1.0, 0.0, 0.0, 1.0);
+                        R=0.2;
+                        N=3;
+                        X[0]=0,X[1]=0,X[2]=0;
+                        glClearColor(0.0, 0.0, 1.0, 1.0);
                         glClear(GL_COLOR_BUFFER_BIT);
+                        renderSphere(X[0],X[1],X[2],R,color,N);
                         SDL_GL_SwapWindow(mainWindow);
                         system_time+=6.1;
                         break;
-                    case SDLK_g:
-                        // Cover with green and update
-                        glClearColor(0.0, 1.0, 0.0, 1.0);
+                    case SDLK_w:
+                        // Cover with red and update
+                        X[1]+=0.05;
+                        glClearColor(0.0, 0.0, 1.0, 1.0);
                         glClear(GL_COLOR_BUFFER_BIT);
+                        renderSphere(X[0],X[1],X[2],R,color,N);
                         SDL_GL_SwapWindow(mainWindow);
                         system_time+=6.1;
                         break;
-                    case SDLK_b:
+                    case SDLK_a:
+                        // Cover with red and update
+                        X[0]-=0.05;
+                        glClearColor(0.0, 0.0, 1.0, 1.0);
+                        glClear(GL_COLOR_BUFFER_BIT);
+                        renderSphere(X[0],X[1],X[2],R,color,N);
+                        SDL_GL_SwapWindow(mainWindow);
+                        system_time+=6.1;
+                        break;
+                    case SDLK_s:
+                        // Cover with red and update
+                        X[1]-=0.05;
+                        glClearColor(0.0, 0.0, 1.0, 1.0);
+                        glClear(GL_COLOR_BUFFER_BIT);
+                        renderSphere(X[0],X[1],X[2],R,color,N);
+                        SDL_GL_SwapWindow(mainWindow);
+                        system_time+=6.1;
+                        break;
+                    case SDLK_d:
+                        // Cover with red and update
+                        X[0]+=0.05;
+                        glClearColor(0.0, 0.0, 1.0, 1.0);
+                        glClear(GL_COLOR_BUFFER_BIT);
+                        renderSphere(X[0],X[1],X[2],R,color,N);
+                        SDL_GL_SwapWindow(mainWindow);
+                        system_time+=6.1;
+                        break;
+                    case SDLK_UP:
+                        N++;
                         // Cover with blue and update
                         glClearColor(0.0, 0.0, 1.0, 1.0);
                         glClear(GL_COLOR_BUFFER_BIT);
+                        renderSphere(X[0],X[1],X[2],R,color,N);
+                        SDL_GL_SwapWindow(mainWindow);
+                        system_time+=6.1;
+
+                        break;
+                    case SDLK_DOWN:
+                        N--;
+                        // Cover with blue and update
+                        glClearColor(0.0, 0.0, 1.0, 1.0);
+                        glClear(GL_COLOR_BUFFER_BIT);
+                        renderSphere(X[0],X[1],X[2],R,color,N);
+                        SDL_GL_SwapWindow(mainWindow);
+                        system_time+=6.1;
+                        break;
+                    case SDLK_LEFT:
+                        R/=2;
+                        // Cover with blue and update
+                        glClearColor(0.0, 0.0, 1.0, 1.0);
+                        glClear(GL_COLOR_BUFFER_BIT);
+                        renderSphere(X[0],X[1],X[2],R,color,N);
+                        SDL_GL_SwapWindow(mainWindow);
+                        system_time+=6.1;
+
+                        break;
+                    case SDLK_RIGHT:
+                        R*=2;
+                        // Cover with blue and update
+                        glClearColor(0.0, 0.0, 1.0, 1.0);
+                        glClear(GL_COLOR_BUFFER_BIT);
+                        renderSphere(X[0],X[1],X[2],R,color,N);
                         SDL_GL_SwapWindow(mainWindow);
                         system_time+=6.1;
                         break;
@@ -153,6 +244,10 @@ void RunGame()
                     default:
                         break;
                 }
+            }
+            else if(event.type == SDL_KEYUP)
+            {
+
             }
         }
 
