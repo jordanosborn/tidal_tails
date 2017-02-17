@@ -17,7 +17,7 @@
 #include "capture/screenshot.h"
 #include "utilities/utilities.h"
 
-std::string PROGRAMNAME = "Computer Project";
+std::string PROGRAMNAME = "Tidal Tails";
 GLint WIDTH=800;
 GLint HEIGHT = 800;
 GLint N = 3;
