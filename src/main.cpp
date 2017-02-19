@@ -6,6 +6,7 @@
 // C++ Headers
 #include <string>
 #include <iostream>
+#include <array>
 
 // OpenGL / glew Headers
 #define GL3_PROTOTYPES 1
@@ -26,6 +27,8 @@ GLfloat THETA = 3.141926/4.0;
 GLfloat color[4]= {1,1,0,1};
 GLfloat X[3]={0,0,0};
 GLdouble system_time = 0;
+std::array<GLfloat,3> a={1,2,3};
+std::array<GLfloat,3> b={2,3,4};
 
 
 // Our SDL_Window ( just like with SDL2 wihout OpenGL)

@@ -6,26 +6,26 @@
 #define PARTICLE_H
 #include "sdl_guard.h"
 #include <GL/glew.h>
-#include <vector>
-//implementation details??
+#include <array>
+
 class particle {
 private:
-    GLint radius;
-    GLfloat inverse_mass;
-    GLfloat color[4];
-    std::vector<GLfloat> position;
-    std::vector<GLfloat> velocity;
-    std::vector<GLfloat> acceleration;
+    GLfloat radius;
+    GLfloat mass;
+    std::array<GLfloat,4> color;
+    std::array<GLfloat,3> position;
+    std::array<GLfloat,3> velocity;
+    std::array<GLfloat,3> acceleration;
 public:
-    friend void setRadius(GLfloat);
-    friend GLfloat getRadius(GLint);
-    friend void setMass(GLfloat);
-    friend GLfloat getInverseMass(GLint);
-    friend std::vector<GLfloat> getPosition(GLint);
-    friend void setPosition();
-    particle();
-    ~particle();
-
+    inline friend GLfloat getRadius(particle*);
+    inline friend GLfloat getMass(particle*);
+    inline friend std::array<GLfloat,3> getPosition(particle*);
+    inline friend std::array<GLfloat,3> getVelocity(particle*);
+    inline friend std::array<GLfloat,3> getAcceleration(particle*);
+    inline friend std::array<GLfloat,4> getColor(particle*);
+    friend void update(particle*,std::array<GLfloat,3>);
+    friend void render(particle*);
+    particle(GLfloat, GLfloat, std::array<GLfloat,3>, std::array<GLfloat,3>, std::array<GLfloat,4>);
 };
 
 
