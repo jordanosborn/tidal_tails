@@ -4,23 +4,23 @@
 
 #include "physics/particle.h"
 
-GLfloat getMass(particle* a){
+const GLfloat& getMass(particle* a){
     return a->mass;
 }
-GLfloat getRadius(particle* a){
+const GLfloat& getRadius(particle* a){
     return a->radius;
 }
-std::array<GLfloat,3> getPosition(particle* a){
+const std::array<GLfloat,3>& getPosition(particle* a){
     return a->position;
 }
-std::array<GLfloat,3> getVelocity(particle* a){
+const std::array<GLfloat,3>& getVelocity(particle* a){
     return a->velocity;
 }
-std::array<GLfloat,3> getAcceleration(particle* a){
+const std::array<GLfloat,3>& getAcceleration(particle* a){
     return a->acceleration;
 }
 
-std::array<GLfloat,4> getColor(particle* a){
+const std::array<GLfloat,4>& getColor(particle* a){
     return a->color;
 }
 
@@ -33,9 +33,21 @@ particle::particle(GLfloat m, GLfloat r, std::array<GLfloat,3> x0, std::array<GL
     color = C;
 }
 
-void update(particle* p,std::array<GLfloat,3> a){
-
+void update(particle* p,std::array<GLfloat,3> x,std::array<GLfloat,3> v, std::array<GLfloat,3> a){
+    p->acceleration = a;
+    p->velocity = v;
+    p->position = x;
 }
-void render(particle* p){
-
+void render(particle* a){
+    GLint subdivisions = 20;
+    GLUquadricObj *quadric=gluNewQuadric();
+    GLfloat color[4] = {getColor(a)[0],getColor(a)[1],getColor(a)[2],getColor(a)[3]};
+    glColor4fv(color);
+    gluQuadricNormals(quadric, GLU_SMOOTH);
+    glPushMatrix();
+    glTranslatef( getPosition(a)[0],getPosition(a)[1],getPosition(a)[2]);
+    gluSphere(quadric, getRadius(a), subdivisions,subdivisions);
+    //glRotatef(theta,0.0,1.0,0.0);
+    glPopMatrix();
+    gluDeleteQuadric(quadric);
 }

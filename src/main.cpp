@@ -8,15 +8,21 @@
 #include <iostream>
 #include <array>
 
-// OpenGL / glew Headers
+// OpenGL / glew / SDL Headers
 #define GL3_PROTOTYPES 1
 #include <GL/glew.h>
-
-
-// SDL2 Headers
 #include "sdl_guard.h"
+
+// GSL Headers
+#include <gsl/gsl_errno.h>
+#include <gsl/gsl_odeiv.h>
+
+// Headers
+#include "physics/universe.h"
+#include "physics/particle.h"
 #include "capture/screenshot.h"
 #include "utilities/utilities.h"
+
 
 std::string PROGRAMNAME = "Tidal Tails";
 GLint WIDTH=800;
@@ -118,6 +124,7 @@ bool SetOpenGLAttributes()
 
 int main(int argc, char *argv[])
 {
+
     if (!Init())
         return -1;
 
@@ -140,6 +147,8 @@ GLboolean rUP=true;
 GLboolean rDOWN=false;
 void RunGame()
 {
+    universe universe1 = universe();
+    universe1.generate_universe();
     bool loop = true;
     while (loop)
     {
@@ -243,6 +252,15 @@ void RunGame()
                         break;
                     case SDLK_p:
                         screenshot("screenshot."+ format_time(system_time)+".tga");
+                        break;
+                    case SDLK_h:
+                        R*=2;
+                        // Cover with blue and update
+                        glClearColor(0.0, 0.0, 0.0, 1.0);
+                        glClear(GL_COLOR_BUFFER_BIT);
+                        universe1.update();
+                        SDL_GL_SwapWindow(mainWindow);
+                        system_time+=6.1;
                         break;
                     default:
                         break;

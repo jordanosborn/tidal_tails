@@ -5,6 +5,7 @@
 #ifndef PARTICLE_H
 #define PARTICLE_H
 #include "sdl_guard.h"
+#include "utilities/utilities.h"
 #include <GL/glew.h>
 #include <array>
 
@@ -17,15 +18,15 @@ private:
     std::array<GLfloat,3> velocity;
     std::array<GLfloat,3> acceleration;
 public:
-    inline friend GLfloat getRadius(particle*);
-    inline friend GLfloat getMass(particle*);
-    inline friend std::array<GLfloat,3> getPosition(particle*);
-    inline friend std::array<GLfloat,3> getVelocity(particle*);
-    inline friend std::array<GLfloat,3> getAcceleration(particle*);
-    inline friend std::array<GLfloat,4> getColor(particle*);
-    friend void update(particle*,std::array<GLfloat,3>);
+    friend const GLfloat& getRadius(particle*);
+    friend const GLfloat& getMass(particle*);
+    friend const std::array<GLfloat,3>& getPosition(particle*);
+    friend const std::array<GLfloat,3>& getVelocity(particle*);
+    friend const std::array<GLfloat,3>& getAcceleration(particle*);
+    friend const std::array<GLfloat,4>& getColor(particle*);
+    friend void update(particle* p,std::array<GLfloat,3> x,std::array<GLfloat,3> v, std::array<GLfloat,3> a);
     friend void render(particle*);
-    particle(GLfloat, GLfloat, std::array<GLfloat,3>, std::array<GLfloat,3>, std::array<GLfloat,4>);
+    particle(GLfloat m, GLfloat r, std::array<GLfloat,3> x0, std::array<GLfloat,3> v0, std::array<GLfloat,4> C);
 };
 
 
