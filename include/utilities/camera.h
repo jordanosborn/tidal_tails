@@ -5,7 +5,7 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-//camera for opengl context
+//camera for openGL context
 
 class camera{
 

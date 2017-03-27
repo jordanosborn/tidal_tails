@@ -20,15 +20,15 @@
 
 
 std::string PROGRAMNAME = "Tidal Tails";
-GLint WIDTH=800;
-GLint HEIGHT = 800;
+GLint WIDTH = 900;
+GLint HEIGHT = 900;
 
 GLdouble t = 0;
 
-// Our SDL_Window ( just like with SDL2 wihout OpenGL)
+// SDL_Window
 SDL_Window *mainWindow;
 
-// Our opengl context handle
+// openGL context
 SDL_GLContext mainContext;
 
 bool set_openGL_attributes();
@@ -43,8 +43,7 @@ bool Init() {
         return false;
     }
 
-    mainWindow = SDL_CreateWindow(PROGRAMNAME.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-                                  WIDTH, HEIGHT, SDL_WINDOW_OPENGL);
+    mainWindow = SDL_CreateWindow(PROGRAMNAME.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_OPENGL);
 
     // SDL error check
     if (!mainWindow) {
@@ -130,13 +129,10 @@ void run_simulation() {
                         paused = true;
                         //apply step back
                         std::cout << "Backward time step applied." << std::endl;
-                    case SDLK_b:
-                        reversed=true;
-                        //set time backwards
+                    case SDLK_r:
+                        reversed= not reversed;
+                        //reverse time
                         std::cout << "Time reversed." << std::endl;
-                    case SDLK_f:
-                        reversed = false;
-                        std::cout << "Time normal." << std::endl;
                     case SDLK_l:
                         logging = not logging;
                         //start/stop logging

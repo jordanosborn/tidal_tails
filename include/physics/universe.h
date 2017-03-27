@@ -35,7 +35,7 @@ public:
     void compute_forces();
     void update(SDL_Window* mainWindow,GLboolean isReversed);
     void log_data();
-    void generate_galaxy(vec3 x0,vec3 v0);
+    void generate_galaxy(vec3 x0,vec3 v0, GLint rotation);
     void generate_universe();
     friend var getTimestep(universe*);
     //should log data at end of constructor.
