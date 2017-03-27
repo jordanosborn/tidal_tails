@@ -41,6 +41,7 @@ void update_particle(particle* p,vec3 x,vec3 v, vec3 a){
 void render(particle* a){
     GLint subdivisions = 20;
     GLUquadricObj *quadric=gluNewQuadric();
+//TODO: could be slowdown
     var color[4] = {getColor(a)[0],getColor(a)[1],getColor(a)[2],getColor(a)[3]};
     glColor4dv(color);
     gluQuadricNormals(quadric, GLU_SMOOTH);

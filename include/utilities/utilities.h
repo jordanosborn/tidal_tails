@@ -23,7 +23,7 @@ vec3 sub(vec3,vec3);
 vec3 mul(var,vec3);
 vec3 mul(vec3, var);
 var dot(vec3,vec3);
-var abs(std::array<var, 3>);
+var abs(vec3);
 
 //TODO: check for speed
 var dist(vec3,vec3);

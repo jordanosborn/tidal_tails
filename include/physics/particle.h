@@ -4,7 +4,7 @@
 
 #ifndef PARTICLE_H
 #define PARTICLE_H
-#include "sdl_guard.h"
+#include "utilities/sdl_guard.h"
 #include "utilities/utilities.h"
 #include <GL/glew.h>
 #include <array>

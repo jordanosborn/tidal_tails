@@ -4,7 +4,7 @@
 
 #ifndef SCREENSHOT_H
 #define SCREENSHOT_H
-#include "sdl_guard.h"
+#include "utilities/sdl_guard.h"
 #include <GL/glew.h>
 #include <fstream>
 
