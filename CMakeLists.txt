@@ -2,11 +2,11 @@ project(main)
 
 cmake_minimum_required(VERSION 2.8)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 INCLUDE_DIRECTORIES(include)
 
-file(GLOB SOURCES "src/main.cpp" "src/**/*.cpp")
+file(GLOB SOURCES "src/**/*.cpp" "src/main.cpp")
 file(GLOB HEADERS "include/**/*.h")
 add_executable(${PROJECT_NAME} ${SOURCES})
 

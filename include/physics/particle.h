@@ -5,27 +5,28 @@
 #ifndef PARTICLE_H
 #define PARTICLE_H
 #include "sdl_guard.h"
+#include "utilities/utilities.h"
 #include <GL/glew.h>
-#include <vector>
-//implementation details??
+#include <array>
+
 class particle {
 private:
-    GLint radius;
-    GLfloat inverse_mass;
-    GLfloat color[4];
-    std::vector<GLfloat> position;
-    std::vector<GLfloat> velocity;
-    std::vector<GLfloat> acceleration;
+    var radius;
+    var mass;
+    vec4 color;
+    vec3 position;
+    vec3 velocity;
+    vec3 acceleration;
 public:
-    friend void setRadius(GLfloat);
-    friend GLfloat getRadius(GLint);
-    friend void setMass(GLfloat);
-    friend GLfloat getInverseMass(GLint);
-    friend std::vector<GLfloat> getPosition(GLint);
-    friend void setPosition();
-    particle();
-    ~particle();
-
+    friend const var& getRadius(particle*);
+    friend const var& getMass(particle*);
+    friend const vec3& getPosition(particle*);
+    friend const vec3& getVelocity(particle*);
+    friend const vec3& getAcceleration(particle*);
+    friend const vec4& getColor(particle*);
+    friend void update_particle(particle* p,vec3 x,vec3 v, vec3 a);
+    friend void render(particle*);
+    particle(var m, var r, vec3 x0, vec3 v0, vec4 C);
 };
 
 
