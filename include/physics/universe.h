@@ -6,6 +6,7 @@
 #define UNIVERSE_H
 #include <vector>
 #include <array>
+#include <cmath>
 #include "utilities/utilities.h"
 #include "physics/particle.h"
 #include "capture/logger.h"
@@ -16,28 +17,27 @@ class universe{
 private:
     std::vector<particle*> particles;
     std::vector<logger*> data_loggers;
-    GLfloat time;
-    GLfloat dt;
-    GLfloat M_max;
-    GLfloat M_min;
-    GLfloat R_max;
-    GLfloat R_min;
+    var time;
+    var dt;
+    var M_max;
+    var M_min;
+    var R_max;
+    var R_min;
     //Gravitational softening parameter g prop 1/(r+epsilon)^2
-    GLfloat epsilon;
-    GLfloat G;
+    var epsilon;
+    var G;
     //(density, radius)
     std::vector<std::array<GLint,2> > distribution;
     void apply_forces();
 
 public:
-    //if m==0 skip or only loop over large masses?
-    std::array<GLfloat, 3> g_force(particle*);
     //TODO: compute g_force for each particle, update(particle), render particle , update sys time, log data,wait(in main event loop)
     void compute_forces();
-    void update();
+    void update(SDL_Window* mainWindow,GLboolean isReversed);
     void log_data();
-    void generate_galaxy(std::array<GLfloat,3> x0,std::array<GLfloat,3> v0);
+    void generate_galaxy(vec3 x0,vec3 v0);
     void generate_universe();
+    friend var getTimestep(universe*);
     //should log data at end of constructor.
     universe();
 };

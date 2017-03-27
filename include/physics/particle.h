@@ -11,22 +11,22 @@
 
 class particle {
 private:
-    GLfloat radius;
-    GLfloat mass;
-    std::array<GLfloat,4> color;
-    std::array<GLfloat,3> position;
-    std::array<GLfloat,3> velocity;
-    std::array<GLfloat,3> acceleration;
+    var radius;
+    var mass;
+    vec4 color;
+    vec3 position;
+    vec3 velocity;
+    vec3 acceleration;
 public:
-    friend const GLfloat& getRadius(particle*);
-    friend const GLfloat& getMass(particle*);
-    friend const std::array<GLfloat,3>& getPosition(particle*);
-    friend const std::array<GLfloat,3>& getVelocity(particle*);
-    friend const std::array<GLfloat,3>& getAcceleration(particle*);
-    friend const std::array<GLfloat,4>& getColor(particle*);
-    friend void update(particle* p,std::array<GLfloat,3> x,std::array<GLfloat,3> v, std::array<GLfloat,3> a);
+    friend const var& getRadius(particle*);
+    friend const var& getMass(particle*);
+    friend const vec3& getPosition(particle*);
+    friend const vec3& getVelocity(particle*);
+    friend const vec3& getAcceleration(particle*);
+    friend const vec4& getColor(particle*);
+    friend void update_particle(particle* p,vec3 x,vec3 v, vec3 a);
     friend void render(particle*);
-    particle(GLfloat m, GLfloat r, std::array<GLfloat,3> x0, std::array<GLfloat,3> v0, std::array<GLfloat,4> C);
+    particle(var m, var r, vec3 x0, vec3 v0, vec4 C);
 };
 
 

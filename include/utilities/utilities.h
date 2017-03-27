@@ -10,39 +10,39 @@
 #include <string>
 #include <array>
 
-//TODO: change types from GLfloat to var
+//TODO: change types from var to var
 typedef GLdouble var;
 //TODO: convert to vec3
-typedef std::array<GLfloat, 3> vec3;
-typedef std::array<GLfloat, 3> vec4;
+typedef std::array<var, 3> vec3;
+typedef std::array<var, 4> vec4;
 std::string format_time(GLdouble);
 
 //Hard coded for 3D for speed
-std::array<GLfloat,3> add(std::array<GLfloat,3>,std::array<GLfloat,3>);
-std::array<GLfloat,3> sub(std::array<GLfloat,3>,std::array<GLfloat,3>);
-std::array<GLfloat,3> mul(GLfloat,std::array<GLfloat,3>);
-std::array<GLfloat,3> mul(std::array<GLfloat,3>, GLfloat);
-GLfloat dot(std::array<GLfloat,3>,std::array<GLfloat,3>);
-GLfloat abs(std::array<GLfloat, 3>);
+vec3 add(vec3,vec3);
+vec3 sub(vec3,vec3);
+vec3 mul(var,vec3);
+vec3 mul(vec3, var);
+var dot(vec3,vec3);
+var abs(std::array<var, 3>);
 
 //TODO: check for speed
-GLfloat dist(std::array<GLfloat,3>,std::array<GLfloat,3>);
-std::array<GLfloat ,3> unit(std::array<GLfloat,3>,std::array<GLfloat,3>);
-std::array<GLfloat,3> cross(std::array<GLfloat,3>, std::array<GLfloat,3>);
+var dist(vec3,vec3);
+vec3 unit(vec3,vec3);
+vec3 cross(vec3, vec3);
 
-std::string to_string(std::array<GLfloat,3>);
-std::string to_string(std::array<GLfloat,4>);
+std::string to_string(vec3);
+std::string to_string(vec4);
 
 //colors
-extern std::array<GLfloat,4> color_red;
-extern std::array<GLfloat,4> color_yellow;
-extern std::array<GLfloat,4> color_green;
-extern std::array<GLfloat,4> color_cyan;
-extern std::array<GLfloat,4> color_blue;
-extern std::array<GLfloat,4> color_magenta;
-extern std::array<GLfloat,4> color_black;
-extern std::array<GLfloat,4> color_white;
+extern vec4 color_red;
+extern vec4 color_yellow;
+extern vec4 color_green;
+extern vec4 color_cyan;
+extern vec4 color_blue;
+extern vec4 color_magenta;
+extern vec4 color_black;
+extern vec4 color_white;
 
-extern std::array<std::array<GLfloat ,4>*,6> color_list;
+extern std::array<vec4*,6> color_list;
 
 #endif //UTILITIES_H
