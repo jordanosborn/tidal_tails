@@ -38,15 +38,23 @@ void update_particle(particle* p,vec3 x,vec3 v, vec3 a){
     p->velocity = v;
     p->position = x;
 }
-void render(particle* a){
+
+//TODO: include mass
+void update_particle_internal(particle* p, var R, var M){
+    p->mass = M;
+    p->radius = R;
+}
+
+void render(camera*  c, particle* a){
     GLint subdivisions = 20;
-    GLUquadricObj *quadric=gluNewQuadric();
+    GLUquadricObj *quadric = gluNewQuadric();
+//TODO: could be slowdown
     var color[4] = {getColor(a)[0],getColor(a)[1],getColor(a)[2],getColor(a)[3]};
     glColor4dv(color);
     gluQuadricNormals(quadric, GLU_SMOOTH);
     glPushMatrix();
-    glTranslatef( getPosition(a)[0],getPosition(a)[1],getPosition(a)[2]);
-    gluSphere(quadric, getRadius(a), subdivisions,subdivisions);
+    glTranslatef(c->zoom*(getPosition(a)[0]-c->position[0]),c->zoom*(getPosition(a)[1]-c->position[1]),c->zoom*(getPosition(a)[2]-c->position[2]));
+    gluSphere(quadric, c->zoom*getRadius(a), subdivisions,subdivisions);
     //glRotatef(theta,0.0,1.0,0.0);
     glPopMatrix();
     gluDeleteQuadric(quadric);

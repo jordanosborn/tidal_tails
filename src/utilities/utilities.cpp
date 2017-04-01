@@ -36,7 +36,7 @@ var dist(vec3 a,vec3 b){
     return abs(sub(a,b));
 }
 
-std::array<var ,3> unit(vec3 a,vec3 b){
+vec3 unit(vec3 a,vec3 b){
     std::array<var ,3> vec = sub(a,b);
     return mul(1.0/abs(vec),vec);
 }
@@ -58,7 +58,7 @@ vec4 color_magenta= {1.0,0.0,1.0,1.0};
 vec4 color_black = {0.0,0.0,0.0,1.0};
 vec4 color_white = {1.0,1.0,1.0,1.0};
 
-std::array<std::array<var ,4>*,6> color_list = {&color_red,&color_green,&color_blue,&color_yellow,&color_cyan,&color_magenta};
+std::array<vec4*,6> color_list = {&color_red,&color_green,&color_blue,&color_yellow,&color_cyan,&color_magenta};
 
 //
 
