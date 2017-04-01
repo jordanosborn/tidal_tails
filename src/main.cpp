@@ -17,6 +17,7 @@
 #include "physics/particle.h"
 #include "capture/screenshot.h"
 #include "utilities/utilities.h"
+#include "utilities/camera.h"
 
 
 std::string PROGRAMNAME = "Tidal Tails";
@@ -96,12 +97,16 @@ int main(int argc, char *argv[]) {
 }
 
 void run_simulation() {
-    universe universe1 = universe();
-    universe1.generate_universe();
+    universe universe1 = universe(true);
+    universe1.generate_galaxy({1.0,0.3,0.0},{-0.9,0.0,0.0},1.0,0.0,-1,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7}});
+    universe1.generate_galaxy({-1.0,-0.3,0.0},{0.9,0.0,0.0},1.0,0.0,1,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7},});
+    camera c = camera();
     GLboolean loop = true;
     GLboolean paused = true;
     GLboolean logging = false;
     GLboolean reversed = false;
+    GLboolean viewupdate = false;
+    var dx,dy,zl;
 
     while (loop == true) {
         SDL_Event event;
@@ -138,22 +143,43 @@ void run_simulation() {
                         //start/stop logging
                         std::cout << "Logging status: " << static_cast<int>(logging)  << std::endl;
                     case SDLK_w:
-                        //pan up
+                        viewupdate=true;
+                        dx=0.0;
+                        dy=0.05;
+                        zl=0.0;
                     case SDLK_a:
-                        //pan down
+                        viewupdate=true;
+                        dx=-0.05;
+                        dy=0.0;
+                        zl=0.0;
                     case SDLK_s:
-                        //pan left
+                        viewupdate=true;
+                        dx=0.0;
+                        dy=-0.05;
+                        zl=0.0;
                     case SDLK_d:
-                        //pan right
+                        viewupdate=true;
+                        dx=0.05;
+                        dy=0.0;
+                        zl=0.0;
                     case SDLK_q:
-                        //zoom out
+                        viewupdate=true;
+                        dx=0.0;
+                        dy=0.0;
+                        zl=-0.1;
                     case SDLK_e:
-                        //zoom in
-
+                        viewupdate=true;
+                        dx=0.0;
+                        dy=0.0;
+                        zl=0.1;
                     default:
                         break;
                 }
             }
+        }
+        if(viewupdate){
+            update_view(&c,&universe1,dx,dy,zl);
+            viewupdate=false;
         }
         if(!paused) {
             universe1.update(mainWindow, reversed);
@@ -162,6 +188,7 @@ void run_simulation() {
         if(logging){
 
         }
+
 
     }
 }

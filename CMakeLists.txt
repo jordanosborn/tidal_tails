@@ -6,8 +6,8 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 INCLUDE_DIRECTORIES(include)
 
-file(GLOB SOURCES "src/**/*.cpp" "src/main.cpp")
-file(GLOB HEADERS "include/**/*.h")
+file(GLOB SOURCES "src/utilities/camera.cpp" "src/**/*.cpp" "src/main.cpp")
+file(GLOB HEADERS "include/utilities/camera.h" "include/**/*.h")
 add_executable(${PROJECT_NAME} ${SOURCES})
 
 find_package(SDL2 REQUIRED)

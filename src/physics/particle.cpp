@@ -38,7 +38,14 @@ void update_particle(particle* p,vec3 x,vec3 v, vec3 a){
     p->velocity = v;
     p->position = x;
 }
-void render(particle* a){
+
+//TODO: include mass
+void update_particle_internal(particle* p, var R, var M){
+    p->mass = M;
+    p->radius = R;
+}
+
+void render( particle* a){
     GLint subdivisions = 20;
     GLUquadricObj *quadric=gluNewQuadric();
 //TODO: could be slowdown

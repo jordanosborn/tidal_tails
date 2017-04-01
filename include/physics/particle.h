@@ -6,6 +6,7 @@
 #define PARTICLE_H
 #include "utilities/sdl_guard.h"
 #include "utilities/utilities.h"
+//#include "utilities/camera.h"
 #include <GL/glew.h>
 #include <array>
 
@@ -25,7 +26,8 @@ public:
     friend const vec3& getAcceleration(particle*);
     friend const vec4& getColor(particle*);
     friend void update_particle(particle* p,vec3 x,vec3 v, vec3 a);
-    friend void render(particle*);
+    friend void update_particle_internal(particle* p, var R, var M);
+    friend void render( particle*);
     particle(var m, var r, vec3 x0, vec3 v0, vec4 C);
 };
 
