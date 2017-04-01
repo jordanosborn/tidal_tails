@@ -6,13 +6,13 @@
 universe::universe(){
     G = 1.0;
     M_max = 1.0;
-    M_min = 0.01;
+    M_min = 0.00;
     R_max = 0.1;
     R_min = static_cast<var>(R_max/16.0);
     epsilon = 0.001;
     time = 0.0;
     dt = 0.001;
-    distribution = {{3*12,2},{3*18,3},{3*24,4},{3*30,5},{3*36,6},{3*42,7}};
+    distribution = {{6*12,2},{6*18,3},{6*24,4},{6*30,5},{6*36,6},{6*42,7}};
 }
 
 void universe::generate_galaxy(vec3 x0 = {0.0,0.0,0.0},vec3 v0 = {0.0,0.0,0.0},GLint rotation = 1) {
@@ -36,8 +36,8 @@ void universe::generate_galaxy(vec3 x0 = {0.0,0.0,0.0},vec3 v0 = {0.0,0.0,0.0},G
 }
 
 void universe::generate_universe(){
-    generate_galaxy({0.0,0.0,0.0},{0.0,0.0,0.0},1);
-
+    generate_galaxy({1.0,0.3,0.0},{-0.6,0.0,0.0},1);
+    generate_galaxy({-1.0,-0.3,0.0},{0.6,0.0,0.0},1);
     for(GLint i = 0; i<particles.size(); i++){
         render(particles[i]);
     }
