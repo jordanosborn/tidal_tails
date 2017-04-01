@@ -15,7 +15,7 @@ Part II Computational Project: Tidal Tails
 1. Screenshot ability ✓ 
 1. Particle class ✓ 
 1. Scale (G,mass,distance,time) ✓ 
-1. Camera controls (left click (pan), right click (rotate), scroll button (zoom)
+1. Camera controls (left click (pan), right click (rotate), scroll button (zoom) ✓
 1. System init (start up arguments, N, distribution...)
 1. Console output and logs (can suppress?)
 1. Integrator (RK4, pointer to Force function and particles)
