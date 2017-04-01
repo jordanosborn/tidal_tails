@@ -17,9 +17,9 @@ universe::universe(GLboolean massless_particles){
 
 }
 
-void universe::render_universe(){
+void universe::render_universe(camera* c){
     for(GLint i = 0; i<galaxy_index.size()-1; i++){
-        render(particles[galaxy_index[i]]);
+        render(c,particles[galaxy_index[i]]);
     }
     GLboolean notLargeMass;
     for(GLint i = 0; i<particles.size();i++){
@@ -27,7 +27,7 @@ void universe::render_universe(){
         for(GLint j = 0; j<galaxy_index.size()-1; j++){
             if(i==galaxy_index[j]) notLargeMass=0;
         }
-        if(notLargeMass) render(particles[i]);
+        if(notLargeMass) render(c,particles[i]);
     }
 }
 
@@ -54,7 +54,7 @@ void universe::generate_galaxy(vec3 x0 = {0.0,0.0,0.0},vec3 v0 = {0.0,0.0,0.0}, 
 
 
 
-void universe::update(SDL_Window* mainWindow, GLboolean isReversed){
+void universe::update(SDL_Window* mainWindow, camera* c, GLboolean isReversed){
     if(isReversed) dt=-std::abs(dt);
     else dt=std::abs(dt);
     //TODO: implement updates to pos/vel integrator keeps trail
@@ -62,7 +62,7 @@ void universe::update(SDL_Window* mainWindow, GLboolean isReversed){
     glClear(GL_COLOR_BUFFER_BIT);
     apply_forces();
     //TODO: fix rendering scale and pan/zoom level
-    render_universe();
+    render_universe(c);
     SDL_GL_SwapWindow(mainWindow);
 }
 

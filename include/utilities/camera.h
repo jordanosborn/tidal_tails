@@ -12,11 +12,11 @@ class universe;
 class camera{
 private:
     var zoom_level;
-
 public:
     vec3 position;
+    var zoom;
     camera();
-    friend void update_view(camera* c, universe* a,var dx, var dy , var zl);
+    friend void update_view(camera* c,var dx, var dy , var zl);
 };
 
 

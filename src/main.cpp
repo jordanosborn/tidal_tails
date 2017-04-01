@@ -32,12 +32,12 @@ SDL_Window *mainWindow;
 // openGL context
 SDL_GLContext mainContext;
 
-bool set_openGL_attributes();
+GLboolean set_openGL_attributes();
 void check_SDL_error(int line);
 void run_simulation();
 void cleanup();
 
-bool Init() {
+GLboolean Init() {
     // Initialize SDL Video
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cout << "Failed to init SDL\n";
@@ -70,8 +70,8 @@ bool Init() {
     return true;
 }
 
-bool set_openGL_attributes() {
-    // USe GLCore
+GLboolean set_openGL_attributes() {
+    // Use GLCore
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
     // Use OpenGL 3.2
@@ -85,29 +85,29 @@ bool set_openGL_attributes() {
 int main(int argc, char *argv[]) {
 
     if (!Init()) return -1;
-
     glClearColor(0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     SDL_GL_SwapWindow(mainWindow);
     run_simulation();
 
     cleanup();
-
     return 0;
 }
 
 void run_simulation() {
     universe universe1 = universe(true);
-    universe1.generate_galaxy({1.0,0.3,0.0},{-0.9,0.0,0.0},1.0,0.0,-1,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7}});
+    universe1.generate_galaxy({0.0,0.0,0.0},{0.0,0.0,0.0},1.0,0.0,-1,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7}});
     universe1.generate_galaxy({-1.0,-0.3,0.0},{0.9,0.0,0.0},1.0,0.0,1,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7},});
+    universe1.generate_galaxy({1.0,-0.3,0.0},{0.9,0.0,0.0},1.0,0.0,1,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7},});
     camera c = camera();
     GLboolean loop = true;
     GLboolean paused = true;
     GLboolean logging = false;
     GLboolean reversed = false;
-    GLboolean viewupdate = false;
     var dx,dy,zl;
-
+    dx = 0.05;
+    dy=0.05;
+    zl=0.05;
     while (loop == true) {
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
@@ -126,63 +126,41 @@ void run_simulation() {
                         paused = not paused;
                         std::cout << "Pause status: " << static_cast<int>(paused) << std::endl;
                         break;
-                    case SDLK_x:
-                        paused = true;
-                        //apply step forward
-                        std::cout << "Forward time step applied." << std::endl;
-                    case SDLK_z:
-                        paused = true;
-                        //apply step back
-                        std::cout << "Backward time step applied." << std::endl;
                     case SDLK_r:
                         reversed= not reversed;
                         //reverse time
                         std::cout << "Time reversed." << std::endl;
+                        break;
                     case SDLK_l:
                         logging = not logging;
                         //start/stop logging
                         std::cout << "Logging status: " << static_cast<int>(logging)  << std::endl;
+                        break;
                     case SDLK_w:
-                        viewupdate=true;
-                        dx=0.0;
-                        dy=0.05;
-                        zl=0.0;
-                    case SDLK_a:
-                        viewupdate=true;
-                        dx=-0.05;
-                        dy=0.0;
-                        zl=0.0;
+                        update_view(&c,0.0,dy,0.0);
+                        break;
                     case SDLK_s:
-                        viewupdate=true;
-                        dx=0.0;
-                        dy=-0.05;
-                        zl=0.0;
+                        update_view(&c,0.0,-1.0*dy,0.0);
+                        break;
+                    case SDLK_a:
+                        update_view(&c,-1.0*dx,0.0,0.0);
+                        break;
                     case SDLK_d:
-                        viewupdate=true;
-                        dx=0.05;
-                        dy=0.0;
-                        zl=0.0;
+                        update_view(&c,dx,0.0,0.0);
+                        break;
                     case SDLK_q:
-                        viewupdate=true;
-                        dx=0.0;
-                        dy=0.0;
-                        zl=-0.1;
+                        update_view(&c,0.0,0.0,-1.0*zl);
+                        break;
                     case SDLK_e:
-                        viewupdate=true;
-                        dx=0.0;
-                        dy=0.0;
-                        zl=0.1;
+                        update_view(&c,0.0,0.0,zl);
+                        break;
                     default:
                         break;
                 }
             }
         }
-        if(viewupdate){
-            update_view(&c,&universe1,dx,dy,zl);
-            viewupdate=false;
-        }
         if(!paused) {
-            universe1.update(mainWindow, reversed);
+            universe1.update(mainWindow,&c, reversed);
             t += getTimestep(&universe1);
         }
         if(logging){
