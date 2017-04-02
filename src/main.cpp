@@ -24,12 +24,8 @@ std::string PROGRAMNAME = "Tidal Tails";
 GLint WIDTH = 900;
 GLint HEIGHT = 900;
 
-GLdouble t = 0;
-
-// SDL_Window
+// SDL
 SDL_Window *mainWindow;
-
-// openGL context
 SDL_GLContext mainContext;
 
 GLboolean set_openGL_attributes();
@@ -83,7 +79,6 @@ GLboolean set_openGL_attributes() {
 }
 
 int main(int argc, char *argv[]) {
-
     if (!Init()) return -1;
     glClearColor(0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
@@ -96,22 +91,44 @@ int main(int argc, char *argv[]) {
 
 void run_simulation() {
     universe universe1 = universe(true);
-    universe1.generate_galaxy({0.0,0.0,0.0},{0.0,0.0,0.0},1.0,0.0,-1,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7}});
-    universe1.generate_galaxy({-1.0,-0.3,0.0},{0.9,0.0,0.0},1.0,0.0,1,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7},});
-    universe1.generate_galaxy({1.0,-0.3,0.0},{0.9,0.0,0.0},1.0,0.0,1,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7},});
-    camera c = camera();
+    //universe1.generate_galaxy({0.0,0.0,0.0},{0.0,0.0,0.0},1.0,0.0,-1,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7}});
+    //universe1.generate_galaxy({-1.0,-0.3,0.0},{0.9,0.0,0.0},1.0,0.0,1,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7}});
+    //universe1.generate_galaxy({1.0,-0.3,0.0},{0.9,0.0,0.0},1.0,0.0,1,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7}});
+    //universe1.generate_galaxy({1.0,-1.0,0.0},{-0.9,0.0,0.0},1.0,0.0,1,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7}});
+    camera c = camera(WIDTH,HEIGHT);
     GLboolean loop = true;
     GLboolean paused = true;
     GLboolean logging = false;
     GLboolean reversed = false;
-    var dx,dy,zl;
+    GLboolean mouseAllowed = true;
+    var dx,dy,zl, mousex, mousey;
+    GLdouble t = 0;
     dx = 0.05;
     dy=0.05;
     zl=0.05;
+
     while (loop == true) {
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) loop = false;
+            if (event.type == SDL_MOUSEBUTTONDOWN and mouseAllowed) {
+                switch (event.button.button){
+                    case SDL_BUTTON_LEFT:
+                        mousex = event.button.x;
+                        mousey = event.button.y;
+                        paused=true;
+                        break;
+                }
+            }
+            if (event.type == SDL_MOUSEBUTTONUP and mouseAllowed) {
+                switch (event.button.button){
+                    case SDL_BUTTON_LEFT:
+                        //TODO: scale v
+                        universe1.generate_galaxy({openGLpos(mousex,0,&c), openGLpos(mousey,1,&c),0},{20.0*(event.button.x-mousex)/static_cast<var>(WIDTH),-20.0*(event.button.y-mousey)/ static_cast<var>(HEIGHT),0.0},1.0,0.0,1,{{}});
+                        paused=false;
+                        break;
+                }
+            }
 
             if (event.type == SDL_KEYDOWN) {
                 switch (event.key.keysym.sym) {
@@ -166,19 +183,12 @@ void run_simulation() {
         if(logging){
 
         }
-
-
     }
 }
 
 void cleanup() {
-    // Delete OpengL context
     SDL_GL_DeleteContext(mainContext);
-
-    // Destroy window
     SDL_DestroyWindow(mainWindow);
-
-    // Shutdown SDL2
     SDL_Quit();
 }
 
@@ -186,7 +196,7 @@ void check_SDL_error(GLint line = -1) {
     std::string error = SDL_GetError();
 
     if (error != "") {
-        std::cout << "SLD Error : " << error << std::endl;
+        std::cout << "SDL Error : " << error << std::endl;
 
         if (line != -1) std::cout << "\nLine : " << line << std::endl;
 

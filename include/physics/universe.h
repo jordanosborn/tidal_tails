@@ -34,7 +34,6 @@ private:
 public:
     //TODO: should be private
     std::vector<particle*> particles;
-    //TODO: compute g_force for each particle, update(particle), render particle , update sys time, log data,wait(in main event loop)
     friend vec3 gforce(vec3 a0, particle*, particle*, var);
     void compute_forces();
     void update(SDL_Window* mainWindow, camera* c, GLboolean isReversed);

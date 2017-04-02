@@ -46,7 +46,7 @@ void universe::generate_galaxy(vec3 x0 = {0.0,0.0,0.0},vec3 v0 = {0.0,0.0,0.0}, 
             v = {static_cast<var >(-rotation*vscale * sin(theta)), static_cast<var >(rotation*vscale * cos(theta)), 0.0};
             x = {static_cast<var >(distribution[i][1] * cos(theta) / scale),
                  static_cast<var >(distribution[i][1] * sin(theta) / scale), 0.0};
-            particles.push_back(new particle(mass_min, R_min, add(x, x0), add(v, v0), *color_list[galaxy_index.size()-1]));
+            particles.push_back(new particle(mass_min, R_min, add(x, x0), add(v, v0), *color_list[(galaxy_index.size()-1)%color_list.size()]));
         }
     }
     galaxy_index.push_back(particles.size());

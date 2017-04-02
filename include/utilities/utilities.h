@@ -10,9 +10,8 @@
 #include <string>
 #include <array>
 
-//TODO: change types from var to var
+
 typedef GLdouble var;
-//TODO: convert to vec3
 typedef std::array<var, 3> vec3;
 typedef std::array<var, 4> vec4;
 std::string format_time(GLdouble);
@@ -32,6 +31,14 @@ vec3 cross(vec3, vec3);
 
 std::string to_string(vec3);
 std::string to_string(vec4);
+
+class camera;
+#include "utilities/camera.h"
+var openGLpos(GLint x, GLboolean isy, camera* c);
+
+
+//TODO: render gridlines with gradations.
+void render_grid();
 
 //colors
 extern vec4 color_red;
