@@ -91,7 +91,7 @@ int main(int argc, char *argv[]) {
 
 void run_simulation() {
     universe universe1 = universe(true);
-    //universe1.generate_galaxy({0.0,0.0,0.0},{0.0,0.0,0.0},1.0,0.0,-1,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7}});
+    universe1.generate_galaxy({0.0,0.0,0.0},{0.0,0.0,0.0},1.0,0.0,1,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7}});
     //universe1.generate_galaxy({-1.0,-0.3,0.0},{0.9,0.0,0.0},1.0,0.0,1,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7}});
     //universe1.generate_galaxy({1.0,-0.3,0.0},{0.9,0.0,0.0},1.0,0.0,1,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7}});
     //universe1.generate_galaxy({1.0,-1.0,0.0},{-0.9,0.0,0.0},1.0,0.0,1,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7}});
@@ -104,8 +104,8 @@ void run_simulation() {
     var dx,dy,zl, mousex, mousey;
     GLdouble t = 0;
     dx = 0.05;
-    dy=0.05;
-    zl=0.05;
+    dy = 0.05;
+    zl = 0.05;
 
     while (loop == true) {
         SDL_Event event;
@@ -124,7 +124,7 @@ void run_simulation() {
                 switch (event.button.button){
                     case SDL_BUTTON_LEFT:
                         //TODO: scale v
-                        universe1.generate_galaxy({openGLpos(mousex,0,&c), openGLpos(mousey,1,&c),0},{20.0*(event.button.x-mousex)/static_cast<var>(WIDTH),-20.0*(event.button.y-mousey)/ static_cast<var>(HEIGHT),0.0},1.0,0.0,1,{{}});
+                        universe1.generate_galaxy({openGLpos(mousex,0,&c), openGLpos(mousey,1,&c),0},{20.0*(event.button.x-mousex)/static_cast<var>(WIDTH),-20.0*(event.button.y-mousey)/ static_cast<var>(HEIGHT),0.0},20.0,0.0,1,{{}});
                         paused=false;
                         break;
                 }
@@ -136,7 +136,7 @@ void run_simulation() {
                         loop = false;
                         break;
                     case SDLK_p:
-                        screenshot("screenshot."+ format_time(t)+".tga");
+                        screenshot("screenshot."+std::to_string(t)+".tga");
                         std::cout << "Screenshot created." << std::endl;
                         break;
                     case SDLK_SPACE:
