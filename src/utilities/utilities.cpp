@@ -49,6 +49,11 @@ std::string to_string(vec4 a){
     return "[" + std::to_string(a[0]) + "," + std::to_string(a[1]) + "," + std::to_string(a[2]) +  "," + std::to_string(a[3]) + "]";
 }
 
+var openGLpos(GLint x, GLboolean isy, camera* c){
+    if(isy) return ((1.0 - 2.0*x/c->height)+c->position[1])/c->zoom;
+    else return ((2.0*x/c->width-1.0)+c->position[0])/c->zoom;
+}
+
 vec4 color_red = {1.0,0.0,0.0,1.0};
 vec4 color_yellow = {1.0,1.0,0.0,1.0};
 vec4 color_green = {0.0,1.0,0.0,1.0};

@@ -39,7 +39,6 @@ void update_particle(particle* p,vec3 x,vec3 v, vec3 a){
     p->position = x;
 }
 
-//TODO: include mass
 void update_particle_internal(particle* p, var R, var M){
     p->mass = M;
     p->radius = R;
@@ -55,7 +54,7 @@ void render(camera*  c, particle* a){
     glPushMatrix();
     glTranslatef(c->zoom*(getPosition(a)[0]-c->position[0]),c->zoom*(getPosition(a)[1]-c->position[1]),c->zoom*(getPosition(a)[2]-c->position[2]));
     gluSphere(quadric, c->zoom*getRadius(a), subdivisions,subdivisions);
-    //glRotatef(theta,0.0,1.0,0.0);
+    //glRotatef(0.01,0.0,0.0,1.0);
     glPopMatrix();
     gluDeleteQuadric(quadric);
 }
