@@ -23,17 +23,16 @@
 std::string PROGRAMNAME = "Tidal Tails";
 GLint WIDTH = 900;
 GLint HEIGHT = 900;
-
 // SDL
 SDL_Window *mainWindow;
 SDL_GLContext mainContext;
 
-GLboolean set_openGL_attributes();
+GLboolean init();
 void check_SDL_error(int line);
 void run_simulation();
 void cleanup();
 
-GLboolean Init() {
+GLboolean init() {
     // Initialize SDL Video
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cout << "Failed to init SDL\n";
@@ -52,11 +51,16 @@ GLboolean Init() {
     // Create openGL context
     mainContext = SDL_GL_CreateContext(mainWindow);
 
-    set_openGL_attributes();
+    // Use GLCore
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+
+    // Use OpenGL 3.2
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
     // Buffer swap synchronized with monitor's vertical refresh rate
     SDL_GL_SetSwapInterval(1);
-
     // Init GLEW macOS
 #ifndef __APPLE__
     glewExperimental = GL_TRUE;
@@ -66,20 +70,8 @@ GLboolean Init() {
     return true;
 }
 
-GLboolean set_openGL_attributes() {
-    // Use GLCore
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-
-    // Use OpenGL 3.2
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-
-    return true;
-}
-
 int main(int argc, char *argv[]) {
-    if (!Init()) return -1;
+    if (!init()) return -1;
     glClearColor(0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     SDL_GL_SwapWindow(mainWindow);
@@ -124,7 +116,7 @@ void run_simulation() {
                 switch (event.button.button){
                     case SDL_BUTTON_LEFT:
                         //TODO: scale v
-                        universe1.generate_galaxy({openGLpos(mousex,0,&c), openGLpos(mousey,1,&c),0},{20.0*(event.button.x-mousex)/static_cast<var>(WIDTH),-20.0*(event.button.y-mousey)/ static_cast<var>(HEIGHT),0.0},20.0,0.0,1,{{}});
+                        universe1.generate_galaxy({openGLpos(mousex,0,&c), openGLpos(mousey,1,&c),0},{15.0/c.zoom *(event.button.x-mousex)/static_cast<var>(WIDTH),-15.0/c.zoom *(event.button.y-mousey)/ static_cast<var>(HEIGHT),0.0},1.0,0.0,1,{{}});
                         paused=false;
                         break;
                 }
@@ -194,7 +186,6 @@ void cleanup() {
 
 void check_SDL_error(GLint line = -1) {
     std::string error = SDL_GetError();
-
     if (error != "") {
         std::cout << "SDL Error : " << error << std::endl;
 
