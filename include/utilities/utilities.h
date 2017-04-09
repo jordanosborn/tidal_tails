@@ -10,7 +10,6 @@
 #include <string>
 #include <array>
 
-
 typedef GLdouble var;
 typedef std::array<var, 3> vec3;
 typedef std::array<var, 4> vec4;
@@ -34,11 +33,14 @@ std::string to_string(vec4);
 
 class camera;
 #include "utilities/camera.h"
+extern var SCALE;
 var openGLpos(GLint x, GLboolean isy, camera* c);
 
 
 //TODO: render gridlines with gradations.
-void render_grid();
+void render_grid(camera* c);
+
+
 
 //colors
 extern vec4 color_red;
@@ -51,5 +53,7 @@ extern vec4 color_black;
 extern vec4 color_white;
 
 extern std::array<vec4*,6> color_list;
+
+void render_sphere(camera* c, vec3 x, var R);
 
 #endif //UTILITIES_H

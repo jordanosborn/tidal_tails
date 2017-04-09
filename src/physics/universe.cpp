@@ -12,7 +12,8 @@ universe::universe(GLboolean massless_particles){
     particles_massless = massless_particles;
     epsilon = 0.001;
     time = 0.0;
-    dt = 0.001;
+    //TODO: change dt back to 0.001
+    dt = 0.01;
     galaxy_index.push_back(0);
 
 }
@@ -29,41 +30,55 @@ void universe::render_universe(camera* c){
         }
         if(notLargeMass) render(c,particles[i]);
     }
+    var radius = 0.5/SCALE;
+    for(int i=0;i<trails_kept.size();i++){
+        for(int j=0;j<particle_trails[i].size(); j++){
+            render_sphere(c,particle_trails[i][j],radius);
+        }
+    }
+    render_grid(c);
 }
 
-void universe::generate_galaxy(vec3 x0 = {0.0,0.0,0.0},vec3 v0 = {0.0,0.0,0.0}, var mass = 1.0, var mass_min = 0.0, GLint rotation = 1, std::vector<std::array<GLint,2> > distribution ={{}} ) {
-    particles.push_back(new particle(mass,R_max,x0,v0,color_white));
+void universe::generate_galaxy(vec3 x0 = {0.0,0.0,0.0},vec3 v0 = {0.0,0.0,0.0},var R = 5.0, var mass = 1.0, var mass_min = 0.0, GLint rotation = 1, std::vector<std::array<GLint,2> > distribution ={{}} ,GLboolean fixed = 0) {
+    particles.push_back(new particle(mass,R,x0,v0,color_green,fixed));
     var theta = 0.0;
     vec3 x = {0.0,0.0,0.0};
     vec3 v = {0.0,0.0,0.0};
+    var r_min = R/SCALE;
     var vscale = 0.0;
-    //TODO: Scale during render;
-    var scale = 10.0;
     for(GLint i = 0; i<distribution.size(); i++) {
         for (GLint j = 0; j < distribution[i][0]; j++) {
-            vscale = static_cast<var >(sqrt(scale * G * mass / (distribution[i][1])));
+            vscale = static_cast<var >(sqrt(G * mass / (distribution[i][1])));
             theta = 2.0 * M_PI * j / distribution[i][0];
             v = {static_cast<var >(-rotation*vscale * sin(theta)), static_cast<var >(rotation*vscale * cos(theta)), 0.0};
-            x = {static_cast<var >(distribution[i][1] * cos(theta) / scale),
-                 static_cast<var >(distribution[i][1] * sin(theta) / scale), 0.0};
-            particles.push_back(new particle(mass_min, R_min, add(x, x0), add(v, v0), *color_list[(galaxy_index.size()-1)%color_list.size()]));
+            x = {static_cast<var >(distribution[i][1] * cos(theta)),
+                 static_cast<var >(distribution[i][1] * sin(theta)), 0.0};
+            particles.push_back(new particle(mass_min, r_min, add(x, x0), add(v, v0), color_red,0));
         }
     }
     galaxy_index.push_back(particles.size());
 }
 
+void universe::create_trail(GLint particle_num){
+    if(!particles[particle_num]->isFixed) {
+        trails_kept.push_back(particle_num);
+        particle_trails.push_back({getPosition(particles[particle_num])});
+    }
+}
 
 
 void universe::update(SDL_Window* mainWindow, camera* c, GLboolean isReversed){
     if(isReversed) dt=-std::abs(dt);
     else dt=std::abs(dt);
     //TODO: implement updates to pos/vel integrator keeps trail
-    glClearColor(0.0,0.0,0.0,1.0);
+    glClearColor(1.0,1.0,1.0,1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     apply_forces();
-    //TODO: fix rendering scale and pan/zoom level
     render_universe(c);
     SDL_GL_SwapWindow(mainWindow);
+    for(int i=0;i<trails_kept.size();i++){
+        particle_trails[i].push_back(getPosition(particles[i]));
+    }
 }
 
 vec3 gforce(vec3 a0,particle* p, particle* b, var G = 1.0){

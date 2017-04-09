@@ -29,7 +29,7 @@ SDL_GLContext mainContext;
 
 GLboolean init();
 void check_SDL_error(int line);
-void run_simulation();
+void run_simulation(var, var, var, GLint);
 void cleanup();
 
 GLboolean init() {
@@ -72,32 +72,45 @@ GLboolean init() {
 
 int main(int argc, char *argv[]) {
     if (!init()) return -1;
-    glClearColor(0, 0.0, 0.0, 1.0);
+    glClearColor(1.0, 1.0, 1.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     SDL_GL_SwapWindow(mainWindow);
-    run_simulation();
-
+    run_simulation(1.0,0.86,12.0,1);
     cleanup();
     return 0;
 }
 
-void run_simulation() {
+void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, GLint central_rotation) {
+    //Create perturbing galaxy
+    var e = eccentricity;
+    var theta = 2.0*M_PI *(orbit_fraction);
+    var rmin = closest_approach;
+
+    var r = (1+e)*rmin/(1+e*cos(theta));
+    var x0 = r * cos(theta);
+    var y0 = r * sin (theta);
+    var dvx = 1.0;
+    var dvy = - ((1-e*e)*x0+e*(1+e)*rmin)/y0;
+    var v0 = sqrt(2/sqrt(x0*x0+y0*y0)+(e-1)/rmin)/sqrt(dvx*dvx+dvy*dvy);
+
     universe universe1 = universe(true);
-    universe1.generate_galaxy({0.0,0.0,0.0},{0.0,0.0,0.0},1.0,0.0,1,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7}});
-    //universe1.generate_galaxy({-1.0,-0.3,0.0},{0.9,0.0,0.0},1.0,0.0,1,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7}});
-    //universe1.generate_galaxy({1.0,-0.3,0.0},{0.9,0.0,0.0},1.0,0.0,1,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7}});
-    //universe1.generate_galaxy({1.0,-1.0,0.0},{-0.9,0.0,0.0},1.0,0.0,1,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7}});
+    universe1.generate_galaxy({x0,y0,0.0},{v0*dvx,v0*dvy,0},0.5,1.0,0.0,1,{{}},0);
+    universe1.create_trail(universe1.particles.size()-1);
+    universe1.generate_galaxy({0,0,0.0},{0,0,0},0.5,1.0,0.0,central_rotation,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7}},1);
+
     camera c = camera(WIDTH,HEIGHT);
     GLboolean loop = true;
     GLboolean paused = true;
     GLboolean logging = false;
     GLboolean reversed = false;
-    GLboolean mouseAllowed = true;
+    GLboolean mouseAllowed = false;
     var dx,dy,zl, mousex, mousey;
     GLdouble t = 0;
-    dx = 0.05;
-    dy = 0.05;
-    zl = 0.05;
+    dx = 0.1;
+    dy = 0.1;
+    zl = 0.1;
+    mousex = 0;
+    mousey = 0;
 
     while (loop == true) {
         SDL_Event event;
@@ -116,7 +129,7 @@ void run_simulation() {
                 switch (event.button.button){
                     case SDL_BUTTON_LEFT:
                         //TODO: scale v
-                        universe1.generate_galaxy({openGLpos(mousex,0,&c), openGLpos(mousey,1,&c),0},{15.0/c.zoom *(event.button.x-mousex)/static_cast<var>(WIDTH),-15.0/c.zoom *(event.button.y-mousey)/ static_cast<var>(HEIGHT),0.0},1.0,0.0,1,{{}});
+                        universe1.generate_galaxy({openGLpos(mousex,0,&c), openGLpos(mousey,1,&c),0},{15.0/c.zoom *(event.button.x-mousex)/static_cast<var>(WIDTH),-15.0/c.zoom *(event.button.y-mousey)/ static_cast<var>(HEIGHT),0.0},1.0,1.0,0.0,1,{{}},0);
                         paused=false;
                         break;
                 }
@@ -146,16 +159,16 @@ void run_simulation() {
                         std::cout << "Logging status: " << static_cast<int>(logging)  << std::endl;
                         break;
                     case SDLK_w:
-                        update_view(&c,0.0,dy,0.0);
+                        update_view(&c,0.0,dy/(c.zoom),0.0);
                         break;
                     case SDLK_s:
-                        update_view(&c,0.0,-1.0*dy,0.0);
+                        update_view(&c,0.0,-1.0*dy/(c.zoom),0.0);
                         break;
                     case SDLK_a:
-                        update_view(&c,-1.0*dx,0.0,0.0);
+                        update_view(&c,-1.0*dx/(c.zoom),0.0,0.0);
                         break;
                     case SDLK_d:
-                        update_view(&c,dx,0.0,0.0);
+                        update_view(&c,dx/(c.zoom),0.0,0.0);
                         break;
                     case SDLK_q:
                         update_view(&c,0.0,0.0,-1.0*zl);
