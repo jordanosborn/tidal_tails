@@ -1,8 +1,4 @@
-//
-
 #include "capture/screenshot.h"
-// Created by Jordan Osborn on 13/01/2017.
-
 // Original Code credit http://www.flashbang.se/archives/155 (Heavily modified by Jordan Osborn)
 
 void screenshot (std::string filename){

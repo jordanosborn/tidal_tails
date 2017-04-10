@@ -1,7 +1,3 @@
-//
-// Created by Jordan Osborn on 18/02/2017.
-//
-
 #ifndef LOGGER_H
 #define LOGGER_H
 #include <fstream>

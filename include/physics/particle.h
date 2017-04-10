@@ -1,7 +1,3 @@
-//
-// Created by jo357 on 19/01/17.
-//
-
 #ifndef PARTICLE_H
 #define PARTICLE_H
 #include "utilities/sdl_guard.h"

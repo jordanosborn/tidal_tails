@@ -1,7 +1,3 @@
-//
-// Created by Jordan Osborn on 13/01/2017.
-//
-
 #ifndef UTILITIES_H
 #define UTILITIES_H
 

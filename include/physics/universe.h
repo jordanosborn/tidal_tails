@@ -1,7 +1,3 @@
-//
-// Created by Jordan Osborn on 18/02/2017.
-//
-
 #ifndef UNIVERSE_H
 #define UNIVERSE_H
 #include <vector>

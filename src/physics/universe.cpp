@@ -1,6 +1,3 @@
-//
-// Created by Jordan Osborn on 18/02/2017.
-//
 #include <iostream>
 #include "physics/universe.h"
 universe::universe(GLboolean massless_particles){

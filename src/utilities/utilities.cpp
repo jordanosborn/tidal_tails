@@ -1,5 +1,3 @@
-//
-// Created by Jordan Osborn on 13/01/2017.
 #include "utilities/utilities.h"
 
 std::string format_time(GLdouble t){
