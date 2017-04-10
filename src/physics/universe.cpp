@@ -10,11 +10,12 @@ universe::universe(GLboolean massless_particles){
     R_max = 0.05;
     R_min = static_cast<var>(R_max/16.0);
     particles_massless = massless_particles;
-    epsilon = 0.001;
     time = 0.0;
-    //TODO: change dt back to 0.001
-    dt = 0.01;
+
+    dt = 0.005;
+    //epsilon = 0.01;
     galaxy_index.push_back(0);
+    prev_time = 0.0;
 
 }
 
@@ -71,18 +72,23 @@ void universe::create_trail(GLint particle_num){
 }
 
 
-void universe::update(SDL_Window* mainWindow, camera* c, GLboolean isReversed){
-    if(isReversed) dt=-std::abs(dt);
-    else dt=std::abs(dt);
-    //TODO: implement updates to pos/vel integrator keeps trail
-    glClearColor(1.0,1.0,1.0,1.0);
-    glClear(GL_COLOR_BUFFER_BIT);
+void universe::update(SDL_Window* mainWindow, camera* c, GLboolean isReversed) {
+    if (isReversed) dt = -std::abs(dt);
+    else dt = std::abs(dt);
     apply_forces();
-    render_universe(c);
-    SDL_GL_SwapWindow(mainWindow);
-    for(int i=0;i<trails_kept.size();i++){
-        particle_trails[i].push_back(getPosition(particles[i]));
+    var current_time = SDL_GetTicks();
+    if (current_time - prev_time > 1000.0/FPS){
+        glClearColor(1.0, 1.0, 1.0, 1.0);
+        glClear(GL_COLOR_BUFFER_BIT);
+        render_universe(c);
+        SDL_GL_SwapWindow(mainWindow);
+        prev_time=current_time;
+        for(int i=0;i<trails_kept.size();i++){
+            particle_trails[i].push_back(getPosition(particles[i]));
+        }
     }
+
+    time+=dt;
 }
 
 vec3 gforce(vec3 a0,particle* p, particle* b, var G = 1.0){
@@ -92,8 +98,7 @@ vec3 gforce(vec3 a0,particle* p, particle* b, var G = 1.0){
     if (R > getRadius(b))
         a = add(a0, mul(-G * getMass(b) / std::pow((R), 2), unit(getPosition(p), getPosition(b)))); //TODO: -GM/r^2 r^_accelerated i->j
     else
-        a = add(a0, mul(-G * getMass(b) * R / std::pow(getRadius(b), 3),
-                       unit(getPosition(p), getPosition(b))));
+        a = add(a0, mul(-G * getMass(b) * R / std::pow(getRadius(b), 3),unit(getPosition(p), getPosition(b))));
     return a;
 }
 
@@ -101,8 +106,7 @@ void universe::apply_first_step(){
     vec3 a;
     vec3 v;
     vec3 x;
-    var R;
-    //TODO: make more efficient
+
     for(GLint i = 0; i < particles.size(); i++){
         a={0.0,0.0,0.0};
         if(particles_massless){
@@ -125,6 +129,7 @@ void universe::apply_first_step(){
         x = add(add(getPosition(particles[i]),mul(dt,getVelocity(particles[i]))),mul(0.5*dt*dt,getAcceleration(particles[i])));
         update_particle(particles[i],x,v,a);
     }
+    time+=dt;
 }
 
 void universe::apply_forces(){

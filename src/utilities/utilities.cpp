@@ -51,6 +51,8 @@ std::string to_string(vec4 a){
 
 var SCALE = 15.0;
 
+var FPS = 10.0;
+
 var openGLpos(GLint x, GLboolean isy, camera* c){
     if(isy) return (((1.0 - 2.0*x/c->height)+c->position[1])/c->zoom)*SCALE;
     else return (((2.0*x/c->width-1.0)+c->position[0])/c->zoom)*SCALE;
@@ -72,8 +74,7 @@ std::array<vec4*,6> color_list = {&color_red,&color_green,&color_blue,&color_yel
 void render_sphere(camera* c, vec3 x, var R){
     GLint subdivisions = 20;
     GLUquadricObj *quadric = gluNewQuadric();
-//TODO: could be slowdown
-    glColor4d(color_blue[0],color_blue[1],color_blue[2],color_blue[3]);
+    glColor4d(0.0,0.0,1.0,1.0);
     gluQuadricNormals(quadric, GLU_SMOOTH);
     glPushMatrix();
     glTranslatef(c->zoom*(x[0]-c->position[0])/SCALE,c->zoom*(x[1]-c->position[1])/SCALE,c->zoom*(x[2]-c->position[2])/SCALE);

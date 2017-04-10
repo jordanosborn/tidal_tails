@@ -13,7 +13,7 @@
 #include "utilities/camera.h"
 class particle;
 class camera;
-//TODO: color dist and particle dist and data collection
+
 class universe{
 private:
     std::vector<GLint> galaxy_index;
@@ -25,8 +25,9 @@ private:
     var M_min;
     var R_max;
     var R_min;
-    //Gravitational softening parameter g prop 1/(r+epsilon)^2
-    var epsilon;
+
+    var prev_time;
+    //var epsilon;
     var G;
     GLboolean particles_massless;
     //(density, radius)

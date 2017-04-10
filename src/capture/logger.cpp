@@ -24,7 +24,6 @@ void logger::log_positions(var t, std::vector<particle *> particles) {
         f << "," << to_string(getPosition(particles[i]));
     }
     f << '\n';
-    std::cout << title << " logged.\n";
 }
 
 

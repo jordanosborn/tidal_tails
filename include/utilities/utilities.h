@@ -34,6 +34,7 @@ std::string to_string(vec4);
 class camera;
 #include "utilities/camera.h"
 extern var SCALE;
+extern var FPS;
 var openGLpos(GLint x, GLboolean isy, camera* c);
 
 
