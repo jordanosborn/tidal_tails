@@ -2,11 +2,16 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
 
 // OpenGL / glew / SDL Headers
 #define GL3_PROTOTYPES 1
 #include <GL/glew.h>
+#include <SDL_opengl.h>
+
+
 #include "utilities/sdl_guard.h"
+
 
 // GSL Headers
 //#include <gsl/gsl_errno.h>
@@ -75,7 +80,9 @@ int main(int argc, char *argv[]) {
     glClearColor(1.0, 1.0, 1.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     SDL_GL_SwapWindow(mainWindow);
-    run_simulation(1.0,0.86,12.0,1);
+    if(argc==5) run_simulation(atof(argv[1]),atof(argv[2]),atof(argv[3]),atoi(argv[4]));
+    else run_simulation(.5,0.86,2.0,-1);
+
     cleanup();
     return 0;
 }
@@ -141,18 +148,19 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, 
                         loop = false;
                         break;
                     case SDLK_p:
-                        screenshot("screenshot."+std::to_string(t)+".tga");
+                        screenshot("screenshot-"+std::to_string(t)+"."+std::to_string(2.0*SCALE/c.zoom)+"x"+std::to_string(2.0*SCALE/c.zoom)+".tga");
                         std::cout << "Screenshot created." << std::endl;
                         break;
                     case SDLK_SPACE:
                         paused = not paused;
                         std::cout << "Pause status: " << static_cast<int>(paused) << std::endl;
+                        std::cout << 2.0*SCALE/c.zoom << "x" << 2.0*SCALE/c.zoom <<std::endl;
                         break;
-                    case SDLK_r:
-                        reversed= not reversed;
-                        //reverse time
-                        std::cout << "Time reversed." << std::endl;
-                        break;
+                    //case SDLK_r:
+                        //   reversed= not reversed;
+                    //    //reverse time
+                    //    std::cout << "Time reversed." << std::endl;
+                    //    break;
                     case SDLK_l:
                         logging = not logging;
                         //start/stop logging
@@ -207,4 +215,5 @@ void check_SDL_error(GLint line = -1) {
         SDL_ClearError();
     }
 }
+
 

@@ -30,10 +30,14 @@ void universe::render_universe(camera* c){
         }
         if(notLargeMass) render(c,particles[i]);
     }
-    var radius = 0.5/SCALE;
     for(int i=0;i<trails_kept.size();i++){
-        for(int j=0;j<particle_trails[i].size(); j++){
-            render_sphere(c,particle_trails[i][j],radius);
+        for(int j=1;j<particle_trails[i].size(); j++){
+            glLineWidth(1.5);
+            glColor4f(0.0, 0.0, 1.0,1.0);
+            glBegin(GL_LINES);
+            glVertex3f(c->zoom/SCALE * (particle_trails[i][j-1][0]-c->position[0]),c->zoom/SCALE * (particle_trails[i][j-1][1]-c->position[1]), c->zoom/SCALE * (particle_trails[i][j-1][2]-c->position[2]));
+            glVertex3f(c->zoom/SCALE * (particle_trails[i][j][0]-c->position[0]),c->zoom/SCALE * (particle_trails[i][j][1]-c->position[1]), c->zoom/SCALE * (particle_trails[i][j][2]-c->position[2]));
+            glEnd();
         }
     }
     render_grid(c);

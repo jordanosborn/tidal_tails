@@ -49,7 +49,7 @@ std::string to_string(vec4 a){
     return "[" + std::to_string(a[0]) + "," + std::to_string(a[1]) + "," + std::to_string(a[2]) +  "," + std::to_string(a[3]) + "]";
 }
 
-var SCALE = 20.0;
+var SCALE = 15.0;
 
 var openGLpos(GLint x, GLboolean isy, camera* c){
     if(isy) return (((1.0 - 2.0*x/c->height)+c->position[1])/c->zoom)*SCALE;
@@ -97,8 +97,6 @@ void render_grid(camera* c){
     glVertex3f(-(c->position[0]/SCALE)*c->zoom,-1.0, 0.0);
     glVertex3f(-(c->position[0]/SCALE)*c->zoom, 1.0, 0);
     glEnd();
-
-
 }
 //
 
