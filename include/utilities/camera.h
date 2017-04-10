@@ -7,7 +7,6 @@
 #include "physics/universe.h"
 #include "physics/particle.h"
 //camera for openGL context
-class universe;
 
 class camera{
 private:
