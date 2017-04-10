@@ -21,6 +21,7 @@
 #include "physics/universe.h"
 #include "physics/particle.h"
 #include "capture/screenshot.h"
+#include "capture/logger.h"
 #include "utilities/utilities.h"
 #include "utilities/camera.h"
 
@@ -105,6 +106,7 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, 
     universe1.create_trail(universe1.particles.size()-1);
     universe1.generate_galaxy({0,0,0.0},{0,0,0},0.5,1.0,0.0,central_rotation,{{20*12,2},{20*18,3},{20*24,4},{20*30,5},{20*36,6},{20*42,7}},1);
 
+    logger logger1 = logger();
     camera c = camera(WIDTH,HEIGHT);
     GLboolean loop = true;
     GLboolean paused = true;
@@ -118,7 +120,6 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, 
     zl = 0.1;
     mousex = 0;
     mousey = 0;
-
     while (loop == true) {
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
@@ -153,6 +154,11 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, 
                         break;
                     case SDLK_SPACE:
                         paused = not paused;
+                        if(t==0){
+                            universe1.apply_first_step();
+                            universe1.update(mainWindow,&c, reversed);
+                            t += getTimestep(&universe1);
+                        }
                         std::cout << "Pause status: " << static_cast<int>(paused) << std::endl;
                         std::cout << 2.0*SCALE/c.zoom << "x" << 2.0*SCALE/c.zoom <<std::endl;
                         break;
@@ -164,6 +170,8 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, 
                     case SDLK_l:
                         logging = not logging;
                         //start/stop logging
+                        if(logging) logger1.start("data-"+std::to_string(t)+".csv");
+                        else logger1.stop();
                         std::cout << "Logging status: " << static_cast<int>(logging)  << std::endl;
                         break;
                     case SDLK_w:
@@ -189,13 +197,15 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, 
                 }
             }
         }
+
         if(!paused) {
             universe1.update(mainWindow,&c, reversed);
             t += getTimestep(&universe1);
+            if(logging){
+                logger1.log_positions(t,universe1.particles);
+            }
         }
-        if(logging){
 
-        }
     }
 }
 

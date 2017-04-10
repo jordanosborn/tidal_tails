@@ -13,6 +13,11 @@ const var& getRadius(particle* a){
 const vec3& getPosition(particle* a){
     return a->position;
 }
+
+const vec3& getPositionOld(particle* a){
+    return a->position_old;
+}
+
 const vec3& getVelocity(particle* a){
     return a->velocity;
 }
@@ -38,6 +43,7 @@ void update_particle(particle* p,vec3 x,vec3 v, vec3 a){
     if(!p->isFixed){
         p->acceleration = a;
         p->velocity = v;
+        p->position_old = p->position;
         p->position = x;
     }
 }

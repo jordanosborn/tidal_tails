@@ -19,6 +19,7 @@ private:
 
     vec4 color;
     vec3 position;
+    vec3 position_old;
     vec3 velocity;
     vec3 acceleration;
 public:
@@ -26,6 +27,7 @@ public:
     friend const var& getRadius(particle*);
     friend const var& getMass(particle*);
     friend const vec3& getPosition(particle*);
+    friend const vec3& getPositionOld(particle*);
     friend const vec3& getVelocity(particle*);
     friend const vec3& getAcceleration(particle*);
     friend const vec4& getColor(particle*);

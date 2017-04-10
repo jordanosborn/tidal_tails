@@ -42,11 +42,11 @@ vec3 unit(vec3 a,vec3 b){
 }
 
 std::string to_string(vec3 a){
-        return "[" + std::to_string(a[0]) + "," + std::to_string(a[1]) + "," + std::to_string(a[2])+"]";
+        return "{" + std::to_string(a[0]) + "," + std::to_string(a[1]) + "," + std::to_string(a[2])+"}";
 }
 
 std::string to_string(vec4 a){
-    return "[" + std::to_string(a[0]) + "," + std::to_string(a[1]) + "," + std::to_string(a[2]) +  "," + std::to_string(a[3]) + "]";
+    return "{" + std::to_string(a[0]) + "," + std::to_string(a[1]) + "," + std::to_string(a[2]) +  "," + std::to_string(a[3]) + "}";
 }
 
 var SCALE = 15.0;

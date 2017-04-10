@@ -97,7 +97,7 @@ vec3 gforce(vec3 a0,particle* p, particle* b, var G = 1.0){
     return a;
 }
 
-void universe::apply_forces(){
+void universe::apply_first_step(){
     vec3 a;
     vec3 v;
     vec3 x;
@@ -121,12 +121,44 @@ void universe::apply_forces(){
                 }
             }
         }
-    //TODO: change to RK4
-        v=add(getVelocity(particles[i]),mul(dt,a));
-        x=add(getPosition(particles[i]),mul(dt,v));
+        v = add(getVelocity(particles[i]),mul(0.5*dt,add(a,getAcceleration(particles[i]))));
+        x = add(add(getPosition(particles[i]),mul(dt,getVelocity(particles[i]))),mul(0.5*dt*dt,getAcceleration(particles[i])));
+        update_particle(particles[i],x,v,a);
+    }
+}
 
-        //v = add(getVelocity(particles[i]),mul(0.5*dt,add(a,getAcceleration(particles[i]))));
-        //x = add(add(getPosition(particles[i]),mul(dt,getVelocity(particles[i]))),mul(0.5*dt*dt,getAcceleration(particles[i])));
+void universe::apply_forces(){
+    vec3 a;
+    vec3 v;
+    vec3 x;
+
+    //TODO: make more efficient
+    for(GLint i = 0; i < particles.size(); i++){
+        a={0.0,0.0,0.0};
+        if(particles_massless){
+            for(GLint j = 0; j<galaxy_index.size()-1;j++){
+                if(i==galaxy_index[j]) continue;
+                else{
+                    a = gforce(a, particles[i],particles[galaxy_index[j]],G);
+                }
+            }
+        }
+        else {
+            for (GLint j = 0; j < particles.size(); j++) {
+                if (i == j or getMass(particles[j]) < 0.000001) continue;
+                else {
+                    a = gforce(a,particles[i],particles[j],G);
+                }
+            }
+        }
+        //leapfrog
+        //v=add(getVelocity(particles[i]),mul(dt,a));
+        //x=add(getPosition(particles[i]),mul(dt,v));
+
+        //verlet O(dt^4)
+        x = add(add(mul(2.0,getPosition(particles[i])),mul(-1.0,getPositionOld(particles[i]))),mul(dt*dt,a));
+        //is one time step behind O(dt^2)
+        v =  mul(1.0/(2.0*dt),add(x,mul(-1.0,getPositionOld(particles[i]))));
         update_particle(particles[i],x,v,a);
     }
 }
@@ -135,7 +167,4 @@ var getTimestep(universe* a){
     return a->dt;
 }
 
-void universe::log_data() {
-
-}
 
