@@ -27,6 +27,7 @@
 
 
 std::string PROGRAMNAME = "Tidal Tails";
+GLboolean INTERACTIVE = false;
 GLint WIDTH = 900;
 GLint HEIGHT = 900;
 // SDL
@@ -84,7 +85,7 @@ int main(int argc, char *argv[]) {
     glClear(GL_COLOR_BUFFER_BIT);
     SDL_GL_SwapWindow(mainWindow);
     if(argc==5) run_simulation(atof(argv[1]),atof(argv[2]),atof(argv[3]),atoi(argv[4]),atoi(argv[5]));
-    else run_simulation(1.0,0.35,2.0,1,1);
+    else run_simulation(1.0,0.75,10.0,1,1);
 
     cleanup();
     return 0;
@@ -106,8 +107,16 @@ void gen_perturbation(universe* u, var e, var orbit_fraction, var closest_approa
 
 void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, GLint central_rotation, GLint pert_direction) {
     //Create perturbing galaxy
+    GLboolean mouseAllowed;
     universe universe1 = universe(true);
-    gen_perturbation(&universe1,eccentricity,orbit_fraction,closest_approach,central_rotation,pert_direction,40);
+    if(!INTERACTIVE) {
+        gen_perturbation(&universe1, eccentricity, orbit_fraction, closest_approach, central_rotation, pert_direction,
+                         40);
+        mouseAllowed = false;
+    }
+    else{
+        mouseAllowed = true;
+    }
 
     logger logger1 = logger();
     camera c = camera(WIDTH,HEIGHT);
@@ -119,7 +128,7 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, 
     GLboolean paused = true;
     GLboolean logging = false;
     GLboolean reversed = false;
-    GLboolean mouseAllowed = false;
+
     var dx,dy,zl, mousex, mousey;
     GLdouble t = 0;
     dx = 0.1;
@@ -132,6 +141,7 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, 
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) loop = false;
+            //TODO: mouse doesnt work
             if (event.type == SDL_MOUSEBUTTONDOWN and mouseAllowed) {
                 switch (event.button.button){
                     case SDL_BUTTON_LEFT:
@@ -144,7 +154,8 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, 
             if (event.type == SDL_MOUSEBUTTONUP and mouseAllowed) {
                 switch (event.button.button){
                     case SDL_BUTTON_LEFT:
-                        universe1.generate_galaxy({openGLpos(mousex,0,&c), openGLpos(mousey,1,&c),0},{15.0/c.zoom *(event.button.x-mousex)/static_cast<var>(WIDTH),-15.0/c.zoom *(event.button.y-mousey)/ static_cast<var>(HEIGHT),0.0},1.0,1.0,0.0,1,{{}},0);
+                        universe1.generate_galaxy({openGLpos(mousex,0,&c), openGLpos(mousey,1,&c),0},{15.0/c.zoom *(event.button.x-mousex)/static_cast<var>(WIDTH),-15.0/c.zoom *(event.button.y-mousey)/ static_cast<var>(HEIGHT),0.0},0.4,1.0,0.0,1,{{}},0);
+                        universe1.create_trail(universe1.particles.size()-1);
                         paused=false;
                         break;
                 }
