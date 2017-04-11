@@ -170,11 +170,12 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, 
                         std::cout << "Pause status: " << static_cast<int>(paused) << std::endl;
                         std::cout << 2.0*SCALE/c.zoom << "x" << 2.0*SCALE/c.zoom <<std::endl;
                         break;
-                    //case SDLK_r:
-                        //   reversed= not reversed;
-                    //    //reverse time
-                    //    std::cout << "Time reversed." << std::endl;
-                    //    break;
+                    /*case SDLK_r:
+                        reversed= not reversed;
+                        //reverse time
+                        std::cout << "Time reversed." << std::endl;
+                        break;
+                     */
                     case SDLK_l:
                         logging = not logging;
                         //start/stop logging
