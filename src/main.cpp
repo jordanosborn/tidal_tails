@@ -28,6 +28,7 @@
 
 std::string PROGRAMNAME = "Tidal Tails";
 GLboolean INTERACTIVE = false;
+GLboolean TESTING = false;
 GLint WIDTH = 900;
 GLint HEIGHT = 900;
 // SDL
@@ -39,7 +40,7 @@ void check_SDL_error(int line);
 void run_simulation(var, var, var, GLint, GLint);
 void cleanup();
 void gen_perturbation(universe*, var e, var orbit_fraction, var closest_approach, GLint central_rotation, GLint pert_direction, GLint N);
-
+void orbit_test(universe* u, var e, var orbit_fraction, var closest_approach);
 
 GLboolean init() {
     // Initialize SDL Video
@@ -85,12 +86,15 @@ int main(int argc, char *argv[]) {
     glClear(GL_COLOR_BUFFER_BIT);
     SDL_GL_SwapWindow(mainWindow);
     if(argc==5) run_simulation(atof(argv[1]),atof(argv[2]),atof(argv[3]),atoi(argv[4]),atoi(argv[5]));
-    else run_simulation(1.0,0.75,10.0,1,1);
+    else if(argc==4 and TESTING) run_simulation(atof(argv[1]),atof(argv[2]),atof(argv[3]),1,1);
+    else run_simulation(1.0,0.74,12.0,1,1);
 
     cleanup();
     return 0;
 }
 
+
+//TODO: fix y0 =0 issue
 void gen_perturbation(universe* u, var e, var orbit_fraction, var closest_approach, GLint central_rotation, GLint pert_direction, GLint N){
     var theta = 2.0*M_PI *(orbit_fraction);
     var rmin = closest_approach;
@@ -105,13 +109,35 @@ void gen_perturbation(universe* u, var e, var orbit_fraction, var closest_approa
     u->generate_galaxy({0,0,0.0},{0,0,0},0.4,1.0,0.0,central_rotation,{{N*12,2},{N*18,3},{N*24,4},{N*30,5},{N*36,6},{N*42,7},{N*48,8}},1);
 }
 
+//TODO: fix y0 = 0 issue orb_frac = 0, 0.5
+void orbit_test(universe* u, var e, var orbit_fraction, var closest_approach){
+    var theta = 2.0*M_PI *(orbit_fraction);
+    var rmin = closest_approach;
+    var r = (1+e)*rmin/(1+e*cos(theta));
+    var x0 = r * cos(theta);
+    var y0 = r * sin (theta);
+    var dvx = 1.0;
+    var dvy = - ((1-e*e)*x0+e*(1+e)*rmin)/y0;
+    var v0 = sqrt(2/sqrt(x0*x0+y0*y0)+(e-1)/rmin)/sqrt(dvx*dvx+dvy*dvy);
+    u->generate_galaxy({x0,y0,0.0},{v0*dvx,v0*dvy,0},0.4,0.0,0.0,1,{{}},0);
+    u->create_trail(u->particles.size()-1);
+    u->generate_galaxy({0,0,0.0},{0,0,0},0.4,1.0,0.0,1.0,{{}},1);
+
+}
+
 void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, GLint central_rotation, GLint pert_direction) {
     //Create perturbing galaxy
     GLboolean mouseAllowed;
+    std::fstream radius_Data;
     universe universe1 = universe(true);
-    if(!INTERACTIVE) {
+    if(!INTERACTIVE and !TESTING) {
         gen_perturbation(&universe1, eccentricity, orbit_fraction, closest_approach, central_rotation, pert_direction,
                          40);
+        mouseAllowed = false;
+    }
+    else if(TESTING){
+        radius_Data.open("radius_data.txt",std::fstream::out | std::fstream::trunc);
+        orbit_test(&universe1,eccentricity,orbit_fraction,closest_approach);
         mouseAllowed = false;
     }
     else{
@@ -141,7 +167,6 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, 
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) loop = false;
-            //TODO: mouse doesnt work
             if (event.type == SDL_MOUSEBUTTONDOWN and mouseAllowed) {
                 switch (event.button.button){
                     case SDL_BUTTON_LEFT:
@@ -156,6 +181,7 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, 
                     case SDL_BUTTON_LEFT:
                         universe1.generate_galaxy({openGLpos(mousex,0,&c), openGLpos(mousey,1,&c),0},{15.0/c.zoom *(event.button.x-mousex)/static_cast<var>(WIDTH),-15.0/c.zoom *(event.button.y-mousey)/ static_cast<var>(HEIGHT),0.0},0.4,1.0,0.0,1,{{}},0);
                         universe1.create_trail(universe1.particles.size()-1);
+                        universe1.apply_first_step_single_particle();
                         paused=false;
                         break;
                 }
@@ -262,6 +288,9 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, 
             t += getTimestep(&universe1);
             if(logging){
                 logger1.log_positions(t,universe1.particles);
+            }
+            if(TESTING){
+                radius_Data <<  t << "," << std::sqrt(getPosition(universe1.particles[0])[0]*getPosition(universe1.particles[0])[0]+ getPosition(universe1.particles[0])[1]*getPosition(universe1.particles[0])[1]) << "\n";
             }
         }
 

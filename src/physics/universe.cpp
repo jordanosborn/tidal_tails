@@ -17,9 +17,11 @@ universe::universe(GLboolean massless_particles){
 }
 
 void universe::render_universe(camera* c){
+    //renders all large central masses
     for(GLint i = 0; i<galaxy_index.size()-1; i++){
         render(c,particles[galaxy_index[i]]);
     }
+    //renders test masses
     GLboolean notLargeMass;
     for(GLint i = 0; i<particles.size();i++){
         notLargeMass=1;
@@ -28,6 +30,7 @@ void universe::render_universe(camera* c){
         }
         if(notLargeMass) render(c,particles[i]);
     }
+    //renders any trails
     for(int i=0;i<trails_kept.size();i++){
         for(int j=1;j<particle_trails[i].size(); j++){
             glLineWidth(1.5);
@@ -38,6 +41,7 @@ void universe::render_universe(camera* c){
             glEnd();
         }
     }
+    //renders grid lines
     render_grid(c);
 }
 
@@ -74,7 +78,12 @@ void universe::update(SDL_Window* mainWindow, camera* c, GLboolean isReversed) {
     else dt = std::abs(dt);
     apply_forces();
     var current_time = SDL_GetTicks();
-    if (current_time - prev_time > 1000.0/FPS){
+    //adaptive fps to render. 1000*100/N = FPS.
+    //lim to 30
+    var time_step = particles.size()/100.0;
+    if(1000.0/time_step>30.0) time_step = 1000.0/30.0;
+
+    if (current_time - prev_time > time_step){
         glClearColor(1.0, 1.0, 1.0, 1.0);
         glClear(GL_COLOR_BUFFER_BIT);
         render_universe(c);
@@ -94,8 +103,8 @@ vec3 gforce(vec3 a0,particle* p, particle* b, var G = 1.0){
     R = dist(getPosition(p), getPosition(b));
     if (R > getRadius(b))
         a = add(a0, mul(-G * getMass(b) / std::pow((R), 2), unit(getPosition(p), getPosition(b)))); //TODO: -GM/r^2 r^_accelerated i->j
-    else
-        a = add(a0, mul(-G * getMass(b) * R / std::pow(getRadius(b), 3),unit(getPosition(p), getPosition(b))));
+    else//TODO: changed to repulsive force
+        a = add(a0, mul((-1.0)*-G * getMass(b) / (R*R) / std::pow(getRadius(b), 3),unit(getPosition(p), getPosition(b))));
     return a;
 }
 
@@ -128,6 +137,34 @@ void universe::apply_first_step(){
     }
     time+=dt;
 }
+void universe::apply_first_step_single_particle(){
+    vec3 a;
+    vec3 v;
+    vec3 x;
+
+    GLint i = particles.size()-1;
+    a={0.0,0.0,0.0};
+    if(particles_massless){
+        for(GLint j = 0; j<galaxy_index.size()-1;j++){
+            if(i==galaxy_index[j]) continue;
+            else{
+                a = gforce(a, particles[i],particles[galaxy_index[j]],G);
+            }
+        }
+    }
+    else {
+        for (GLint j = 0; j < particles.size(); j++) {
+            if (i == j or getMass(particles[j]) < 0.000001) continue;
+            else {
+                a = gforce(a,particles[i],particles[j],G);
+            }
+        }
+    }
+    v = add(getVelocity(particles[i]),mul(0.5*dt,add(a,getAcceleration(particles[i]))));
+    x = add(add(getPosition(particles[i]),mul(dt,getVelocity(particles[i]))),mul(0.5*dt*dt,getAcceleration(particles[i])));
+    update_particle(particles[i],x,v,a);
+}
+
 
 void universe::apply_forces(){
     vec3 a;

@@ -17,3 +17,7 @@ bin/texture.tga
 *.tga
 
 *.csv
+
+*.txt
+
+*.png

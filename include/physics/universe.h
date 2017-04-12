@@ -33,6 +33,7 @@ public:
     //TODO: should be private
     std::vector<particle*> particles;
     void apply_first_step();
+    void apply_first_step_single_particle();
     friend vec3 gforce(vec3 a0, particle*, particle*, var);
     void compute_forces();
     void create_trail(GLint particle_num);
