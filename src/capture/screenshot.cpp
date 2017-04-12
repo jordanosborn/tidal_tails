@@ -1,5 +1,5 @@
 #include "capture/screenshot.h"
-// Original Code credit http://www.flashbang.se/archives/155 (Heavily modified by Jordan Osborn)
+// Original Code credit http://www.flashbang.se/archives/155 (Heavily modified)
 
 void screenshot (std::string filename){
     GLint size[4];

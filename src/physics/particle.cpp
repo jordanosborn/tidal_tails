@@ -52,12 +52,13 @@ void update_particle_internal(particle* p, var R, var M){
 void render(camera*  c, particle* a){
     GLint subdivisions = 20;
     GLUquadricObj *quadric = gluNewQuadric();
-//TODO: could be slowdown
     var color[4] = {getColor(a)[0],getColor(a)[1],getColor(a)[2],getColor(a)[3]};
     glColor4dv(color);
     gluQuadricNormals(quadric, GLU_SMOOTH);
     glPushMatrix();
-    glTranslatef(c->zoom*(getPosition(a)[0]-c->position[0])/SCALE,c->zoom*(getPosition(a)[1]-c->position[1])/SCALE,c->zoom*(getPosition(a)[2]-c->position[2])/SCALE);
+    glTranslatef(c->zoom*(getPosition(a)[0]-c->position[0])/SCALE,
+                 c->zoom*(getPosition(a)[1]-c->position[1])/SCALE,
+                 c->zoom*(getPosition(a)[2]-c->position[2])/SCALE);
     gluSphere(quadric, c->zoom*getRadius(a)/SCALE, subdivisions,subdivisions);
     //glRotatef(0.01,0.0,0.0,1.0);
     glPopMatrix();

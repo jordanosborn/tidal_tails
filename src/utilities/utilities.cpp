@@ -40,11 +40,13 @@ vec3 unit(vec3 a,vec3 b){
 }
 
 std::string to_string(vec3 a){
-        return "{" + std::to_string(a[0]) + "," + std::to_string(a[1]) + "," + std::to_string(a[2])+"}";
+        return "{" + std::to_string(a[0]) + "," + std::to_string(a[1]) +
+                "," + std::to_string(a[2])+"}";
 }
 
 std::string to_string(vec4 a){
-    return "{" + std::to_string(a[0]) + "," + std::to_string(a[1]) + "," + std::to_string(a[2]) +  "," + std::to_string(a[3]) + "}";
+    return "{" + std::to_string(a[0]) + "," + std::to_string(a[1]) +
+            "," + std::to_string(a[2]) +  "," + std::to_string(a[3]) + "}";
 }
 
 var SCALE = 15.0;
@@ -65,7 +67,8 @@ vec4 color_magenta= {1.0,0.0,1.0,1.0};
 vec4 color_black = {0.0,0.0,0.0,1.0};
 vec4 color_white = {1.0,1.0,1.0,1.0};
 
-std::array<vec4*,6> color_list = {&color_red,&color_green,&color_blue,&color_yellow,&color_cyan,&color_magenta};
+std::array<vec4*,6> color_list = {&color_red,&color_green,&color_blue,
+                                  &color_yellow,&color_cyan,&color_magenta};
 
 
 void render_sphere(camera* c, vec3 x, var R){
@@ -74,7 +77,9 @@ void render_sphere(camera* c, vec3 x, var R){
     glColor4d(0.0,0.0,1.0,1.0);
     gluQuadricNormals(quadric, GLU_SMOOTH);
     glPushMatrix();
-    glTranslatef(c->zoom*(x[0]-c->position[0])/SCALE,c->zoom*(x[1]-c->position[1])/SCALE,c->zoom*(x[2]-c->position[2])/SCALE);
+    glTranslatef(c->zoom*(x[0]-c->position[0])/SCALE,
+                 c->zoom*(x[1]-c->position[1])/SCALE,
+                 c->zoom*(x[2]-c->position[2])/SCALE);
     gluSphere(quadric, R/(c->zoom*SCALE), subdivisions,subdivisions);
     //glRotatef(0.01,0.0,0.0,1.0);
     glPopMatrix();

@@ -1,0 +1,165 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{titling}
+\usepackage{listings}
+\usepackage[
+backend=bibtex,
+style=science,
+sorting=none
+]{biblatex}
+
+\usepackage[english]{babel}
+\usepackage{graphicx}
+
+\begin{document}
+
+
+\begin{titlingpage}
+\title{Tidal Tails}
+\author{Jordan Osborn}
+\maketitle
+\begin{abstract}
+	
+\end{abstract}
+	
+	
+\end{titlingpage}
+
+\clearpage
+\section{Introduction}
+The aim of this project was to simulate/observe the creation of tidal tails, which are created when two galaxies pass one another and interact gravitationally. A tidal tail is an elongated stream of stars that extends outwards from a galaxy.  To do this an N-body simulation of massive particles was created using C++, and visualised using SDL2/OpenGL. To observe the formation of tidal tails a galaxy with a fixed central mass was created, test particles were then set in motion in a uniform distribution around this central mass such that the orbits were circular. A perturbing galaxy was then introduced on several different orbits (conic sections) with various input parameters. Tidal tail formation was observed and the results were screenshotted at various times after introduction for each of these orbits. 
+\\
+\\
+The computational techniques used in this program will be analysed in section 2, following this the specific implementation and how the simulation performed will be discussed in section 3. The screenshots of the Tidal Tails and discussions of them will be contained in section 4. And finally any concluding remarks will be in section 5. An appendix containing full code listings is included at the end of this document. 
+\\
+\\
+The program created is interactive and the camera can move around the scene using the WASD keys and zoom out/in using the keys Q and E respectively. Screenshots can be taken using the P key and the simulation can be paused/ unpaused using the SPACEBAR (Note pausing will print out the dimensions of the visualisation in the console). Logging of particles positions can be toggled on/ off using the L key. And if the correct toggle is activated masses can be created by clicking and dragging inside the window (the velocity of the created mass is proportional to the length of the drag). The input parameters for the perturbing galaxy can be set using command line arguments when starting the program (eccentricity, $\theta_0$, Closest Approach, Rotation direction of central galaxy, Perturbation orbit direction). In the simulation the central mass and perturbing galaxy are green in colour, the test particles are red and the trail of the perturbing galaxy is blue.
+\\
+\\
+The task I set to carry out with this program was finding out how the direction of rotation of the test particle's initial orbit affect the formation of tidal tails for various perturbing galaxy orbits.
+
+\clearpage
+\section{Analysis of Methods}
+First of all the problem required scaling, in typical units (SI) the gravitational constant $G=6.67\times10^{-11} m^3 kg^{-1} s$ and a typical central mass might be many orders of magnitude larger than the mass of the sun ($M_\odot=2.0\times10^{30 } kg$). So units where G=1 and the central mass M=1 were selected. This scaling is required because otherwise we would have time scales of orbits which are far too long to simulate. Another issue is the potential for infinities to arise in simulations. These infinities arise due to the singular nature of the gravitational force at small distances. To compensate for this when a test particle enters the surface of a central mass the force on the test particle switches to that of a repulsive radial force $(\frac{GM}{r^2} \underline{\hat{r}})$. In this way a particle can't penetrate far enough in to a particle for infinities to arise. This method provides a crude simulation of collisions between test particles and large masses.
+\\
+\\
+A Verlet integration method was selected for this simulation in part because it is symplectic (unlike RK4) which means it will conserve energy well, this is very important in orbital dynamics to prevent energy drift and to maintain stable orbits. Another reason it was chosen is due to it being only slightly more computationally expensive than other lower order methods (euler) but with errors are of order $\Delta t^4$ rather than $\Delta t^2$. But is less computationally expensive than RK4. Finally the implementing using Verlet rather than RK4 meant that the acceleration only needed to be evaluated at the particle's current position.
+\\
+\\
+OpenGL/SDL2 were selected to visualise the formation of tidal tails over traditional graphing solutions. This decision was made so that the simulation could be interactive (move around zoom in/out) and also so that tidal tails could be viewed continuously and screenshotted during formation in real time.
+\clearpage
+\section{Implementation and Performance}
+The first implementation issue was to decide the integrator to use, Verlet was selected. The Verlet algorithm is as follows 
+\begin{equation}
+	\underline{x}_{n+1} = 2 \underline{x}_n - \underline{x}_{n-1} + \frac{1}{2}  \underline{a}(\underline{x}_n) {\Delta t }^ 2 .
+\end{equation}  
+This obviously requires the particle's previous and current position to calculate the particle's next position. At t = 0 we only know the particle's current position so the first time step must be carried out using a different algorithm. A simple 2nd order method was selected to carry out the first time step, $\underline{x}_{1} =  \underline{x}_0 + \underline{v}_0 {\Delta t} + \frac{1}{2}  \underline{a}(\underline{x}_0) {\Delta t }^ 2 .$ All future steps were then carried out using the Verlet algorithm.
+\\
+\\
+The algorithm was tested using circular orbits to determine that it was functioning correctly. The radius of the orbit was plotted as a function of time for several orbits to determine the degree of variation. One of these plots is shown below.
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=80mm, height=50mm]{../bin/Radius.png}
+\caption{The variation in radius for a test mass in a circular orbit at a radius of 10 (arbitrary units), shows small sinusoidal variations around the initial radius. The graph shows roughly 18 orbits.
+\label{radiusfig}}
+\end{figure}
+\\
+The radius shows small order variations, indicating the algorithm was functioning as intended. Testing can be turned on by setting the TESTING flag to true. Orbits for many test particles were observed over many cycles to make sure they were following the expected trajectories (mainly conic sections). These were tested by modifying the galaxy creation step in the orbit\_test function in the main source code file.
+\\
+\\
+The loops that determine the accelerations of each of the particles only loop over the particles that are massive, this helps to speed up the computation by removing unnecessary loops. The test particles can be given mass by setting a flag but this results in the breakdown of the galaxies structure and also increases the computation time. These effects are undesirable so the test particles were assigned 0 mass. consta sized arrays tdooodo?
+\\
+\\
+Performance was monitored to determine any possible causes of slow down. By turning off the rendering portion of the program and logging to data files instead it was seen that most of the computation time was in fact being used to render the particles to the screen after each time step. To reduce the time taken rendering an adaptive frame limiting method was employed. Now particle motion was only rendered after a certain amount of CPU time had passed and not after every time step. Doing this resulted in a much smoother visualisation and allowed the simulation to run much closer to real time. The adaptive portion of this method made it so the number of frames rendered each second scales with the number of particles in the system, meaning larger systems are rendered less often. This helps to prevent the visualisation from slowing to a crawl.
+\\
+\\
+Finally tests were carried out to determine the maximum amount of test particles that could be created without slowing the visualisation too much. With around 8000 test particles the simulations can be completely visualised within a few of minutes (2-5). This seems like a sensible amount of test particles to include. The distributions of these particles were set according to the project manuals guidelines but with many more particles per ring.
+\\
+\\
+Structure of program oop
+\clearpage
+\section{Results and Discussion}
+
+\clearpage
+\section{Conclusions}
+
+\clearpage
+\section{Instructions}
+\subsection{Building}
+Software Required to Build Program:
+\\
+\begin{enumerate}
+\item C++ compiler (GNU g++)
+\item SDL2
+\item OpenGL
+\item GLEW
+\item cmake
+\end{enumerate}
+
+Instructions to build and run project:
+
+\begin{lstlisting}
+	cd {project-directory}
+	cmake .
+	make
+	bin/main
+\end{lstlisting}
+Command line arguments (eccentricity, $\theta_0$, Closest Approach, Rotation direction of central galaxy, Perturbation orbit direction).
+
+\subsection{Controls}
+\begin{itemize}
+\item Pan using WASD $\uparrow \leftarrow \downarrow \rightarrow$.
+\item Zoom out/in using QE $-+$.
+\item Take Screenshot using P.
+\item Start/Stop data logging to text file using L.
+\item Start/Pause/Unpause simulation using SPACEBAR.
+\item If (INTERACTIVE = true) left click, drag then release to create massive particle.
+\end{itemize}
+
+\clearpage
+\newgeometry{left=1.0cm,bottom=2cm}
+\section{Code Listings}
+\subsection{radius\_plot.p}
+\lstinputlisting{../bin/radius_plot.p}
+\subsection{sdl\_guard.h}
+\lstinputlisting{../include/utilities/sdl_guard.h}
+\clearpage
+\subsection{main.cpp}
+\lstinputlisting{../src/main.cpp}
+\clearpage
+\subsection{logger.h}
+\lstinputlisting{../include/capture/logger.h}
+\subsection{logger.cpp}
+\lstinputlisting{../src/capture/logger.cpp}
+\clearpage
+\subsection{screenshot.h}
+\lstinputlisting{../include/capture/screenshot.h}
+\subsection{screenshot.cpp}
+\lstinputlisting{../src/capture/screenshot.cpp}
+\clearpage
+\subsection{particle.h}
+\lstinputlisting{../include/physics/particle.h}
+\subsection{particle.cpp}
+\lstinputlisting{../src/physics/particle.cpp}
+\clearpage
+\subsection{universe.h}
+\lstinputlisting{../include/physics/universe.h}
+\subsection{universe.cpp}
+\lstinputlisting{../src/physics/universe.cpp}
+\clearpage
+\subsection{camera.h}
+\lstinputlisting{../include/utilities/camera.h}
+\subsection{camera.cpp}
+\lstinputlisting{../src/utilities/camera.cpp}
+\clearpage
+\subsection{utilities.h}
+\lstinputlisting{../include/utilities/utilities.h}
+\subsection{utilities.cpp}
+\lstinputlisting{../src/utilities/utilities.cpp}
+
+
+\end{document}

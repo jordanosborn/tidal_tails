@@ -19,7 +19,6 @@ vec3 mul(vec3, var);
 var dot(vec3,vec3);
 var abs(vec3);
 
-//TODO: check for speed
 var dist(vec3,vec3);
 vec3 unit(vec3,vec3);
 vec3 cross(vec3, vec3);
@@ -33,11 +32,7 @@ extern var SCALE;
 extern var FPS;
 var openGLpos(GLint x, GLboolean isy, camera* c);
 
-
-//TODO: render gridlines with gradations.
 void render_grid(camera* c);
-
-
 
 //colors
 extern vec4 color_red;
