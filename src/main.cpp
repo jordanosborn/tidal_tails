@@ -24,7 +24,7 @@
 
 
 std::string PROGRAMNAME = "Tidal Tails";
-GLboolean INTERACTIVE = true;
+GLboolean INTERACTIVE = false;
 GLboolean TESTING = false;
 GLint WIDTH = 900;
 GLint HEIGHT = 900;
@@ -39,6 +39,22 @@ void cleanup();
 void gen_perturbation(universe*, var e, var orbit_fraction, var closest_approach,
                       GLint central_rotation, GLint pert_direction, GLint N);
 void orbit_test(universe* u, var e, var orbit_fraction, var closest_approach);
+
+
+int main(int argc, char *argv[]) {
+    if (!init()) return -1;
+    glClearColor(1.0, 1.0, 1.0, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT);
+    SDL_GL_SwapWindow(mainWindow);
+    if(argc==5) run_simulation(atof(argv[1]),atof(argv[2]),atof(argv[3]),
+                               atoi(argv[4]),atoi(argv[5]));
+    else if(argc==4 and TESTING) run_simulation(atof(argv[1]),
+                                                atof(argv[2]),atof(argv[3]),1,1);
+    else run_simulation(1.0,0.2,10.0,-1,1);
+
+    cleanup();
+    return 0;
+}
 
 GLboolean init() {
     // Initialize SDL Video
@@ -80,23 +96,7 @@ GLboolean init() {
     return true;
 }
 
-int main(int argc, char *argv[]) {
-    if (!init()) return -1;
-    glClearColor(1.0, 1.0, 1.0, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT);
-    SDL_GL_SwapWindow(mainWindow);
-    if(argc==5) run_simulation(atof(argv[1]),atof(argv[2]),atof(argv[3]),
-                               atoi(argv[4]),atoi(argv[5]));
-    else if(argc==4 and TESTING) run_simulation(atof(argv[1]),
-                                                atof(argv[2]),atof(argv[3]),1,1);
-    else run_simulation(1.0,0.15,10.0,1,1);
-
-    cleanup();
-    return 0;
-}
-
-
-//TODO: fix y0 =0 issue
+//TODO: fix rot direction in upper and lower half plane
 void gen_perturbation(universe* u, var e, var orbit_fraction, var closest_approach,
                       GLint central_rotation, GLint pert_direction, GLint N){
     var theta = 2.0*M_PI *(orbit_fraction);
@@ -104,8 +104,28 @@ void gen_perturbation(universe* u, var e, var orbit_fraction, var closest_approa
     var r = (1+e)*rmin/(1+e*cos(theta));
     var x0 = r * cos(theta);
     var y0 = r * sin (theta);
-    var dvx = 1.0;
-    var dvy = - ((1-e*e)*x0+e*(1+e)*rmin)/y0;
+    var dvx, dvy;
+    //fixes y0==0 error
+    if(orbit_fraction == 0){
+        dvx=0;
+        dvy=pert_direction*1.0;
+    }
+    else if(orbit_fraction == 0.5){
+        dvx = 0;
+        dvy = -pert_direction*1.0;
+    }
+    else if(orbit_fraction == 0.25){
+        dvx = pert_direction*1.0;
+        dvy = 0.0;
+    }
+    else if(orbit_fraction == 0.75){
+        dvx = -pert_direction*1.0;
+        dvy = 0.0;
+    }
+    else {
+        dvx = 1.0;
+        dvy = -((1 - e * e) * x0 + e * (1 + e) * rmin) / y0;
+    }
     var v0 = sqrt(2/sqrt(x0*x0+y0*y0)+(e-1)/rmin)/sqrt(dvx*dvx+dvy*dvy);
     u->generate_galaxy({pert_direction*x0,pert_direction*y0,0.0},
                        {pert_direction*v0*dvx,pert_direction*v0*dvy,0},
@@ -122,8 +142,27 @@ void orbit_test(universe* u, var e, var orbit_fraction, var closest_approach){
     var r = (1+e)*rmin/(1+e*cos(theta));
     var x0 = r * cos(theta);
     var y0 = r * sin (theta);
-    var dvx = 1.0;
-    var dvy = - ((1-e*e)*x0+e*(1+e)*rmin)/y0;
+    var dvx,dvy;
+    if(orbit_fraction == 0){
+        dvx=0;
+        dvy=1.0;
+    }
+    else if(orbit_fraction == 0.5){
+        dvx = 0;
+        dvy = -1.0;
+    }
+    else if(orbit_fraction == 0.25){
+        dvx = 1.0;
+        dvy = 0.0;
+    }
+    else if(orbit_fraction == 0.75){
+        dvx = -1.0;
+        dvy = 0.0;
+    }
+    else {
+        dvx = 1.0;
+        dvy = -((1 - e * e) * x0 + e * (1 + e) * rmin) / y0;
+    }
     var v0 = sqrt(2/sqrt(x0*x0+y0*y0)+(e-1)/rmin)/sqrt(dvx*dvx+dvy*dvy);
     u->generate_galaxy({x0,y0,0.0},{v0*dvx,v0*dvy,0},0.4,0.0,0.0,1,{{}},0);
     u->create_trail(u->particles.size()-1);

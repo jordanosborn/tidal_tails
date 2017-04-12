@@ -96,7 +96,7 @@ void universe::update(SDL_Window* mainWindow, camera* c, GLboolean isReversed) {
     //adaptive fps to render. 1000*100/N = FPS.
     //lim to 30
     var time_step = particles.size()/100.0;
-
+    if(1000.0/time_step > 60.0) time_step = 1000.0/60.0;
     if (current_time - prev_time > time_step){
         glClearColor(1.0, 1.0, 1.0, 1.0);
         glClear(GL_COLOR_BUFFER_BIT);
