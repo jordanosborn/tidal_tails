@@ -32,12 +32,17 @@ GLint HEIGHT = 900;
 SDL_Window *mainWindow;
 SDL_GLContext mainContext;
 
+//initialises openGL and sdl
 GLboolean init();
+//checks SDL errors
 void check_SDL_error(int line);
 void run_simulation(var, var, var, GLint, GLint);
+//closes sdl and openGL contexts
 void cleanup();
+//generates system with perturbing galaxy
 void gen_perturbation(universe*, var e, var orbit_fraction, var closest_approach,
                       GLint central_rotation, GLint pert_direction, GLint N);
+//generates single particle on conic orbit for testing purposes
 void orbit_test(universe* u, var e, var orbit_fraction, var closest_approach);
 
 
@@ -50,7 +55,7 @@ int main(int argc, char *argv[]) {
                                atoi(argv[4]),atoi(argv[5]));
     else if(argc==4 and TESTING) run_simulation(atof(argv[1]),
                                                 atof(argv[2]),atof(argv[3]),1,1);
-    else run_simulation(1.0,0.2,10.0,-1,1);
+    else run_simulation(1.0,0.2,10.0,1,1);
 
     cleanup();
     return 0;
@@ -135,7 +140,7 @@ void gen_perturbation(universe* u, var e, var orbit_fraction, var closest_approa
                        {{N*12,2},{N*18,3},{N*24,4},{N*30,5},{N*36,6},{N*42,7},{N*48,8}},1);
 }
 
-//TODO: fix y0 = 0 issue orb_frac = 0, 0.5
+//TODO: fix rot direction in upper/lower half plane
 void orbit_test(universe* u, var e, var orbit_fraction, var closest_approach){
     var theta = 2.0*M_PI *(orbit_fraction);
     var rmin = closest_approach;
@@ -143,6 +148,7 @@ void orbit_test(universe* u, var e, var orbit_fraction, var closest_approach){
     var x0 = r * cos(theta);
     var y0 = r * sin (theta);
     var dvx,dvy;
+    //fixes y0==0 error.
     if(orbit_fraction == 0){
         dvx=0;
         dvy=1.0;

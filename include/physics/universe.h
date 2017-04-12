@@ -23,10 +23,9 @@ private:
     var R_min;
 
     var prev_time;
-    //var epsilon;
     var G;
     GLboolean particles_massless;
-    //(density, radius)
+    //distribution is (density, radius)
     void apply_forces();
 
 public:

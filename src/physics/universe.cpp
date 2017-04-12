@@ -9,9 +9,8 @@ universe::universe(GLboolean massless_particles){
     R_min = static_cast<var>(R_max/16.0);
     particles_massless = massless_particles;
     time = 0.0;
-
     dt = 0.005;
-    //epsilon = 0.01;
+
     galaxy_index.push_back(0);
     prev_time = 0.0;
 
@@ -86,7 +85,7 @@ void universe::create_trail(GLint particle_num){
     }
 }
 
-
+//updates system and renders result  (time steos by dt)
 void universe::update(SDL_Window* mainWindow, camera* c, GLboolean isReversed) {
     if (isReversed) dt = -std::abs(dt);
     else dt = std::abs(dt);
@@ -111,6 +110,7 @@ void universe::update(SDL_Window* mainWindow, camera* c, GLboolean isReversed) {
     time+=dt;
 }
 
+//calculates force between particle p and b
 vec3 gforce(vec3 a0,particle* p, particle* b, var G = 1.0){
     vec3 a;
     var R;
@@ -124,6 +124,7 @@ vec3 gforce(vec3 a0,particle* p, particle* b, var G = 1.0){
     return a;
 }
 
+//finds x0 v0 so verlet can start.
 void universe::apply_first_step(){
     vec3 a;
     vec3 v;
@@ -156,7 +157,7 @@ void universe::apply_first_step(){
     time+=dt;
 }
 
-//for particles from clicks
+//finds x0 v0 so verlet can start for particles from clicks
 void universe::apply_first_step_single_particle(){
     vec3 a;
     vec3 v;
@@ -186,7 +187,7 @@ void universe::apply_first_step_single_particle(){
     update_particle(particles[i],x,v,a);
 }
 
-
+//updates positions of particles according to verlet
 void universe::apply_forces(){
     vec3 a;
     vec3 v;
