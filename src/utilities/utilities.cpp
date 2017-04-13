@@ -53,6 +53,9 @@ var SCALE = 15.0;
 
 var FPS = 10.0;
 
+GLboolean INTERACTIVE = false;
+GLboolean TESTING = false;
+
 //converts from pixel values to opengl context location.
 var openGLpos(GLint x, GLboolean isy, camera* c){
     if(isy) return (((1.0 - 2.0*x/c->height))/c->zoom)*SCALE+c->position[1];

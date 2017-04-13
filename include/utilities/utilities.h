@@ -30,6 +30,8 @@ class camera;
 #include "utilities/camera.h"
 extern var SCALE;
 extern var FPS;
+extern GLboolean INTERACTIVE;
+extern GLboolean TESTING;
 var openGLpos(GLint x, GLboolean isy, camera* c);
 
 void render_grid(camera* c);

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.14)  13 APR 2017 01:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.14)  13 APR 2017 02:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -917,12 +917,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 34--44
 [1
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 47--54
+Underfull \hbox (badness 10000) in paragraph at lines 47--57
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 47--54
+Underfull \hbox (badness 10000) in paragraph at lines 47--57
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--57
 
  []
 
@@ -931,35 +936,35 @@ Underfull \hbox (badness 10000) in paragraph at lines 47--54
 ] <../bin/Radius.png, id=24, 903.375pt x 903.375pt>
 File: ../bin/Radius.png Graphic file (type png)
  <use ../bin/Radius.png>
-Package pdftex.def Info: ../bin/Radius.png used on input line 66.
-(pdftex.def)             Requested size: 227.62138pt x 142.25475pt.
+Package pdftex.def Info: ../bin/Radius.png used on input line 69.
+(pdftex.def)             Requested size: 227.62138pt x 113.80379pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--87
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 59--87
+Underfull \hbox (badness 10000) in paragraph at lines 62--90
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--87
+Underfull \hbox (badness 10000) in paragraph at lines 62--90
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--87
+Underfull \hbox (badness 10000) in paragraph at lines 62--90
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--87
+Underfull \hbox (badness 10000) in paragraph at lines 62--90
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 59--87
+Underfull \hbox (badness 10000) in paragraph at lines 62--90
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--90
 
  []
 
@@ -970,18 +975,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 59--87
 ] [6
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 108--110
+Underfull \hbox (badness 10000) in paragraph at lines 110--112
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 121.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 123.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 121.
- [7
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 123.
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--138
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--138
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--138
+
+ []
+
+[7
 
 ]
 *geometry* verbose mode - [ newgeometry ] result:
@@ -1016,8 +1036,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-
-(../bin/radius_plot.p
+ (../bin/radius_plot.p
 Overfull \hbox (18.57703pt too wide) in paragraph at lines 3--4
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -1035,111 +1054,106 @@ LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
 
 ]
 (../src/main.cpp
-Overfull \hbox (6.5769pt too wide) in paragraph at lines 43--44
+Overfull \hbox (6.5769pt too wide) in paragraph at lines 42--43
 [][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [9
 
 ]
-Overfull \hbox (6.5769pt too wide) in paragraph at lines 57--58
-[][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (12.57697pt too wide) in paragraph at lines 86--88
+Overfull \hbox (12.57697pt too wide) in paragraph at lines 92--94
 [][][][][][][][][][] 
  []
 
 
-Overfull \hbox (18.57703pt too wide) in paragraph at lines 105--106
+Overfull \hbox (18.57703pt too wide) in paragraph at lines 111--112
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [10]
-Overfull \hbox (66.57751pt too wide) in paragraph at lines 140--141
+Overfull \hbox (66.57751pt too wide) in paragraph at lines 146--147
 [][][][][][][][][][][][][][][][][][] 
  []
 
 [11]
-Overfull \hbox (24.57709pt too wide) in paragraph at lines 187--188
+Overfull \hbox (24.57709pt too wide) in paragraph at lines 193--194
 [][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (24.57709pt too wide) in paragraph at lines 192--193
+Overfull \hbox (24.57709pt too wide) in paragraph at lines 198--199
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [12]
-Overfull \hbox (18.57703pt too wide) in paragraph at lines 237--238
+Overfull \hbox (18.57703pt too wide) in paragraph at lines 243--244
 [][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (6.5769pt too wide) in paragraph at lines 239--240
+Overfull \hbox (6.5769pt too wide) in paragraph at lines 245--246
 [][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (6.5769pt too wide) in paragraph at lines 260--261
+Overfull \hbox (6.5769pt too wide) in paragraph at lines 266--267
 [][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (6.5769pt too wide) in paragraph at lines 263--264
+Overfull \hbox (6.5769pt too wide) in paragraph at lines 269--270
 [][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (30.57715pt too wide) in paragraph at lines 274--275
+Overfull \hbox (30.57715pt too wide) in paragraph at lines 280--281
 [][][][][][][][][][][][][][][][][][] 
  []
 
-
-Overfull \hbox (6.5769pt too wide) in paragraph at lines 279--280
+[13]
+Overfull \hbox (6.5769pt too wide) in paragraph at lines 285--286
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (6.5769pt too wide) in paragraph at lines 281--282
+Overfull \hbox (6.5769pt too wide) in paragraph at lines 287--288
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[13] [14]
-Overfull \hbox (0.57684pt too wide) in paragraph at lines 370--371
+[14]
+Overfull \hbox (0.57684pt too wide) in paragraph at lines 376--377
 [][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (48.57733pt too wide) in paragraph at lines 371--372
+Overfull \hbox (48.57733pt too wide) in paragraph at lines 377--378
 [][][][][][][][][] 
  []
 
 
-Overfull \hbox (48.57733pt too wide) in paragraph at lines 372--373
+Overfull \hbox (48.57733pt too wide) in paragraph at lines 378--379
 [][][][][][][][][] 
  []
 
 
-Overfull \hbox (48.57733pt too wide) in paragraph at lines 373--374
+Overfull \hbox (48.57733pt too wide) in paragraph at lines 379--380
 [][][][][][][][][] 
  []
 
-) [15] (../include/capture/logger.h) (../src/capture/logger.cpp) [16
+[15]) [16] (../include/capture/logger.h) (../src/capture/logger.cpp) [17
 
 ]
-(../include/capture/screenshot.h) (../src/capture/screenshot.cpp) [17
+(../include/capture/screenshot.h) (../src/capture/screenshot.cpp) [18
 
 ]
-(../include/physics/particle.h) (../src/physics/particle.cpp [18
+(../include/physics/particle.h) (../src/physics/particle.cpp [19
 
 ]
 Overfull \hbox (6.5769pt too wide) in paragraph at lines 55--56
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-) [19] (../include/physics/universe.h
+) [20] (../include/physics/universe.h
 Overfull \hbox (48.57733pt too wide) in paragraph at lines 39--40
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -1149,7 +1163,7 @@ Overfull \hbox (60.57745pt too wide) in paragraph at lines 40--41
 [][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-) (../src/physics/universe.cpp [20
+) (../src/physics/universe.cpp [21
 
 ]
 Overfull \hbox (18.57703pt too wide) in paragraph at lines 39--40
@@ -1186,7 +1200,7 @@ Overfull \hbox (24.57709pt too wide) in paragraph at lines 55--56
 [][][][][][][][][][][][][][][][][][][] 
  []
 
-[21]
+[22]
 Overfull \hbox (30.57715pt too wide) in paragraph at lines 74--75
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -1196,7 +1210,7 @@ Overfull \hbox (0.57684pt too wide) in paragraph at lines 89--90
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[22]
+[23]
 Overfull \hbox (18.57703pt too wide) in paragraph at lines 122--123
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][] 
@@ -1207,18 +1221,18 @@ Overfull \hbox (6.5769pt too wide) in paragraph at lines 153--154
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[23]
+[24]
 Overfull \hbox (48.57733pt too wide) in paragraph at lines 184--185
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-) [24] (../include/utilities/camera.h) (../src/utilities/camera.cpp) [25
+) [25] (../include/utilities/camera.h) (../src/utilities/camera.cpp) [26
 
 ]
-(../include/utilities/utilities.h) (../src/utilities/utilities.cpp [26
+(../include/utilities/utilities.h) (../src/utilities/utilities.cpp [27
 
 ]
-[27]) [28] (./compreport.aux)
+[28]) [29] (./compreport.aux)
 Package logreq Info: Writing requests to 'compreport.run.xml'.
 \openout1 = `compreport.run.xml'.
 
@@ -1230,7 +1244,7 @@ Here is how much of TeX's memory you used:
  14550 multiletter control sequences out of 15000+600000
  11802 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,6n,37p,1044b,1508s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,6n,37p,1099b,1508s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><
 /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
@@ -1244,10 +1258,10 @@ live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texliv
 e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
 /2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2
 016/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on compreport.pdf (29 pages, 353932 bytes).
+Output written on compreport.pdf (30 pages, 355435 bytes).
 PDF statistics:
- 151 PDF objects out of 1000 (max. 8388607)
- 104 compressed objects within 2 object streams
+ 154 PDF objects out of 1000 (max. 8388607)
+ 106 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

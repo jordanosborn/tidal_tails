@@ -24,8 +24,7 @@
 
 
 std::string PROGRAMNAME = "Tidal Tails";
-GLboolean INTERACTIVE = false;
-GLboolean TESTING = false;
+
 GLint WIDTH = 900;
 GLint HEIGHT = 900;
 // SDL
@@ -51,10 +50,17 @@ int main(int argc, char *argv[]) {
     glClearColor(1.0, 1.0, 1.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     SDL_GL_SwapWindow(mainWindow);
-    if(argc==5) run_simulation(atof(argv[1]),atof(argv[2]),atof(argv[3]),
+    if(argc==6) run_simulation(atof(argv[1]),atof(argv[2]),atof(argv[3]),
                                atoi(argv[4]),atoi(argv[5]));
-    else if(argc==4 and TESTING) run_simulation(atof(argv[1]),
-                                                atof(argv[2]),atof(argv[3]),1,1);
+    else if(argc==5 and atoi(argv[4])==1) {
+        TESTING = true;
+        run_simulation(atof(argv[1]),
+                       atof(argv[2]), atof(argv[3]), 1, 1);
+    }
+    else if(argc==2 and atoi(argv[1])==1){
+        INTERACTIVE = true;
+        run_simulation(0,0,0,0,0);
+    }
     else run_simulation(1.0,0.2,10.0,1,1);
 
     cleanup();
