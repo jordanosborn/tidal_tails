@@ -81,8 +81,22 @@ Finally tests were carried out to determine the maximum amount of test particles
 \\
 \\
 The program was created with object orientation in mind. Four classes were created. A particle class which housed all information about each individual particle and provided a function to render the particle. A universe class which housed pointers to all of the particles in a system, contained functions to generate galaxies, and functions that handled updating particle locations and logging of particle data. A logger class which essentially acted as a data logging device and stored particle positions in a data file when requested. And finally a camera class which stored the camera's location and calculated the zoom factor of the view, these quantities are then used during rendering to project the correct view.
+\\
+\\
+To simplify the determination of the initial conditions of the system (for a conic orbit) the central galaxy's central mass was fixed at the origin (0,0,0). Choosing a system like this makes it very easy to introduce a perturbing galaxy that orbits in a conic section. The initial conditions for these orbits are quite straightforward to determine using the standard results for conic sections.
+
+\begin{enumerate}
+\item $E_{total} = -\frac{G M_1 M_2}{2 a} =\frac{1}{2} M_1 \underline{v}_1^2 + \frac{1}{2} M_2 \underline{v}_2^2 -\frac{G M_1 M_2}{|\underline{r}_1-\underline{r}_2|}$
+\item Semi major axis $a = \frac{r_{min}}{1-e}$
+\item Polar equation of conic section $r = \frac{(1+e)r_{min}}{1+e\cos{\theta}}$
+\item Cartesian coordinates $x=r\cos{\theta},y=r\sin{\theta}$
+\end{enumerate}
+
+Combining equation 1 and 2 and using the fact that the central mass (subscript 1) is fixed with 0 velocity at the origin it is possible to find the magnitude of the initial velocity of the perturbing galaxy. To find the direction of the velocity you can use the fact that the velocity vector must be a tangent to the galaxy's orbit. Rewriting equation 3 in cartesian form and finding $\frac{dy}{dx}$ it is possible to determine this tangent vector. To find the perturbing galaxy's initial position you just need to convert the polar form of the orbit (3) into cartesian coordinates using (4). To specify these initial coordinates and velocity we need 3 independent parameters the eccentricity e, the starting angle $\theta_0$, and the distance of closest approach $r_{min}$. These 3 quantities are taken as input parameters in the program and are used to determine the initial conditions for the perturbing galaxy.
+
 \clearpage
 \section{Results and Discussion}
+
 
 \clearpage
 \section{Conclusions}
