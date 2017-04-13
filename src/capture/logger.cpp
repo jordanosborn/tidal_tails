@@ -1,6 +1,3 @@
-//
-// Created by Jordan Osborn on 27/03/2017.
-//
 #include "capture/logger.h"
 #include <iostream>
 logger::logger(){

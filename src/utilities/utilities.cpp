@@ -1,5 +1,3 @@
-//
-// Created by Jordan Osborn on 13/01/2017.
 #include "utilities/utilities.h"
 
 std::string format_time(GLdouble t){
@@ -42,22 +40,27 @@ vec3 unit(vec3 a,vec3 b){
 }
 
 std::string to_string(vec3 a){
-        return "{" + std::to_string(a[0]) + "," + std::to_string(a[1]) + "," + std::to_string(a[2])+"}";
+        return "{" + std::to_string(a[0]) + "," + std::to_string(a[1]) +
+                "," + std::to_string(a[2])+"}";
 }
 
 std::string to_string(vec4 a){
-    return "{" + std::to_string(a[0]) + "," + std::to_string(a[1]) + "," + std::to_string(a[2]) +  "," + std::to_string(a[3]) + "}";
+    return "{" + std::to_string(a[0]) + "," + std::to_string(a[1]) +
+            "," + std::to_string(a[2]) +  "," + std::to_string(a[3]) + "}";
 }
 
 var SCALE = 15.0;
 
 var FPS = 10.0;
 
-var openGLpos(GLint x, GLboolean isy, camera* c){
-    if(isy) return (((1.0 - 2.0*x/c->height)+c->position[1])/c->zoom)*SCALE;
-    else return (((2.0*x/c->width-1.0)+c->position[0])/c->zoom)*SCALE;
-}
+GLboolean INTERACTIVE = false;
+GLboolean TESTING = false;
 
+//converts from pixel values to opengl context location.
+var openGLpos(GLint x, GLboolean isy, camera* c){
+    if(isy) return (((1.0 - 2.0*x/c->height))/c->zoom)*SCALE+c->position[1];
+    else return (((2.0*x/c->width-1.0))/c->zoom)*SCALE+c->position[0];
+}
 
 vec4 color_red = {1.0,0.0,0.0,1.0};
 vec4 color_yellow = {1.0,1.0,0.0,1.0};
@@ -68,7 +71,8 @@ vec4 color_magenta= {1.0,0.0,1.0,1.0};
 vec4 color_black = {0.0,0.0,0.0,1.0};
 vec4 color_white = {1.0,1.0,1.0,1.0};
 
-std::array<vec4*,6> color_list = {&color_red,&color_green,&color_blue,&color_yellow,&color_cyan,&color_magenta};
+std::array<vec4*,6> color_list = {&color_red,&color_green,&color_blue,
+                                  &color_yellow,&color_cyan,&color_magenta};
 
 
 void render_sphere(camera* c, vec3 x, var R){
@@ -77,7 +81,9 @@ void render_sphere(camera* c, vec3 x, var R){
     glColor4d(0.0,0.0,1.0,1.0);
     gluQuadricNormals(quadric, GLU_SMOOTH);
     glPushMatrix();
-    glTranslatef(c->zoom*(x[0]-c->position[0])/SCALE,c->zoom*(x[1]-c->position[1])/SCALE,c->zoom*(x[2]-c->position[2])/SCALE);
+    glTranslatef(c->zoom*(x[0]-c->position[0])/SCALE,
+                 c->zoom*(x[1]-c->position[1])/SCALE,
+                 c->zoom*(x[2]-c->position[2])/SCALE);
     gluSphere(quadric, R/(c->zoom*SCALE), subdivisions,subdivisions);
     //glRotatef(0.01,0.0,0.0,1.0);
     glPopMatrix();

@@ -1,6 +1,3 @@
-//
-// Created by Jordan Osborn on 01/04/2017.
-//
 #include "utilities/camera.h"
 
 camera::camera(GLint w, GLint h){

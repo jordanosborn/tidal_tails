@@ -1,7 +1,3 @@
-//
-// Created by Jordan Osborn on 13/01/2017.
-//
-
 #ifndef UTILITIES_H
 #define UTILITIES_H
 
@@ -23,7 +19,6 @@ vec3 mul(vec3, var);
 var dot(vec3,vec3);
 var abs(vec3);
 
-//TODO: check for speed
 var dist(vec3,vec3);
 vec3 unit(vec3,vec3);
 vec3 cross(vec3, vec3);
@@ -35,13 +30,11 @@ class camera;
 #include "utilities/camera.h"
 extern var SCALE;
 extern var FPS;
+extern GLboolean INTERACTIVE;
+extern GLboolean TESTING;
 var openGLpos(GLint x, GLboolean isy, camera* c);
 
-
-//TODO: render gridlines with gradations.
 void render_grid(camera* c);
-
-
 
 //colors
 extern vec4 color_red;

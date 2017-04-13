@@ -3,6 +3,8 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+#include <iomanip>
+#include <sstream>
 
 // OpenGL / glew / SDL Headers
 #define GL3_PROTOTYPES 1
@@ -11,11 +13,6 @@
 
 
 #include "utilities/sdl_guard.h"
-
-
-// GSL Headers
-//#include <gsl/gsl_errno.h>
-//#include <gsl/gsl_odeiv.h>
 
 // Headers
 #include "physics/universe.h"
@@ -27,18 +24,48 @@
 
 
 std::string PROGRAMNAME = "Tidal Tails";
+
 GLint WIDTH = 900;
 GLint HEIGHT = 900;
 // SDL
 SDL_Window *mainWindow;
 SDL_GLContext mainContext;
 
+//initialises openGL and sdl
 GLboolean init();
+//checks SDL errors
 void check_SDL_error(int line);
 void run_simulation(var, var, var, GLint, GLint);
+//closes sdl and openGL contexts
 void cleanup();
-void gen_perturbation(universe*, var e, var orbit_fraction, var closest_approach, GLint central_rotation, GLint pert_direction, GLint N);
+//generates system with perturbing galaxy
+void gen_perturbation(universe*, var e, var orbit_fraction, var closest_approach,
+                      GLint central_rotation, GLint pert_direction, GLint N);
+//generates single particle on conic orbit for testing purposes
+void orbit_test(universe* u, var e, var orbit_fraction, var closest_approach);
 
+
+int main(int argc, char *argv[]) {
+    if (!init()) return -1;
+    glClearColor(1.0, 1.0, 1.0, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT);
+    SDL_GL_SwapWindow(mainWindow);
+    if(argc==6) run_simulation(atof(argv[1]),atof(argv[2]),atof(argv[3]),
+                               atoi(argv[4]),atoi(argv[5]));
+    else if(argc==5 and atoi(argv[4])==1) {
+        TESTING = true;
+        run_simulation(atof(argv[1]),
+                       atof(argv[2]), atof(argv[3]), 1, 1);
+    }
+    else if(argc==2 and atoi(argv[1])==1){
+        INTERACTIVE = true;
+        run_simulation(0,0,0,0,0);
+    }
+    else run_simulation(1.0,0.2,10.0,1,1);
+
+    cleanup();
+    return 0;
+}
 
 GLboolean init() {
     // Initialize SDL Video
@@ -47,7 +74,9 @@ GLboolean init() {
         return false;
     }
 
-    mainWindow = SDL_CreateWindow(PROGRAMNAME.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, SDL_WINDOW_OPENGL);
+    mainWindow = SDL_CreateWindow(PROGRAMNAME.c_str(), SDL_WINDOWPOS_CENTERED,
+                                  SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT,
+                                  SDL_WINDOW_OPENGL);
 
     // SDL error check
     if (!mainWindow) {
@@ -78,36 +107,101 @@ GLboolean init() {
     return true;
 }
 
-int main(int argc, char *argv[]) {
-    if (!init()) return -1;
-    glClearColor(1.0, 1.0, 1.0, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT);
-    SDL_GL_SwapWindow(mainWindow);
-    if(argc==5) run_simulation(atof(argv[1]),atof(argv[2]),atof(argv[3]),atoi(argv[4]),atoi(argv[5]));
-    else run_simulation(1.0,0.35,2.0,1,1);
-
-    cleanup();
-    return 0;
-}
-
-void gen_perturbation(universe* u, var e, var orbit_fraction, var closest_approach, GLint central_rotation, GLint pert_direction, GLint N){
+//TODO: fix rot direction in upper and lower half plane
+void gen_perturbation(universe* u, var e, var orbit_fraction, var closest_approach,
+                      GLint central_rotation, GLint pert_direction, GLint N){
     var theta = 2.0*M_PI *(orbit_fraction);
     var rmin = closest_approach;
     var r = (1+e)*rmin/(1+e*cos(theta));
     var x0 = r * cos(theta);
     var y0 = r * sin (theta);
-    var dvx = 1.0;
-    var dvy = - ((1-e*e)*x0+e*(1+e)*rmin)/y0;
+    var dvx, dvy;
+    //fixes y0==0 error
+    if(orbit_fraction == 0){
+        dvx=0;
+        dvy=pert_direction*1.0;
+    }
+    else if(orbit_fraction == 0.5){
+        dvx = 0;
+        dvy = -pert_direction*1.0;
+    }
+    else if(orbit_fraction == 0.25){
+        dvx = pert_direction*1.0;
+        dvy = 0.0;
+    }
+    else if(orbit_fraction == 0.75){
+        dvx = -pert_direction*1.0;
+        dvy = 0.0;
+    }
+    else {
+        dvx = 1.0;
+        dvy = -((1 - e * e) * x0 + e * (1 + e) * rmin) / y0;
+    }
     var v0 = sqrt(2/sqrt(x0*x0+y0*y0)+(e-1)/rmin)/sqrt(dvx*dvx+dvy*dvy);
-    u->generate_galaxy({pert_direction*x0,pert_direction*y0,0.0},{pert_direction*v0*dvx,pert_direction*v0*dvy,0},0.4,1.0,0.0,1,{{}},0);
+    u->generate_galaxy({pert_direction*x0,pert_direction*y0,0.0},
+                       {pert_direction*v0*dvx,pert_direction*v0*dvy,0},
+                       0.1,1.0,0.0,1,{{}},0);
     u->create_trail(u->particles.size()-1);
-    u->generate_galaxy({0,0,0.0},{0,0,0},0.4,1.0,0.0,central_rotation,{{N*12,2},{N*18,3},{N*24,4},{N*30,5},{N*36,6},{N*42,7},{N*48,8}},1);
+    u->generate_galaxy({0,0,0.0},{0,0,0},0.4,1.0,0.0,central_rotation,
+                       {{N*12,2},{N*18,3},{N*24,4},{N*30,5},{N*36,6},{N*42,7},{N*48,8}},1);
 }
 
-void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, GLint central_rotation, GLint pert_direction) {
-    //Create perturbing galaxy
+//TODO: fix rot direction in upper/lower half plane
+void orbit_test(universe* u, var e, var orbit_fraction, var closest_approach){
+    var theta = 2.0*M_PI *(orbit_fraction);
+    var rmin = closest_approach;
+    var r = (1+e)*rmin/(1+e*cos(theta));
+    var x0 = r * cos(theta);
+    var y0 = r * sin (theta);
+    var dvx,dvy;
+    //fixes y0==0 error.
+    if(orbit_fraction == 0){
+        dvx=0;
+        dvy=1.0;
+    }
+    else if(orbit_fraction == 0.5){
+        dvx = 0;
+        dvy = -1.0;
+    }
+    else if(orbit_fraction == 0.25){
+        dvx = 1.0;
+        dvy = 0.0;
+    }
+    else if(orbit_fraction == 0.75){
+        dvx = -1.0;
+        dvy = 0.0;
+    }
+    else {
+        dvx = 1.0;
+        dvy = -((1 - e * e) * x0 + e * (1 + e) * rmin) / y0;
+    }
+    var v0 = sqrt(2/sqrt(x0*x0+y0*y0)+(e-1)/rmin)/sqrt(dvx*dvx+dvy*dvy);
+    u->generate_galaxy({x0,y0,0.0},{v0*dvx,v0*dvy,0},0.4,0.0,0.0,1,{{}},0);
+    u->create_trail(u->particles.size()-1);
+    u->generate_galaxy({0,0,0.0},{0,0,0},0.4,1.0,0.0,1.0,{{}},1);
+
+}
+
+void run_simulation(var eccentricity, var orbit_fraction, var closest_approach,
+                    GLint central_rotation, GLint pert_direction) {
+
+    GLboolean mouseAllowed;
+    std::fstream radius_Data;
     universe universe1 = universe(true);
-    gen_perturbation(&universe1,eccentricity,orbit_fraction,closest_approach,central_rotation,pert_direction,40);
+    //Create perturbing galaxy
+    if(!INTERACTIVE and !TESTING) {
+        gen_perturbation(&universe1, eccentricity, orbit_fraction, closest_approach,
+                         central_rotation, pert_direction, 40);
+        mouseAllowed = false;
+    }
+    else if(TESTING){
+        radius_Data.open("radius_data.txt",std::fstream::out | std::fstream::trunc);
+        orbit_test(&universe1,eccentricity,orbit_fraction,closest_approach);
+        mouseAllowed = false;
+    }
+    else{
+        mouseAllowed = true;
+    }
 
     logger logger1 = logger();
     camera c = camera(WIDTH,HEIGHT);
@@ -119,7 +213,8 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, 
     GLboolean paused = true;
     GLboolean logging = false;
     GLboolean reversed = false;
-    GLboolean mouseAllowed = false;
+    std::stringstream screenshot_title;
+
     var dx,dy,zl, mousex, mousey;
     GLdouble t = 0;
     dx = 0.1;
@@ -144,7 +239,14 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, 
             if (event.type == SDL_MOUSEBUTTONUP and mouseAllowed) {
                 switch (event.button.button){
                     case SDL_BUTTON_LEFT:
-                        universe1.generate_galaxy({openGLpos(mousex,0,&c), openGLpos(mousey,1,&c),0},{15.0/c.zoom *(event.button.x-mousex)/static_cast<var>(WIDTH),-15.0/c.zoom *(event.button.y-mousey)/ static_cast<var>(HEIGHT),0.0},1.0,1.0,0.0,1,{{}},0);
+                        universe1.generate_galaxy(
+                                {openGLpos(mousex,0,&c), openGLpos(mousey,1,&c),0},
+                                {(15.0/(WIDTH))/c.zoom*(event.button.x-mousex),
+                                 (-15.0/(HEIGHT))/c.zoom*(event.button.y-mousey),
+                                 0.0},
+                                0.4,1.0,0.0,1,{{}},0);
+                        universe1.create_trail(universe1.particles.size()-1);
+                        universe1.apply_first_step_single_particle();
                         paused=false;
                         break;
                 }
@@ -156,7 +258,17 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, 
                         loop = false;
                         break;
                     case SDLK_p:
-                        screenshot("screenshot-"+std::to_string(t)+"."+std::to_string(2.0*SCALE/c.zoom)+"x"+std::to_string(2.0*SCALE/c.zoom)+".tga");
+                        screenshot_title.str(std::string());
+                        screenshot_title << "screenshot-";
+                        screenshot_title << std::fixed << std::setprecision(2)
+                                         << t << "_("
+                                         << c.position[0]-1.0*SCALE/c.zoom
+                                         << "_" << c.position[0]+1.0*SCALE/c.zoom
+                                         << ")("
+                                         << c.position[1]-1.0*SCALE/c.zoom
+                                         << "_" << c.position[1]+1.0*SCALE/c.zoom
+                                         << ").tga";
+                        screenshot(screenshot_title.str());
                         std::cout << "Screenshot created." << std::endl;
                         break;
                     case SDLK_SPACE:
@@ -167,14 +279,20 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, 
                             t += getTimestep(&universe1);
                             if(logging) logger1.log_positions(t,universe1.particles);
                         }
-                        std::cout << "Pause status: " << static_cast<int>(paused) << std::endl;
-                        std::cout << 2.0*SCALE/c.zoom << "x" << 2.0*SCALE/c.zoom <<std::endl;
+                        std::cout << "Pause status: "
+                                  << static_cast<int>(paused)
+                                  << std::endl;
+                        std::cout << "(" << c.position[0]-1.0*SCALE/c.zoom << ","
+                                  << c.position[0]+1.0*SCALE/c.zoom << ")";
+                        std::cout << "(" << c.position[1]-1.0*SCALE/c.zoom << ","
+                                  << c.position[1]+1.0*SCALE/c.zoom << ")\n";
                         break;
-                    //case SDLK_r:
-                        //   reversed= not reversed;
-                    //    //reverse time
-                    //    std::cout << "Time reversed." << std::endl;
-                    //    break;
+                    /*case SDLK_r:
+                        reversed= not reversed;
+                        //reverse time
+                        std::cout << "Time reversed." << std::endl;
+                        break;
+                     */
                     case SDLK_l:
                         logging = not logging;
                         //start/stop logging
@@ -183,7 +301,9 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, 
                             logger1.log_positions(t,universe1.particles);
                         }
                         else logger1.stop();
-                        std::cout << "Logging status: " << static_cast<int>(logging)  << std::endl;
+                        std::cout << "Logging status: "
+                                  << static_cast<int>(logging)
+                                  << std::endl;
                         break;
                     case SDLK_w:
                         update_view(&c,0.0,dy/(c.zoom),0.0);
@@ -250,6 +370,14 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach, 
             t += getTimestep(&universe1);
             if(logging){
                 logger1.log_positions(t,universe1.particles);
+            }
+            if(TESTING){
+                radius_Data <<  t << ","
+                            << std::sqrt(getPosition(universe1.particles[0])[0]*
+                                                 getPosition(universe1.particles[0])[0]+
+                                                 getPosition(universe1.particles[0])[1]*
+                                                 getPosition(universe1.particles[0])[1])
+                            << "\n";
             }
         }
 
