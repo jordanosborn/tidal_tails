@@ -85,7 +85,7 @@ void universe::create_trail(GLint particle_num){
     }
 }
 
-//updates system and renders result  (time steos by dt)
+//updates system and renders result  (time steps by dt)
 void universe::update(SDL_Window* mainWindow, camera* c, GLboolean isReversed) {
     if (isReversed) dt = -std::abs(dt);
     else dt = std::abs(dt);
