@@ -37,7 +37,7 @@ The aim of this project is to simulate/observe the creation of tidal tails. Tida
 The computational techniques used in this program will be analysed in section 2, following this the specific implementation and how the simulation performed will be discussed in section 3. The screenshots of the Tidal Tails and discussions of them will be contained in section 4. And finally any concluding remarks will be in section 5. An appendix containing instructions and full code listings is included at the end of this document. 
 \\
 \\
-The program created is interactive and the camera can move around the scene using the WASD keys and zoom out/in using the keys Q and E respectively. Screenshots can be taken using the P key and the simulation can be paused/ unpaused using the SPACEBAR (Note pausing will print out the dimensions of the visualisation in the console). Logging of the particle's positions to a text file can be toggled on/ off using the L key. And if the correct flag is activated (INTERACTIVE) masses can be created by clicking (left), dragging and then releasing inside the window (the velocity of the created mass is proportional to the length of the drag). The input parameters for the perturbing galaxy can be set using command line arguments when starting the program (eccentricity, $\theta_0$, Closest Approach, Rotation direction of central galaxy ($1=\circlearrowright, -1=\circlearrowleft$), Perturbation orbit direction). In the simulation the central mass and perturbing galaxy are green in colour, the test particles are red and the trail of the perturbing galaxy is blue.
+The program created is interactive and the camera can move around the scene using the WASD keys and zoom out/in using the keys Q and E respectively. Screenshots can be taken using the P key (creates a tga image file, can convert to png using the convert\_png.sh script provided) and the simulation can be paused/ unpaused using the SPACEBAR (Note pausing will print out the dimensions of the visualisation in the console). Logging of the particle's positions to a text file can be toggled on/ off using the L key. And if the correct flag is activated (INTERACTIVE) masses can be created by clicking (left), dragging and then releasing inside the window (the velocity of the created mass is proportional to the length of the drag). The input parameters for the perturbing galaxy can be set using command line arguments when starting the program (eccentricity, $\theta_0$, Closest Approach, Rotation direction of central galaxy ($1=\circlearrowright, -1=\circlearrowleft$), Perturbation orbit direction). In the simulation the central mass and perturbing galaxy are green in colour, the test particles are red and the trail of the perturbing galaxy is blue.
 \\
 \\
 The aim of my program was to find out how the direction of rotation of the test particle's initial orbit affect the formation of tidal tails for various perturbing galaxy orbits.
@@ -123,15 +123,15 @@ Instructions to build and run project:
 	cd {project-directory}
 	cmake .
 	make
-	bin/main
+	bin/main {optional-arguments}
 \end{lstlisting}
 Command line arguments if 5 arguments supplied (eccentricity, $\theta_0$, Closest Approach, Rotation direction of central galaxy ($1=\circlearrowright, -1=\circlearrowleft$), Perturbation orbit direction).
 \\
 \\
-Command line arguments if 4 arguments supplied (eccentricity, $\theta_0$, Closest Approach, TESTING (1= true,0 = false))
+Command line arguments if 4 arguments supplied (eccentricity, $\theta_0$, Closest Approach, TESTING (1 = true, 0 = false))
 \\
 \\
-Command line arguments if 1 argument supplied (INTERACTIVE (1= true, 0 = false))
+Command line arguments if 1 argument supplied (INTERACTIVE (1 = true, 0 = false))
 \\
 \\
 Other combinations will result in a default simulation being carried out.
@@ -151,6 +151,8 @@ Other combinations will result in a default simulation being carried out.
 \section{Code Listings}
 \subsection{radius\_plot.p}
 \lstinputlisting{../bin/radius_plot.p}
+\subsection{convert\_png.sh}
+\lstinputlisting{../bin/convert_png.sh}
 \subsection{sdl\_guard.h}
 \lstinputlisting{../include/utilities/sdl_guard.h}
 \clearpage
