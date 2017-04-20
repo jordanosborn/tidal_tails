@@ -53,7 +53,7 @@ A Verlet integration method was selected for this simulation in part because it 
 OpenGL/SDL2 were selected to visualise the formation of tidal tails over traditional graphing solutions. This decision was made so that the simulation could be interactive (move around zoom in/out) and also so that tidal tails could be observed continuously and screenshotted during formation in "real time".
 \\
 \\
-The suggested dark matter halo form of the perturbing galaxy (from Project Manual) can easily be implemented by setting the radius of the perturbing galaxy to a size comparable to the central mass plus its test particles and modifying the force function for test particles inside the perturbing galaxy's radius to the appropriate form.
+The suggested dark matter halo form of the perturbing galaxy (from Project Manual) can easily be implemented by setting the radius of the perturbing galaxy to a size comparable to the central mass plus its test particles and modifying the force function for test particles inside the perturbing galaxy's radius to be the same as for the inside of a uniform spherical mass. $\underline{F} \propto -|\underline{r}_{galaxy}-\underline{r}_{test}|$.
 \clearpage
 \section{Implementation and Performance}
 The first implementation issue was to decide the integrator to use, Verlet was selected. The Verlet algorithm is as follows 
@@ -134,6 +134,9 @@ Command line arguments if 1 argument supplied (INTERACTIVE (1 = true, 0 = false)
 \\
 \\
 Other combinations will result in a default simulation being carried out.
+\\
+\\
+Logging Information: Each time step during logging is output to a new line in the outputted data file so that each line is of the format t,{x1,y1,z1},{x2,y2,z2},...,{xN,yN,zN}. A basic Python script could easily be created to carry out basic text processing on this data file to extract all of the particle's positions at a specific time. The extracted positions could then be written to a new text file in a plot friendly format i.e. x1,y2 {newline} x2,y2 etc. and then plotted using matplotlib all within the same script. This script was not created as it was felt that the screenshots provided sufficient graphical information.
 
 \subsection{Controls}
 \begin{itemize}

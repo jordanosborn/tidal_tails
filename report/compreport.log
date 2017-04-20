@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.14)  16 APR 2017 00:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.14)  20 APR 2017 18:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -975,29 +975,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 62--90
 ] [6
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 110--112
+Underfull \hbox (badness 10000) in paragraph at lines 109--111
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 123.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 122.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 123.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 122.
 
-Underfull \hbox (badness 10000) in paragraph at lines 128--138
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 128--138
+Underfull \hbox (badness 10000) in paragraph at lines 127--140
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 128--138
+Underfull \hbox (badness 10000) in paragraph at lines 127--140
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--140
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--140
 
  []
 
@@ -1210,13 +1215,13 @@ Overfull \hbox (0.57684pt too wide) in paragraph at lines 89--90
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[23]
+
 Overfull \hbox (18.57703pt too wide) in paragraph at lines 122--123
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][] 
  []
 
-
+[23]
 Overfull \hbox (6.5769pt too wide) in paragraph at lines 153--154
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -1240,7 +1245,7 @@ Package logreq Info: Writing requests to 'compreport.run.xml'.
 Here is how much of TeX's memory you used:
  11229 strings out of 493014
  176644 string characters out of 6133350
- 458167 words of memory out of 5000000
+ 460167 words of memory out of 5000000
  14550 multiletter control sequences out of 15000+600000
  11802 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1258,7 +1263,7 @@ live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texliv
 e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
 /2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2
 016/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on compreport.pdf (30 pages, 356531 bytes).
+Output written on compreport.pdf (30 pages, 357888 bytes).
 PDF statistics:
  154 PDF objects out of 1000 (max. 8388607)
  106 compressed objects within 2 object streams
