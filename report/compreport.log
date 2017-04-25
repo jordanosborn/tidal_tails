@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.14)  25 APR 2017 20:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.14)  25 APR 2017 21:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1047,7 +1047,7 @@ File: ../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-5.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-5.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-5.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 107.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 110.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-10.00_(-15.00_15.00)(-15.00
@@ -1058,7 +1058,7 @@ File: ../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-10.00_(-15.00_15.00)(-
 <use ../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-10.00_(-15.00_15.00)(-1
 5.00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-10.
-00_(-15.00_15.00)(-15.00_15.00).png used on input line 113.
+00_(-15.00_15.00)(-15.00_15.00).png used on input line 116.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-15.00_(-15.00_15.00)(-15.00
@@ -1069,7 +1069,7 @@ File: ../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-15.00_(-15.00_15.00)(-
 <use ../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-15.00_(-15.00_15.00)(-1
 5.00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-15.
-00_(-15.00_15.00)(-15.00_15.00).png used on input line 119.
+00_(-15.00_15.00)(-15.00_15.00).png used on input line 122.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-20.00_(-15.00_15.00)(-15.00
@@ -1080,7 +1080,7 @@ File: ../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-20.00_(-15.00_15.00)(-
 <use ../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-20.00_(-15.00_15.00)(-1
 5.00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-20.
-00_(-15.00_15.00)(-15.00_15.00).png used on input line 125.
+00_(-15.00_15.00)(-15.00_15.00).png used on input line 128.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-25.00_(-15.00_15.00)(-15.00
@@ -1091,7 +1091,7 @@ File: ../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-25.00_(-15.00_15.00)(-
 <use ../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-25.00_(-15.00_15.00)(-1
 5.00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-25.
-00_(-15.00_15.00)(-15.00_15.00).png used on input line 131.
+00_(-15.00_15.00)(-15.00_15.00).png used on input line 134.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-30.00_(-15.00_15.00)(-15.00
@@ -1102,25 +1102,25 @@ File: ../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-30.00_(-15.00_15.00)(-
 <use ../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-30.00_(-15.00_15.00)(-1
 5.00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-30.
-00_(-15.00_15.00)(-15.00_15.00).png used on input line 137.
+00_(-15.00_15.00)(-15.00_15.00).png used on input line 140.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 105--141
+Underfull \hbox (badness 10000) in paragraph at lines 108--144
 []$[]$$[]$
  []
 
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 105--141
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 108--144
 []$ $[]$
  []
 
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 105--141
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 108--144
 []$ $[]$ 
  []
 
 
-LaTeX Warning: Float too large for page by 21.37265pt on input line 143.
+LaTeX Warning: Float too large for page by 21.37265pt on input line 146.
 
 [6 <../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-5.00_(-15.00_15.00)(-15.
 00_15.00).png> <../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-10.00_(-15.0
@@ -1138,7 +1138,7 @@ File: ../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-5.00_(-15.00_15.00)(-15
 <use ../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-5.00_(-15.00_15.00)(-15.
 00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-5.00
-_(-15.00_15.00)(-15.00_15.00).png used on input line 149.
+_(-15.00_15.00)(-15.00_15.00).png used on input line 152.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-10.00_(-15.00_15.00)(-15.00_
@@ -1149,7 +1149,7 @@ File: ../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-10.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-10.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-10.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 155.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 158.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-15.00_(-15.00_15.00)(-15.00_
@@ -1160,7 +1160,7 @@ File: ../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-15.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-15.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-15.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 161.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 164.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-20.00_(-15.00_15.00)(-15.00_
@@ -1171,7 +1171,7 @@ File: ../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-20.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-20.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-20.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 167.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 170.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-25.00_(-15.00_15.00)(-15.00_
@@ -1182,7 +1182,7 @@ File: ../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-25.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-25.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-25.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 173.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 176.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-30.00_(-15.00_15.00)(-15.00_
@@ -1193,25 +1193,25 @@ File: ../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-30.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-30.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-30.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 179.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 182.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 147--183
+Underfull \hbox (badness 10000) in paragraph at lines 150--186
 []$[]$$[]$
  []
 
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 147--183
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 150--186
 []$ $[]$
  []
 
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 147--183
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 150--186
 []$ $[]$ 
  []
 
 
-LaTeX Warning: Float too large for page by 21.37265pt on input line 185.
+LaTeX Warning: Float too large for page by 21.37265pt on input line 188.
 
 [7 <../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-5.00_(-15.00_15.00)(-15.0
 0_15.00).png> <../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-10.00_(-15.00_
@@ -1228,7 +1228,7 @@ File: ../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-5.00_(-15.00_15.00)(-15
 <use ../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-5.00_(-15.00_15.00)(-15.
 00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-5.00
-_(-15.00_15.00)(-15.00_15.00).png used on input line 191.
+_(-15.00_15.00)(-15.00_15.00).png used on input line 194.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-10.00_(-15.00_15.00)(-15.00_
@@ -1239,7 +1239,7 @@ File: ../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-10.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-10.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-10.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 197.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 200.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-15.00_(-15.00_15.00)(-15.00_
@@ -1250,7 +1250,7 @@ File: ../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-15.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-15.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-15.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 203.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 206.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-20.00_(-15.00_15.00)(-15.00_
@@ -1261,7 +1261,7 @@ File: ../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-20.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-20.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-20.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 209.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 212.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-25.00_(-15.00_15.00)(-15.00_
@@ -1272,7 +1272,7 @@ File: ../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-25.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-25.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-25.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 215.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 218.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-30.00_(-15.00_15.00)(-15.00_
@@ -1283,25 +1283,25 @@ File: ../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-30.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-30.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-30.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 221.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 224.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 189--225
+Underfull \hbox (badness 10000) in paragraph at lines 192--228
 []$[]$$[]$
  []
 
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 189--225
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 192--228
 []$ $[]$
  []
 
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 189--225
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 192--228
 []$ $[]$ 
  []
 
 
-LaTeX Warning: Float too large for page by 21.37265pt on input line 227.
+LaTeX Warning: Float too large for page by 21.37265pt on input line 230.
 
 [8 <../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-5.00_(-15.00_15.00)(-15.0
 0_15.00).png> <../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-10.00_(-15.00_
@@ -1318,7 +1318,7 @@ File: ../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-5.00_(-15.00_15.00)(-15.
 <use ../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-5.00_(-15.00_15.00)(-15.0
 0_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-5.00_
-(-15.00_15.00)(-15.00_15.00).png used on input line 233.
+(-15.00_15.00)(-15.00_15.00).png used on input line 236.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-10.00_(-15.00_15.00)(-15.00_1
@@ -1329,7 +1329,7 @@ File: ../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-10.00_(-15.00_15.00)(-15
 <use ../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-10.00_(-15.00_15.00)(-15.
 00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-10.00
-_(-15.00_15.00)(-15.00_15.00).png used on input line 239.
+_(-15.00_15.00)(-15.00_15.00).png used on input line 242.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-15.00_(-15.00_15.00)(-15.00_1
@@ -1340,7 +1340,7 @@ File: ../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-15.00_(-15.00_15.00)(-15
 <use ../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-15.00_(-15.00_15.00)(-15.
 00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-15.00
-_(-15.00_15.00)(-15.00_15.00).png used on input line 245.
+_(-15.00_15.00)(-15.00_15.00).png used on input line 248.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-20.00_(-15.00_15.00)(-15.00_1
@@ -1351,7 +1351,7 @@ File: ../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-20.00_(-15.00_15.00)(-15
 <use ../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-20.00_(-15.00_15.00)(-15.
 00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-20.00
-_(-15.00_15.00)(-15.00_15.00).png used on input line 251.
+_(-15.00_15.00)(-15.00_15.00).png used on input line 254.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-25.00_(-15.00_15.00)(-15.00_1
@@ -1362,7 +1362,7 @@ File: ../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-25.00_(-15.00_15.00)(-15
 <use ../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-25.00_(-15.00_15.00)(-15.
 00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-25.00
-_(-15.00_15.00)(-15.00_15.00).png used on input line 257.
+_(-15.00_15.00)(-15.00_15.00).png used on input line 260.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-30.00_(-15.00_15.00)(-15.00_1
@@ -1373,25 +1373,25 @@ File: ../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-30.00_(-15.00_15.00)(-15
 <use ../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-30.00_(-15.00_15.00)(-15.
 00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-30.00
-_(-15.00_15.00)(-15.00_15.00).png used on input line 263.
+_(-15.00_15.00)(-15.00_15.00).png used on input line 266.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 231--267
+Underfull \hbox (badness 10000) in paragraph at lines 234--270
 []$[]$$[]$
  []
 
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 231--267
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 234--270
 []$ $[]$
  []
 
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 231--267
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 234--270
 []$ $[]$ 
  []
 
 
-LaTeX Warning: Float too large for page by 21.37265pt on input line 269.
+LaTeX Warning: Float too large for page by 21.37265pt on input line 272.
 
 [9 <../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-5.00_(-15.00_15.00)(-15.00
 _15.00).png> <../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-10.00_(-15.00_15
@@ -1408,7 +1408,7 @@ File: ../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-10.00_(-15.00_15.00)(-
 <use ../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-10.00_(-15.00_15.00)(-1
 5.00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-10.
-00_(-15.00_15.00)(-15.00_15.00).png used on input line 275.
+00_(-15.00_15.00)(-15.00_15.00).png used on input line 278.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-20.00_(-15.00_15.00)(-15.00
@@ -1419,7 +1419,7 @@ File: ../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-20.00_(-15.00_15.00)(-
 <use ../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-20.00_(-15.00_15.00)(-1
 5.00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-20.
-00_(-15.00_15.00)(-15.00_15.00).png used on input line 281.
+00_(-15.00_15.00)(-15.00_15.00).png used on input line 284.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-30.00_(-15.00_15.00)(-15.00
@@ -1430,7 +1430,7 @@ File: ../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-30.00_(-15.00_15.00)(-
 <use ../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-30.00_(-15.00_15.00)(-1
 5.00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-30.
-00_(-15.00_15.00)(-15.00_15.00).png used on input line 287.
+00_(-15.00_15.00)(-15.00_15.00).png used on input line 290.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-40.00_(-15.00_15.00)(-15.00
@@ -1441,7 +1441,7 @@ File: ../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-40.00_(-15.00_15.00)(-
 <use ../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-40.00_(-15.00_15.00)(-1
 5.00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-40.
-00_(-15.00_15.00)(-15.00_15.00).png used on input line 293.
+00_(-15.00_15.00)(-15.00_15.00).png used on input line 296.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-50.00_(-15.00_15.00)(-15.00
@@ -1452,7 +1452,7 @@ File: ../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-50.00_(-15.00_15.00)(-
 <use ../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-50.00_(-15.00_15.00)(-1
 5.00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-50.
-00_(-15.00_15.00)(-15.00_15.00).png used on input line 299.
+00_(-15.00_15.00)(-15.00_15.00).png used on input line 302.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-60.00_(-15.00_15.00)(-15.00
@@ -1463,25 +1463,25 @@ File: ../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-60.00_(-15.00_15.00)(-
 <use ../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-60.00_(-15.00_15.00)(-1
 5.00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-60.
-00_(-15.00_15.00)(-15.00_15.00).png used on input line 305.
+00_(-15.00_15.00)(-15.00_15.00).png used on input line 308.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 273--309
+Underfull \hbox (badness 10000) in paragraph at lines 276--312
 []$[]$$[]$
  []
 
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 273--309
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 276--312
 []$ $[]$
  []
 
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 273--309
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 276--312
 []$ $[]$ 
  []
 
 
-LaTeX Warning: Float too large for page by 21.37265pt on input line 311.
+LaTeX Warning: Float too large for page by 21.37265pt on input line 314.
 
 [10 <../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-10.00_(-15.00_15.00)(-1
 5.00_15.00).png> <../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-20.00_(-15
@@ -1499,7 +1499,7 @@ File: ../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-10.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-10.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-10.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 317.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 320.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-20.00_(-15.00_15.00)(-15.00_
@@ -1510,7 +1510,7 @@ File: ../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-20.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-20.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-20.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 323.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 326.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-30.00_(-15.00_15.00)(-15.00_
@@ -1521,7 +1521,7 @@ File: ../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-30.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-30.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-30.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 329.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 332.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-40.00_(-15.00_15.00)(-15.00_
@@ -1532,7 +1532,7 @@ File: ../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-40.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-40.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-40.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 335.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 338.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-50.00_(-15.00_15.00)(-15.00_
@@ -1543,7 +1543,7 @@ File: ../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-50.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-50.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-50.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 341.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 344.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-60.00_(-15.00_15.00)(-15.00_
@@ -1554,25 +1554,25 @@ File: ../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-60.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-60.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-60.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 347.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 350.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 315--351
+Underfull \hbox (badness 10000) in paragraph at lines 318--354
 []$[]$$[]$
  []
 
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 315--351
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 318--354
 []$ $[]$
  []
 
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 315--351
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 318--354
 []$ $[]$ 
  []
 
 
-LaTeX Warning: Float too large for page by 21.37265pt on input line 353.
+LaTeX Warning: Float too large for page by 21.37265pt on input line 356.
 
 [11 <../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-10.00_(-15.00_15.00)(-15
 .00_15.00).png> <../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-20.00_(-15.0
@@ -1589,7 +1589,7 @@ File: ../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-15.00_(-15.00_15.00)(-
 <use ../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-15.00_(-15.00_15.00)(-1
 5.00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-15.
-00_(-15.00_15.00)(-15.00_15.00).png used on input line 359.
+00_(-15.00_15.00)(-15.00_15.00).png used on input line 362.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-30.00_(-15.00_15.00)(-15.00
@@ -1600,7 +1600,7 @@ File: ../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-30.00_(-15.00_15.00)(-
 <use ../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-30.00_(-15.00_15.00)(-1
 5.00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-30.
-00_(-15.00_15.00)(-15.00_15.00).png used on input line 365.
+00_(-15.00_15.00)(-15.00_15.00).png used on input line 368.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-45.00_(-15.00_15.00)(-15.00
@@ -1611,7 +1611,7 @@ File: ../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-45.00_(-15.00_15.00)(-
 <use ../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-45.00_(-15.00_15.00)(-1
 5.00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-45.
-00_(-15.00_15.00)(-15.00_15.00).png used on input line 371.
+00_(-15.00_15.00)(-15.00_15.00).png used on input line 374.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-60.00_(-15.00_15.00)(-15.00
@@ -1622,7 +1622,7 @@ File: ../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-60.00_(-15.00_15.00)(-
 <use ../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-60.00_(-15.00_15.00)(-1
 5.00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-60.
-00_(-15.00_15.00)(-15.00_15.00).png used on input line 377.
+00_(-15.00_15.00)(-15.00_15.00).png used on input line 380.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-75.00_(-15.00_15.00)(-15.00
@@ -1633,7 +1633,7 @@ File: ../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-75.00_(-15.00_15.00)(-
 <use ../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-75.00_(-15.00_15.00)(-1
 5.00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-75.
-00_(-15.00_15.00)(-15.00_15.00).png used on input line 383.
+00_(-15.00_15.00)(-15.00_15.00).png used on input line 386.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-90.00_(-15.00_15.00)(-15.00
@@ -1644,25 +1644,25 @@ File: ../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-90.00_(-15.00_15.00)(-
 <use ../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-90.00_(-15.00_15.00)(-1
 5.00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-90.
-00_(-15.00_15.00)(-15.00_15.00).png used on input line 389.
+00_(-15.00_15.00)(-15.00_15.00).png used on input line 392.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 357--393
+Underfull \hbox (badness 10000) in paragraph at lines 360--396
 []$[]$$[]$
  []
 
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 357--393
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 360--396
 []$ $[]$
  []
 
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 357--393
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 360--396
 []$ $[]$ 
  []
 
 
-LaTeX Warning: Float too large for page by 21.37265pt on input line 395.
+LaTeX Warning: Float too large for page by 21.37265pt on input line 398.
 
 [12 <../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-15.00_(-15.00_15.00)(-1
 5.00_15.00).png> <../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-30.00_(-15
@@ -1680,7 +1680,7 @@ File: ../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-15.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-15.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-15.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 401.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 404.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-30.00_(-15.00_15.00)(-15.00_
@@ -1691,7 +1691,7 @@ File: ../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-30.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-30.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-30.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 407.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 410.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-45.00_(-15.00_15.00)(-15.00_
@@ -1702,7 +1702,7 @@ File: ../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-45.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-45.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-45.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 413.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 416.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-60.00_(-15.00_15.00)(-15.00_
@@ -1713,7 +1713,7 @@ File: ../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-60.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-60.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-60.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 419.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 422.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-75.00_(-15.00_15.00)(-15.00_
@@ -1724,7 +1724,7 @@ File: ../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-75.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-75.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-75.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 425.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 428.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-90.00_(-15.00_15.00)(-15.00_
@@ -1735,25 +1735,25 @@ File: ../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-90.00_(-15.00_15.00)(-1
 <use ../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-90.00_(-15.00_15.00)(-15
 .00_15.00).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-90.0
-0_(-15.00_15.00)(-15.00_15.00).png used on input line 431.
+0_(-15.00_15.00)(-15.00_15.00).png used on input line 434.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 399--435
+Underfull \hbox (badness 10000) in paragraph at lines 402--438
 []$[]$$[]$
  []
 
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 399--435
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 402--438
 []$ $[]$
  []
 
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 399--435
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 402--438
 []$ $[]$ 
  []
 
 
-LaTeX Warning: Float too large for page by 21.37265pt on input line 437.
+LaTeX Warning: Float too large for page by 21.37265pt on input line 440.
 
 [13 <../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-15.00_(-15.00_15.00)(-15
 .00_15.00).png> <../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-30.00_(-15.0
@@ -1770,7 +1770,7 @@ File: ../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-40.00_(-18.32_18.32)(-
 <use ../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-40.00_(-18.32_18.32)(-1
 8.32_18.32).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-40.
-00_(-18.32_18.32)(-18.32_18.32).png used on input line 443.
+00_(-18.32_18.32)(-18.32_18.32).png used on input line 446.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-60.00_(-18.32_18.32)(-18.32
@@ -1781,7 +1781,7 @@ File: ../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-60.00_(-18.32_18.32)(-
 <use ../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-60.00_(-18.32_18.32)(-1
 8.32_18.32).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-60.
-00_(-18.32_18.32)(-18.32_18.32).png used on input line 449.
+00_(-18.32_18.32)(-18.32_18.32).png used on input line 452.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-80.00_(-18.32_18.32)(-18.32
@@ -1792,7 +1792,7 @@ File: ../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-80.00_(-18.32_18.32)(-
 <use ../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-80.00_(-18.32_18.32)(-1
 8.32_18.32).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-80.
-00_(-18.32_18.32)(-18.32_18.32).png used on input line 455.
+00_(-18.32_18.32)(-18.32_18.32).png used on input line 458.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-100.00_(-18.32_18.32)(-18.3
@@ -1803,7 +1803,7 @@ File: ../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-100.00_(-18.32_18.32)(
 <use ../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-100.00_(-18.32_18.32)(-
 18.32_18.32).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-100
-.00_(-18.32_18.32)(-18.32_18.32).png used on input line 461.
+.00_(-18.32_18.32)(-18.32_18.32).png used on input line 464.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-120.00_(-18.32_18.32)(-18.3
@@ -1814,7 +1814,7 @@ File: ../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-120.00_(-18.32_18.32)(
 <use ../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-120.00_(-18.32_18.32)(-
 18.32_18.32).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-120
-.00_(-18.32_18.32)(-18.32_18.32).png used on input line 467.
+.00_(-18.32_18.32)(-18.32_18.32).png used on input line 470.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-140.00_(-18.32_18.32)(-18.3
@@ -1825,25 +1825,25 @@ File: ../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-140.00_(-18.32_18.32)(
 <use ../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-140.00_(-18.32_18.32)(-
 18.32_18.32).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-140
-.00_(-18.32_18.32)(-18.32_18.32).png used on input line 473.
+.00_(-18.32_18.32)(-18.32_18.32).png used on input line 476.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 441--477
+Underfull \hbox (badness 10000) in paragraph at lines 444--480
 []$[]$$[]$
  []
 
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 441--477
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 444--480
 []$ $[]$
  []
 
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 441--477
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 444--480
 []$ $[]$ 
  []
 
 
-LaTeX Warning: Float too large for page by 21.37265pt on input line 479.
+LaTeX Warning: Float too large for page by 21.37265pt on input line 482.
 
 [14 <../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-40.00_(-18.32_18.32)(-1
 8.32_18.32).png> <../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-60.00_(-18
@@ -1861,7 +1861,7 @@ File: ../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-40.00_(-18.32_18.32)(-1
 <use ../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-40.00_(-18.32_18.32)(-18
 .32_18.32).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-40.0
-0_(-18.32_18.32)(-18.32_18.32).png used on input line 485.
+0_(-18.32_18.32)(-18.32_18.32).png used on input line 488.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-60.00_(-18.32_18.32)(-18.32_
@@ -1872,7 +1872,7 @@ File: ../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-60.00_(-18.32_18.32)(-1
 <use ../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-60.00_(-18.32_18.32)(-18
 .32_18.32).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-60.0
-0_(-18.32_18.32)(-18.32_18.32).png used on input line 491.
+0_(-18.32_18.32)(-18.32_18.32).png used on input line 494.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-80.00_(-18.32_18.32)(-18.32_
@@ -1883,7 +1883,7 @@ File: ../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-80.00_(-18.32_18.32)(-1
 <use ../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-80.00_(-18.32_18.32)(-18
 .32_18.32).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-80.0
-0_(-18.32_18.32)(-18.32_18.32).png used on input line 497.
+0_(-18.32_18.32)(-18.32_18.32).png used on input line 500.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-100.00_(-18.32_18.32)(-18.32
@@ -1894,7 +1894,7 @@ File: ../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-100.00_(-18.32_18.32)(-
 <use ../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-100.00_(-18.32_18.32)(-1
 8.32_18.32).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-100.
-00_(-18.32_18.32)(-18.32_18.32).png used on input line 503.
+00_(-18.32_18.32)(-18.32_18.32).png used on input line 506.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-120.00_(-18.32_18.32)(-18.32
@@ -1905,7 +1905,7 @@ File: ../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-120.00_(-18.32_18.32)(-
 <use ../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-120.00_(-18.32_18.32)(-1
 8.32_18.32).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-120.
-00_(-18.32_18.32)(-18.32_18.32).png used on input line 509.
+00_(-18.32_18.32)(-18.32_18.32).png used on input line 512.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
 <../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-140.00_(-18.32_18.32)(-18.32
@@ -1916,25 +1916,25 @@ File: ../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-140.00_(-18.32_18.32)(-
 <use ../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-140.00_(-18.32_18.32)(-1
 8.32_18.32).png>
 Package pdftex.def Info: ../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-140.
-00_(-18.32_18.32)(-18.32_18.32).png used on input line 515.
+00_(-18.32_18.32)(-18.32_18.32).png used on input line 518.
 (pdftex.def)             Requested size: 167.3021pt x 167.30095pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 483--519
+Underfull \hbox (badness 10000) in paragraph at lines 486--522
 []$[]$$[]$
  []
 
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 483--519
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 486--522
 []$ $[]$
  []
 
 
-Overfull \hbox (2.2222pt too wide) in paragraph at lines 483--519
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 486--522
 []$ $[]$ 
  []
 
 
-LaTeX Warning: Float too large for page by 21.37265pt on input line 521.
+LaTeX Warning: Float too large for page by 21.37265pt on input line 524.
 
 [15 <../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-40.00_(-18.32_18.32)(-18
 .32_18.32).png> <../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-60.00_(-18.3
@@ -1956,34 +1956,34 @@ rmin-theta0-rot-1-18-0.2-1/screenshot-140.00_(-18.32_18.32)(-18.32_18.32).png>]
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 529--531
+Underfull \hbox (badness 10000) in paragraph at lines 532--534
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 542.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 545.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 542.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 545.
 
-Underfull \hbox (badness 10000) in paragraph at lines 547--560
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 547--560
+Underfull \hbox (badness 10000) in paragraph at lines 550--563
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 547--560
+Underfull \hbox (badness 10000) in paragraph at lines 550--563
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 547--560
+Underfull \hbox (badness 10000) in paragraph at lines 550--563
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 550--563
 
  []
 
@@ -2258,7 +2258,7 @@ e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2
 016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/20
 16/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016
 /texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on compreport.pdf (40 pages, 913893 bytes).
+Output written on compreport.pdf (40 pages, 913916 bytes).
 PDF statistics:
  312 PDF objects out of 1000 (max. 8388607)
  133 compressed objects within 2 object streams
