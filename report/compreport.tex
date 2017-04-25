@@ -21,7 +21,7 @@ sorting=none
 
 \begin{titlingpage}
 \title{Tidal Tails}
-\author{Jordan Osborn}
+\author{}
 \maketitle
 \begin{abstract}
 	
@@ -45,7 +45,7 @@ The aim of my program was to find out how the direction of rotation of the test 
 
 \clearpage
 \section{Analysis of Methods}
-First of all the problem required scaling, in typical units (SI) the gravitational constant $G=6.67\times10^{-11} m^3 kg^{-1} s$ and a typical central mass might be many orders of magnitude larger than the mass of the sun ($M_\odot=2.0\times10^{30 } kg$). So units where G=1 and the central mass M=1 were selected. This scaling is required because otherwise we would have time scales of orbits which are far too long to simulate, and smaller values are in general easier to deal with. Another issue is the potential for infinities to arise in simulations. These infinities arise due to the singular nature of the gravitational force at small distances. To compensate for this the force on a test particle after entering the surface of a central mass was altered to a repulsive radial force $(\frac{GM}{r^2} \underline{\hat{r}})$. In this way a particle can't penetrate far enough in to a particle for infinities to arise. This method provides a crude simulation of collisions between test particles and large masses.
+First of all the problem required scaling, in typical units (SI) the gravitational constant $G=6.67\times10^{-11} m^3 kg^{-1} s$ and a typical central mass might be many orders of magnitude larger than the mass of the sun ($M_\odot=2.0\times10^{30 } kg$). So units where G = 1 and the central mass M = 1 were selected (the perturbing galaxy also defaults to having a mass of 1). This scaling is required because otherwise we would have time scales of orbits which are far too long to simulate, and smaller values are in general easier to deal with. Another issue is the potential for infinities to arise in simulations. These infinities arise due to the singular nature of the gravitational force at small distances. To compensate for this the force on a test particle after entering the surface of a central mass was altered to a repulsive radial force $(\frac{GM}{r^2} \underline{\hat{r}})$. In this way a particle can't penetrate far enough in to a particle for infinities to arise. This method provides a crude simulation of collisions between test particles and large masses.
 \\
 \\
 A Verlet integration method was selected for this simulation in part because it is symplectic (unlike RK4) which means it will conserve energy well, this is very important in orbital dynamics to prevent energy drift and to maintain stable orbits. Another reason it was chosen is due to it being only slightly more computationally expensive than other lower order methods (euler) while having errors of order $\Delta t^4$ rather than $\Delta t^2$. Verlet is also less computationally expensive than RK4. Finally implementing an integrator using Verlet rather than RK4 meant that the acceleration only needed to be evaluated at the particle's current position. The Verlet algorithm requires current and past information only and doesn't depend on predicting future values like RK4. This means Verlet lends itself well to the "real-time" visualisation that this program intends to achieve.
@@ -224,6 +224,300 @@ Combining equation 1 and 2 and using the fact that the central mass (subscript 1
 \end{subfigure}
 \caption{Plots at 6 different time slices for a perturbing galaxy with a parabolic orbit (e = 1). The perturbing galaxy has a closest approach of 6 units and starts at an angle of $0.2 \times 2\pi$. Test particles are initially in a clockwise circular orbit around the central mass. (Perturbation direction set to 1)}
 \label{fig3:fig3}
+\end{figure}
+\clearpage
+
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-5.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 5.0s, Scale = 30 x 30 square units.}
+  \label{fig4:sfig1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-10.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 10.0s, Scale = 30 x 30 square units.}
+  \label{fig4:sfig2}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-15.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 15.0s, Scale = 30 x 30 square units.}
+  \label{fig4:sfig3}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-20.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 20.0s, Scale = 30 x 30 square units.}
+  \label{fig4:sfig4}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-25.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 25.0s, Scale = 30 x 30 square units.}
+  \label{fig4:sfig5}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-30.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 30.0s, Scale = 30 x 30 square units.}
+  \label{fig4:sfig6}
+\end{subfigure}
+\caption{Plots at 6 different time slices for a perturbing galaxy with a parabolic orbit (e = 1). The perturbing galaxy has a closest approach of 6 units and starts at an angle of $0.2 \times 2\pi$. Test particles are initially in an anticlockwise circular orbit around the central mass. (Perturbation direction set to 1)}
+\label{fig4:fig4}
+\end{figure}
+\clearpage
+
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-10.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 10.0s, Scale = 30 x 30 square units.}
+  \label{fig5:sfig1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-20.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 20.0s, Scale = 30 x 30 square units.}
+  \label{fig5:sfig2}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-30.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 30.0s, Scale = 30 x 30 square units.}
+  \label{fig5:sfig3}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-40.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 40.0s, Scale = 30 x 30 square units.}
+  \label{fig5:sfig4}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-50.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 50.0s, Scale = 30 x 30 square units.}
+  \label{fig5:sfig5}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-60.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 60.0s, Scale = 30 x 30 square units.}
+  \label{fig5:sfig6}
+\end{subfigure}
+\caption{Plots at 6 different time slices for a perturbing galaxy with a parabolic orbit (e = 1). The perturbing galaxy has a closest approach of 10 units and starts at an angle of $0.2 \times 2\pi$. Test particles are initially in a clockwise circular orbit around the central mass. (Perturbation direction set to 1)}
+\label{fig5:fig5}
+\end{figure}
+\clearpage
+
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-10.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 10.0s, Scale = 30 x 30 square units.}
+  \label{fig6:sfig1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-20.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 20.0s, Scale = 30 x 30 square units.}
+  \label{fig6:sfig2}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-30.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 30.0s, Scale = 30 x 30 square units.}
+  \label{fig6:sfig3}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-40.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 40.0s, Scale = 30 x 30 square units.}
+  \label{fig6:sfig4}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-50.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 50.0s, Scale = 30 x 30 square units.}
+  \label{fig6:sfig5}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-60.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 60.0s, Scale = 30 x 30 square units.}
+  \label{fig6:sfig6}
+\end{subfigure}
+\caption{Plots at 6 different time slices for a perturbing galaxy with a parabolic orbit (e = 1). The perturbing galaxy has a closest approach of 10 units and starts at an angle of $0.2 \times 2\pi$. Test particles are initially in an anticlockwise circular orbit around the central mass. (Perturbation direction set to 1)}
+\label{fig6:fig6}
+\end{figure}
+\clearpage
+
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-15.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 15.0s, Scale = 30 x 30 square units.}
+  \label{fig7:sfig1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-30.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 30.0s, Scale = 30 x 30 square units.}
+  \label{fig7:sfig2}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-45.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 45.0s, Scale = 30 x 30 square units.}
+  \label{fig7:sfig3}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-60.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 60.0s, Scale = 30 x 30 square units.}
+  \label{fig7:sfig4}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-75.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 75.0s, Scale = 30 x 30 square units.}
+  \label{fig7:sfig5}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-90.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 90.0s, Scale = 30 x 30 square units.}
+  \label{fig7:sfig6}
+\end{subfigure}
+\caption{Plots at 6 different time slices for a perturbing galaxy with a parabolic orbit (e = 1). The perturbing galaxy has a closest approach of 14 units and starts at an angle of $0.2 \times 2\pi$. Test particles are initially in a clockwise circular orbit around the central mass. (Perturbation direction set to 1)}
+\label{fig7:fig7}
+\end{figure}
+\clearpage
+
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-15.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 15.0s, Scale = 30 x 30 square units.}
+  \label{fig8:sfig1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-30.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 30.0s, Scale = 30 x 30 square units.}
+  \label{fig8:sfig2}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-45.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 45.0s, Scale = 30 x 30 square units.}
+  \label{fig8:sfig3}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-60.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 60.0s, Scale = 30 x 30 square units.}
+  \label{fig8:sfig4}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-75.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 75.0s, Scale = 30 x 30 square units.}
+  \label{fig8:sfig5}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-90.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 90.0s, Scale = 30 x 30 square units.}
+  \label{fig8:sfig6}
+\end{subfigure}
+\caption{Plots at 6 different time slices for a perturbing galaxy with a parabolic orbit (e = 1). The perturbing galaxy has a closest approach of 14 units and starts at an angle of $0.2 \times 2\pi$. Test particles are initially in an anticlockwise circular orbit around the central mass. (Perturbation direction set to 1)}
+\label{fig8:fig8}
+\end{figure}
+\clearpage
+
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-40.00_(-18.32_18.32)(-18.32_18.32)}.png}
+  \caption{t = 40.0s, Scale = 36.64 x 36.64 square units.}
+  \label{fig9:sfig1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-60.00_(-18.32_18.32)(-18.32_18.32)}.png}
+  \caption{t = 60.0s, Scale = 36.64 x 36.64 square units.}
+  \label{fig9:sfig2}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-80.00_(-18.32_18.32)(-18.32_18.32)}.png}
+  \caption{t = 80.0s, Scale = 36.64 x 36.64 square units.}
+  \label{fig9:sfig3}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-100.00_(-18.32_18.32)(-18.32_18.32)}.png}
+  \caption{t = 100.0s, Scale = 36.64 x 36.64 square units.}
+  \label{fig9:sfig4}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-120.00_(-18.32_18.32)(-18.32_18.32)}.png}
+  \caption{t = 120.0s, Scale = 36.64 x 36.64 square units.}
+  \label{fig9:sfig5}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-140.00_(-18.32_18.32)(-18.32_18.32)}.png}
+  \caption{t = 140.0s, Scale = 36.64 x 36.64 square units.}
+  \label{fig9:sfig6}
+\end{subfigure}
+\caption{Plots at 6 different time slices for a perturbing galaxy with a parabolic orbit (e = 1). The perturbing galaxy has a closest approach of 18 units and starts at an angle of $0.2 \times 2\pi$. Test particles are initially in a clockwise circular orbit around the central mass. (Perturbation direction set to 1)}
+\label{fig9:fig9}
+\end{figure}
+\clearpage
+
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-40.00_(-18.32_18.32)(-18.32_18.32)}.png}
+  \caption{t = 40.0s, Scale = 36.64 x 36.64 square units.}
+  \label{fig9:sfig1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-60.00_(-18.32_18.32)(-18.32_18.32)}.png}
+  \caption{t = 60.0s, Scale = 36.64 x 36.64 square units.}
+  \label{fig9:sfig2}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-80.00_(-18.32_18.32)(-18.32_18.32)}.png}
+  \caption{t = 80.0s, Scale = 36.64 x 36.64 square units.}
+  \label{fig9:sfig3}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-100.00_(-18.32_18.32)(-18.32_18.32)}.png}
+  \caption{t = 100.0s, Scale = 36.64 x 36.64 square units.}
+  \label{fig9:sfig4}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-120.00_(-18.32_18.32)(-18.32_18.32)}.png}
+  \caption{t = 120.0s, Scale = 36.64 x 36.64 square units.}
+  \label{fig9:sfig5}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-140.00_(-18.32_18.32)(-18.32_18.32)}.png}
+  \caption{t = 140.0s, Scale = 36.64 x 36.64 square units.}
+  \label{fig9:sfig6}
+\end{subfigure}
+\caption{Plots at 6 different time slices for a perturbing galaxy with a parabolic orbit (e = 1). The perturbing galaxy has a closest approach of 18 units and starts at an angle of $0.2 \times 2\pi$. Test particles are initially in an anticlockwise circular orbit around the central mass. (Perturbation direction set to 1)}
+\label{fig9:fig9}
 \end{figure}
 \clearpage
 

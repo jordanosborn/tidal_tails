@@ -12,7 +12,7 @@ void screenshot (std::string filename){
     GLint x1= (size[2]-x0)/256;
     GLint y0= size[3] % 256;
     GLint y1= (size[3]-y0)/256;
-    //.tga header
+    //.tga file format header
     GLubyte header[18]={0,0,2,0,0,0,0,0,0,0,0,0,
                               static_cast<GLubyte >(x0),
                               static_cast<GLubyte >(x1),
@@ -27,4 +27,3 @@ void screenshot (std::string filename){
     delete[] data;
     data=NULL;
 }
-//
