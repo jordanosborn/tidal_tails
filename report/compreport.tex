@@ -4,6 +4,7 @@
 \usepackage{geometry}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{subcaption}
 \usepackage{titling}
 \usepackage{listings}
 \usepackage[
@@ -37,7 +38,7 @@ The aim of this project is to simulate/observe the creation of tidal tails. Tida
 The computational techniques used in this program will be analysed in section 2, following this the specific implementation and how the simulation performed will be discussed in section 3. The screenshots of the Tidal Tails and discussions of them will be contained in section 4. And finally any concluding remarks will be in section 5. An appendix containing instructions and full code listings is included at the end of this document. 
 \\
 \\
-The program created is interactive and the camera can move around the scene using the WASD keys and zoom out/in using the keys Q and E respectively. Screenshots can be taken using the P key (creates a tga image file, can convert to png using the convert\_png.sh script provided) and the simulation can be paused/ unpaused using the SPACEBAR (Note pausing will print out the dimensions of the visualisation in the console). Logging of the particle's positions to a text file can be toggled on/ off using the L key. And if the correct flag is activated (INTERACTIVE) masses can be created by clicking (left), dragging and then releasing inside the window (the velocity of the created mass is proportional to the length of the drag). The input parameters for the perturbing galaxy can be set using command line arguments when starting the program (eccentricity, $\theta_0$, Closest Approach, Rotation direction of central galaxy ($1=\circlearrowright, -1=\circlearrowleft$), Perturbation orbit direction). In the simulation the central mass and perturbing galaxy are green in colour, the test particles are red and the trail of the perturbing galaxy is blue.
+The program created is interactive and the camera can move around the scene using the WASD keys and zoom out/in using the keys Q and E respectively. Screenshots can be taken using the P key (creates a tga image file, can convert to png using the convert\_png.sh script provided) and the simulation can be paused/ unpaused using the SPACEBAR (Note pausing will print out the dimensions of the visualisation in the console). Logging of the particle's positions to a text file can be toggled on/ off using the L key. And if the correct flag is activated (INTERACTIVE) masses can be created by clicking (left), dragging and then releasing inside the window (the velocity of the created mass is proportional to the length of the drag). The input parameters for the perturbing galaxy can be set using command line arguments when starting the program (eccentricity, $\theta_0$, Closest Approach, Rotation direction of central galaxy ($-1=\circlearrowright, 1=\circlearrowleft$), Perturbation orbit direction). In the simulation the central mass and perturbing galaxy are green in colour, the test particles are red and the trail of the perturbing galaxy is blue.
 \\
 \\
 The aim of my program was to find out how the direction of rotation of the test particle's initial orbit affect the formation of tidal tails for various perturbing galaxy orbits.
@@ -66,7 +67,7 @@ This obviously requires the particle's previous and current position to calculat
 The algorithm was tested using circular orbits to determine that it was functioning correctly. The radius of the orbit was plotted as a function of time for several orbits to determine the degree of variation. One of these plots is shown below.
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=80mm, height=40mm]{../bin/Radius.png}
+\includegraphics[width=80mm, height=40mm]{../output/Radius.png}
 \caption{The variation in radius for a test mass in a circular orbit at a radius of 10 (arbitrary units), shows small sinusoidal variations around the initial radius. The graph shows roughly 18 orbits.
 \label{radiusfig}}
 \end{figure}
@@ -95,12 +96,137 @@ To simplify the determination of the initial conditions of the system (for a con
 \item Cartesian coordinates $x=r\cos{\theta},y=r\sin{\theta}$
 \end{enumerate}
 
-Combining equation 1 and 2 and using the fact that the central mass (subscript 1) is fixed with 0 velocity at the origin it is possible to find the magnitude of the initial velocity of the perturbing galaxy. To find the direction of the velocity you can use the fact that the velocity vector must be a tangent to the galaxy's orbit. Rewriting equation 3 in cartesian form and finding $\frac{dy}{dx}$ it is possible to determine this tangent vector. To find the perturbing galaxy's initial position you just need to convert the polar form of the orbit (3) into cartesian coordinates using (4). To specify these initial coordinates and velocity we need 3 independent parameters the eccentricity e, the starting angle $\theta_0$, and the distance of closest approach $r_{min}$. These 3 quantities are taken as input parameters in the program and are used to determine the initial conditions for the perturbing galaxy.
+Combining equation 1 and 2 and using the fact that the central mass (subscript 1) is fixed with 0 velocity at the origin it is possible to find the magnitude of the initial velocity of the perturbing galaxy. To find the direction of the velocity you can use the fact that the velocity vector must be a tangent to the galaxy's orbit. Rewriting equation 3 in Cartesian form and finding $\frac{dy}{dx}$ it is possible to determine this tangent vector. To find the perturbing galaxy's initial position you just need to convert the polar form of the orbit (3) into Cartesian coordinates using (4). To specify these initial coordinates and velocity we need 3 independent parameters the eccentricity e, the starting angle $\theta_0$, and the distance of closest approach $r_{min}$. These 3 quantities are taken as input parameters in the program and are used to determine the initial conditions for the perturbing galaxy.
 
 \clearpage
 \section{Results and Discussion}
-
 \clearpage
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-5.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 5.0s, Scale = 30 x 30 square units.}
+  \label{fig1:sfig1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-10.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 10.0s, Scale = 30 x 30 square units.}
+  \label{fig1:sfig2}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-15.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 15.0s, Scale = 30 x 30 square units.}
+  \label{fig1:sfig3}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-20.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 20.0s, Scale = 30 x 30 square units.}
+  \label{fig1:sfig4}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-25.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 25.0s, Scale = 30 x 30 square units.}
+  \label{fig1:sfig5}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-30.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 30.0s, Scale = 30 x 30 square units.}
+  \label{fig1:sfig6}
+\end{subfigure}
+\caption{Plots at 6 different time slices for a perturbing galaxy with a parabolic orbit (e = 1). The perturbing galaxy has a closest approach of 2 units and starts at an angle of $0.35 \times 2\pi$. Test particles are initially in a clockwise circular orbit around the central mass.  (Perturbation direction set to 1)}
+\label{fig1:fig1}
+\end{figure}
+\clearpage
+
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-5.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 5.0s, Scale = 30 x 30 square units.}
+  \label{fig2:sfig1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-10.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 10.0s, Scale = 30 x 30 square units.}
+  \label{fig2:sfig2}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-15.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 15.0s, Scale = 30 x 30 square units.}
+  \label{fig2:sfig3}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-20.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 20.0s, Scale = 30 x 30 square units.}
+  \label{fig2:sfig4}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-25.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 25.0s, Scale = 30 x 30 square units.}
+  \label{fig2:sfig5}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-30.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 30.0s, Scale = 30 x 30 square units.}
+  \label{fig2:sfig6}
+\end{subfigure}
+\caption{Plots at 6 different time slices for a perturbing galaxy with a parabolic orbit (e = 1). The perturbing galaxy has a closest approach of 2 units and starts at an angle of $0.35 \times 2\pi$. Test particles are initially in an anticlockwise circular orbit around the central mass. (Perturbation direction set to 1)}
+\label{fig2:fig2}
+\end{figure}
+\clearpage
+
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-5.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 5.0s, Scale = 30 x 30 square units.}
+  \label{fig3:sfig1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-10.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 10.0s, Scale = 30 x 30 square units.}
+  \label{fig3:sfig2}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-15.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 15.0s, Scale = 30 x 30 square units.}
+  \label{fig3:sfig3}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-20.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 20.0s, Scale = 30 x 30 square units.}
+  \label{fig3:sfig4}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-25.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 25.0s, Scale = 30 x 30 square units.}
+  \label{fig3:sfig5}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{{../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-30.00_(-15.00_15.00)(-15.00_15.00)}.png}
+  \caption{t = 30.0s, Scale = 30 x 30 square units.}
+  \label{fig3:sfig6}
+\end{subfigure}
+\caption{Plots at 6 different time slices for a perturbing galaxy with a parabolic orbit (e = 1). The perturbing galaxy has a closest approach of 6 units and starts at an angle of $0.2 \times 2\pi$. Test particles are initially in a clockwise circular orbit around the central mass. (Perturbation direction set to 1)}
+\label{fig3:fig3}
+\end{figure}
+\clearpage
+
 \section{Conclusions}
 
 \clearpage
@@ -124,7 +250,7 @@ Instructions to build and run project:
 	make
 	bin/main {optional-arguments}
 \end{lstlisting}
-Command line arguments if 5 arguments supplied (eccentricity, $\theta_0$, Closest Approach, Rotation direction of central galaxy ($1=\circlearrowright, -1=\circlearrowleft$), Perturbation orbit direction).
+Command line arguments if 5 arguments supplied (eccentricity, $\theta_0$, Closest Approach, Rotation direction of central galaxy ($-1=\circlearrowright, 1=\circlearrowleft$), Perturbation orbit direction).
 \\
 \\
 Command line arguments if 4 arguments supplied (eccentricity, $\theta_0$, Closest Approach, TESTING (1 = true, 0 = false))
