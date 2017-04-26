@@ -40,7 +40,6 @@ public:
                          std::vector<std::array<GLint,2> > distribution, GLboolean fixed);
     void render_universe(camera* c);
     friend var getTimestep(universe*);
-    //should log data at end of constructor.
     universe(GLboolean);
 };
 

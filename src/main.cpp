@@ -24,7 +24,8 @@
 
 
 std::string PROGRAMNAME = "Tidal Tails";
-
+GLboolean AUTOSCREENSHOT = true;
+GLint N = 40;
 GLint WIDTH = 900;
 GLint HEIGHT = 900;
 // SDL
@@ -107,7 +108,6 @@ GLboolean init() {
     return true;
 }
 
-//TODO: fix rot direction in upper and lower half plane
 void gen_perturbation(universe* u, var e, var orbit_fraction, var closest_approach,
                       GLint central_rotation, GLint pert_direction, GLint N){
     var theta = 2.0*M_PI *(orbit_fraction);
@@ -146,7 +146,6 @@ void gen_perturbation(universe* u, var e, var orbit_fraction, var closest_approa
                        {{N*12,2},{N*18,3},{N*24,4},{N*30,5},{N*36,6},{N*42,7},{N*48,8}},1);
 }
 
-//TODO: fix rot direction in upper/lower half plane
 void orbit_test(universe* u, var e, var orbit_fraction, var closest_approach){
     var theta = 2.0*M_PI *(orbit_fraction);
     var rmin = closest_approach;
@@ -191,7 +190,7 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach,
     //Create perturbing galaxy
     if(!INTERACTIVE and !TESTING) {
         gen_perturbation(&universe1, eccentricity, orbit_fraction, closest_approach,
-                         central_rotation, pert_direction, 40);
+                         central_rotation, pert_direction, N);
         mouseAllowed = false;
     }
     else if(TESTING){
@@ -217,8 +216,8 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach,
 
     var dx,dy,zl, mousex, mousey;
     GLdouble t = 0;
-    dx = 0.1;
-    dy = 0.1;
+    dx = 0.4;
+    dy = 0.4;
     zl = 0.1;
     mousex = 0;
     mousey = 0;
@@ -285,7 +284,8 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach,
                         std::cout << "(" << c.position[0]-1.0*SCALE/c.zoom << ","
                                   << c.position[0]+1.0*SCALE/c.zoom << ")";
                         std::cout << "(" << c.position[1]-1.0*SCALE/c.zoom << ","
-                                  << c.position[1]+1.0*SCALE/c.zoom << ")\n";
+                                  << c.position[1]+1.0*SCALE/c.zoom << ")  t = "
+                                  << t << "\n";
                         break;
                     /*case SDLK_r:
                         reversed= not reversed;
@@ -378,6 +378,20 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach,
                                                  getPosition(universe1.particles[0])[1]*
                                                  getPosition(universe1.particles[0])[1])
                             << "\n";
+            }
+            if(int(t)%5==0 and (t-int(t)) < getTimestep(&universe1) and AUTOSCREENSHOT){
+                screenshot_title.str(std::string());
+                screenshot_title << "screenshot-";
+                screenshot_title << std::fixed << std::setprecision(2)
+                                 << t << "_("
+                                 << c.position[0]-1.0*SCALE/c.zoom
+                                 << "_" << c.position[0]+1.0*SCALE/c.zoom
+                                 << ")("
+                                 << c.position[1]-1.0*SCALE/c.zoom
+                                 << "_" << c.position[1]+1.0*SCALE/c.zoom
+                                 << ").tga";
+                screenshot(screenshot_title.str());
+                std::cout << "Screenshot created." << std::endl;
             }
         }
 

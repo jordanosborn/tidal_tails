@@ -85,7 +85,7 @@ void universe::create_trail(GLint particle_num){
     }
 }
 
-//updates system and renders result  (time steos by dt)
+//updates system and renders result  (time steps by dt)
 void universe::update(SDL_Window* mainWindow, camera* c, GLboolean isReversed) {
     if (isReversed) dt = -std::abs(dt);
     else dt = std::abs(dt);
@@ -118,7 +118,7 @@ vec3 gforce(vec3 a0,particle* p, particle* b, var G = 1.0){
     if (R > getRadius(b)+getRadius(p))
         a = add(a0, mul(-G * getMass(b) / std::pow((R), 2),
                         unit(getPosition(p), getPosition(b))));
-    else//TODO: changed to repulsive force
+    else// Is now repulsive force, could be linear force for inside sphere.
         a = add(a0, mul((-1.0)*-G * getMass(b) / (R*R) / std::pow(getRadius(b), 3),
                         unit(getPosition(p), getPosition(b))));
     return a;
