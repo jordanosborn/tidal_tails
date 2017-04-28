@@ -36,7 +36,7 @@ The aim of this project is to simulate/observe the creation of tidal tails. Tida
 The computational techniques used in this program will be analysed in section 2, following this the specific implementation and how the simulation performed will be discussed in section 3. The screenshots of the Tidal Tails and discussions of them will be contained in section 4. And finally any concluding remarks will be in section 5. An appendix containing instructions and full code listings is included at the end of this document. 
 \\
 \\
-The program created is interactive and the camera can move around the scene using the WASD keys and zoom out/in using the keys Q and E respectively. Screenshots can be taken using the P key (creates a tga image file, can convert to png using the convert\_png.sh script provided), screenshots are also taken automatically at 5.0s intervals (simulated system time). The simulation can be paused/unpaused using the SPACEBAR (Note pausing will print out the dimensions of the visualisation in the console). Logging of the particle's positions to a text file can be toggled on/off using the L key. And if the correct flag is activated (INTERACTIVE) masses can be created by clicking (left), dragging and then releasing inside the window (the velocity of the created mass is proportional to the length and direction of the drag). The input parameters for the perturbing galaxy can be set using command line arguments when starting the program (eccentricity, $\theta_0$, Closest Approach, Rotation direction of central galaxy ($-1=\circlearrowright, 1=\circlearrowleft$), Perturbation orbit direction). In the simulation the central mass and perturbing galaxy are green in colour, the test particles are red and the trail of the perturbing galaxy is blue.
+The program created is interactive the camera can move around the scene, screenshots can be taken, logging can be toggled on/off and if the correct flag is activated (INTERACTIVE) masses can be created by clicking. The input parameters for the perturbing galaxy can be set using command line arguments when starting the program. In the simulation the central mass and perturbing galaxy are green in colour, the test particles are red and the trail of the perturbing galaxy is blue. Detailed instructions on how to operate this program are provided in section 6.
 \\
 \\
 The aim of this program was to find out how the direction of rotation of the test particle's initial orbits affect the formation of tidal tails for various perturbing galaxies with parabolic trajectories.
@@ -65,7 +65,7 @@ The first implementation issue was to decide the integrator to use, Verlet was s
 This obviously requires the particle's previous and current position to calculate the particle's next position. At t = 0 we only know the particle's current position so the first time step must be carried out using a different algorithm. A simple 2nd order method was selected to carry out the first time step, $\underline{x}_{1} =  \underline{x}_0 + \underline{v}_0 {\Delta t} + \frac{1}{2}  \underline{a}(\underline{x}_0) {\Delta t }^ 2 .$ All future steps were then carried out using the Verlet algorithm. A time step of 0.005s was chosen for use in the Verlet algorithm because it was the smallest precision that didn't affect the smoothness of the visualisation.
 \\
 \\
-The algorithm was tested using circular orbits to determine that it was functioning correctly. The radius of the orbit was plotted as a function of time for several orbits to determine the degree of variation. One of these plots is shown below.
+The algorithm was tested using circular orbits to determine that it was functioning correctly. The radius of the orbit was plotted as a function of time for several orbits to determine the degree of variation. An example plot is shown in Figure ~\ref{fig:fig}. 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=80mm, height=40mm]{../output/Radius.png}
@@ -73,16 +73,16 @@ The algorithm was tested using circular orbits to determine that it was function
 \label{fig:fig}}
 \end{figure}
 \\
-The radius shows small order variations, indicating the algorithm was functioning as intended. Testing can be turned on by setting the TESTING flag to true. Orbits for many test particles were observed over many cycles to make sure they were following the expected trajectories (mainly conic sections). These were tested by modifying the galaxy creation step in the orbit\_test function in the main source code file.
+The radius shows small order variations, indicating the algorithm was functioning as intended. Testing can be turned on by setting the TESTING flag to true. Orbits for many test particles were observed over many cycles to make sure they were following the expected trajectories (conic sections). These were tested by modifying the galaxy creation step in the orbit\_test function in the main.cpp file.
 \\
 \\
 The loops that determine the accelerations of each of the particles only loop over the particles that are massive, this helps to speed up the computation by removing unnecessary loops. The test particles can be given mass by setting a flag but this results in the breakdown of the galaxies structure over time and also increases the computation time. These effects are undesirable so the test particles were assigned 0 mass. Another optimisation that was used was to store any vectorial quantities (position, velocity, acceleration) in fixed sized arrays of length 3 which are often more efficient to use than dynamic sized ones. These arrays are 3D so that the program is most general, but they can easily be reduced to 2D by changing the typedef statement of vec3 in the utilities.cpp source file. The results would not change as the visualisation and initial conditions are all in the x-y plane only. This reduction in dimension would reduce the memory footprint of each particle object. But the performance is satisfactory in the general 3D case, so 3D arrays were used.
 \\
 \\
-Performance was monitored to determine any possible causes of slow down. By turning off the rendering portion of the program and logging to data files instead it was seen that most of the computation time was in fact being used to render the particles to the screen after each time step. To reduce the time taken rendering an adaptive frame limiting method was employed. Now particle motion was only rendered after a certain amount of CPU time had passed and not after every time step. Doing this resulted in a much smoother visualisation and allowed the simulation to run much closer to real time. The adaptive portion of this method made it so the number of frames rendered each second scales with the number of particles in the system, meaning larger systems are rendered less often. This helps to prevent the visualisation from slowing to a crawl.
+Performance was monitored to determine any possible causes of slow down. By turning off the rendering portion of the program and logging to data files instead it was seen that most of the computation time was in fact being used to render the particles to the screen after each time step. To reduce the time taken rendering particle motion was only rendered after a certain amount of CPU time had passed and not after every time step. Doing this resulted in a much smoother visualisation and allowed the simulation to run much closer to real time. The method  was adaptive in that the number of frames rendered each second scaled with the number of particles in the system, meaning larger systems are rendered less often. This helps to prevent the visualisation from slowing to a crawl.
 \\
 \\
-Finally tests were carried out to determine the maximum amount of test particles that could be created without slowing the visualisation too much. With around 8000 test particles the simulations can be completely visualised within a few of minutes (2-5). This is a reasonable time for visualisation, so approximately 8000 test particles  seems like a sensible amount to include. The distributions of these particles were set according to the project manual's guidelines but with many more particles per ring.
+Finally tests were carried out to determine the maximum amount of test particles that could be created without slowing the visualisation too much. With around 8000 test particles the simulations can be completely visualised within a few of minutes (2-5). This is a reasonable time for visualisation, so approximately 8000 test particles  were included. The distributions of these particles were set according to the project manual's guidelines but with many more particles per ring.
 \\
 \\
 The program was created with object orientation in mind. Four classes were created. A particle class which housed all information about each individual particle and provided a function to render the particle. A universe class which housed pointers to all of the particles in a system, contained functions to generate galaxies, and functions that handled updating particle locations and logging of particle data. A logger class which essentially acted as a data logging device and stored particle positions in a data file when requested. And finally a camera class which stored the camera's location and calculated the zoom factor of the view, these quantities are then used during rendering to project the correct image of the scene on to the screen.
@@ -104,7 +104,7 @@ Combining equation 1 and 2 and using the fact that the central mass (subscript 1
 Multiple parabolic perturbing orbits were simulated. Images at various time slices for each orbit are provided below. The appropriate command line arguments to recover the plots are provided in the corresponding figure caption. The closest approach of the perturbing galaxy was varied over the range 2-18 units and for each of these approach parameters both clockwise $\circlearrowright$ and anticlockwise $\circlearrowleft$ rotation (of the test particles around the central mass) were simulated. It seems that the tidal tails become most pronounced when the perturbing galaxy has its closest approach just outside the farthest out ring of test particles. From the images included we also see that if the test particles are set in motion such that they move in the same direction as the perturbing galaxy (clockwise) then the structure of the initial orbit seems to break and pronounced tail formation does not happen. However if the test particles move against the direction of the perturbing galaxy's orbit (anticlockwise) then the structure of the initial orbits can still be seen and tidal tail formation is much more pronounced.
 
 \section{Conclusion}
-This program provides the means to simulate the effects the different types of orbit of a perturbing galaxy can have on a stationary test galaxy. It is seen in the images provided that parabolic perturbing galaxies can produce tidal tails, with the exact shape of the parabola and rotation direction of the test particles determining the overall shape of any tidal tails. The program could be improved by implementing a more accurate model of the perturbing galaxy, currently the perturbing galaxy interacts with the test particles as if it were just a small solid sphere. A possible improvement could be implementation of the dark matter halo form of a galaxy suggested by the project manual (easily implemented in the current program by setting the radii of the galaxies to large values, and altering the force function). The continuous visualisation proved quite successful as it provided the means to observe the origin and continuous formation of the tidal tails. Overall the program successfully manages to simulate the formation of tidal tails provided appropriate input parameters are chosen.
+This program provides the means to simulate the effects the different types of orbit of a perturbing galaxy can have on a stationary test galaxy. It is seen in the images provided that parabolic perturbing galaxies can produce tidal tails, with the exact shape of the parabola and rotation direction of the test particles determining the overall shape of any tidal tails. The program could be improved by implementing a more accurate model of the perturbing galaxy, currently the perturbing galaxy interacts with the test particles as if it were just a small solid sphere. A possible improvement could be implementation of the dark matter halo form of a galaxy suggested by the project manual (easily implemented in the current program by setting the radii of the galaxies to large values, and altering the force function). The visualisation proved quite successful as it provided the means to observe the origin and continuous formation of the tidal tails. Overall the program successfully manages to simulate the formation of tidal tails provided appropriate input parameters are chosen.
 
 \clearpage
 \begin{figure}
@@ -144,7 +144,7 @@ This program provides the means to simulate the effects the different types of o
   \caption{t = 30.0s}
   \label{fig1:sfig6}
 \end{subfigure}
-\caption{Plots at 6 different time slices (scale = 30 x 30 square units) for a perturbing galaxy with a parabolic orbit (e = 1). The perturbing galaxy has a closest approach of 2 units and starts at an angle of $0.35 \times 2\pi$. Test particles are initially in a clockwise circular orbit around the central mass.  (Perturbation direction set to 1) (cmd-line args \{1 0.35 2 -1 1\}) }
+\caption{Plots at 6 different times (30 units x 30 units) for a perturbing galaxy with a parabolic orbit (e = 1) of closest approach 2 units and starting angle $0.35 \times 2\pi$. Test particles initially in clockwise circular orbit around central mass. (cmd-line args \{1 0.35 2 -1 1\}) }
 \label{fig1:fig1}
 \end{figure}
 \clearpage
@@ -186,7 +186,7 @@ This program provides the means to simulate the effects the different types of o
   \caption{t = 30.0s}
   \label{fig2:sfig6}
 \end{subfigure}
-\caption{Plots at 6 different time slices (scale = 30 x 30 square units) for a perturbing galaxy with a parabolic orbit (e = 1). The perturbing galaxy has a closest approach of 2 units and starts at an angle of $0.35 \times 2\pi$. Test particles are initially in an anticlockwise circular orbit around the central mass. (Perturbation direction set to 1) (cmd-line args \{1 0.35 2 1 1\}) }
+\caption{Plots at 6 different times (30 units x 30 units) for a perturbing galaxy with a parabolic orbit (e = 1) of closest approach 2 units and starting angle $0.35 \times 2\pi$. Test particles initially in anticlockwise circular orbit around central mass. (cmd-line args \{1 0.35 2 1 1\}) }
 \label{fig2:fig2}
 \end{figure}
 \clearpage
@@ -228,7 +228,7 @@ This program provides the means to simulate the effects the different types of o
   \caption{t = 30.0s}
   \label{fig3:sfig6}
 \end{subfigure}
-\caption{Plots at 6 different time slices (scale = 30 x 30 square units) for a perturbing galaxy with a parabolic orbit (e = 1). The perturbing galaxy has a closest approach of 6 units and starts at an angle of $0.2 \times 2\pi$. Test particles are initially in a clockwise circular orbit around the central mass. (Perturbation direction set to 1) (cmd-line args \{1 0.2 6 -1 1\}) }
+\caption{Plots at 6 different times (30 units x 30 units) for a perturbing galaxy with a parabolic orbit (e = 1) of closest approach 6 units and starting angle $0.2 \times 2\pi$. Test particles initially in clockwise circular orbit around central mass. (cmd-line args \{1 0.2 6 -1 1\}) }
 \label{fig3:fig3}
 \end{figure}
 \clearpage
@@ -270,7 +270,7 @@ This program provides the means to simulate the effects the different types of o
   \caption{t = 30.0s}
   \label{fig4:sfig6}
 \end{subfigure}
-\caption{Plots at 6 different time slices (scale = 30 x 30 square units) for a perturbing galaxy with a parabolic orbit (e = 1). The perturbing galaxy has a closest approach of 6 units and starts at an angle of $0.2 \times 2\pi$. Test particles are initially in an anticlockwise circular orbit around the central mass. (Perturbation direction set to 1) (cmd-line args \{1 0.2 6 1 1\}) }
+\caption{Plots at 6 different times (30 units x 30 units) for a perturbing galaxy with a parabolic orbit (e = 1) of closest approach 6 units and starting angle $0.2 \times 2\pi$. Test particles initially in anticlockwise circular orbit around central mass. (cmd-line args \{1 0.2 6 1 1\}) }
 \label{fig4:fig4}
 \end{figure}
 \clearpage
@@ -312,7 +312,7 @@ This program provides the means to simulate the effects the different types of o
   \caption{t = 60.0s}
   \label{fig5:sfig6}
 \end{subfigure}
-\caption{Plots at 6 different time slices (scale = 30 x 30 square units) for a perturbing galaxy with a parabolic orbit (e = 1). The perturbing galaxy has a closest approach of 10 units and starts at an angle of $0.2 \times 2\pi$. Test particles are initially in a clockwise circular orbit around the central mass. (Perturbation direction set to 1) (cmd-line args \{1 0.2 10 -1 1\}) }
+\caption{Plots at 6 different times (30 units x 30 units) for a perturbing galaxy with a parabolic orbit (e = 1) of closest approach 10 units and starting angle $0.2 \times 2\pi$. Test particles initially in clockwise circular orbit around central mass. (cmd-line args \{1 0.2 10 -1 1\}) }
 \label{fig5:fig5}
 \end{figure}
 \clearpage
@@ -354,7 +354,7 @@ This program provides the means to simulate the effects the different types of o
   \caption{t = 60.0s}
   \label{fig6:sfig6}
 \end{subfigure}
-\caption{Plots at 6 different time slices (scale = 30 x 30 square units) for a perturbing galaxy with a parabolic orbit (e = 1). The perturbing galaxy has a closest approach of 10 units and starts at an angle of $0.2 \times 2\pi$. Test particles are initially in an anticlockwise circular orbit around the central mass. (Perturbation direction set to 1) (cmd-line args \{1 0.2 10 1 1\}) }
+\caption{Plots at 6 different times (30 units x 30 units) for a perturbing galaxy with a parabolic orbit (e = 1) of closest approach 10 units and starting angle $0.2 \times 2\pi$. Test particles initially in anticlockwise circular orbit around central mass. (cmd-line args \{1 0.2 10 1 1\}) }
 \label{fig6:fig6}
 \end{figure}
 \clearpage
@@ -396,7 +396,7 @@ This program provides the means to simulate the effects the different types of o
   \caption{t = 90.0s}
   \label{fig7:sfig6}
 \end{subfigure}
-\caption{Plots at 6 different time slices (scale = 30 x 30 square units) for a perturbing galaxy with a parabolic orbit (e = 1). The perturbing galaxy has a closest approach of 14 units and starts at an angle of $0.2 \times 2\pi$. Test particles are initially in a clockwise circular orbit around the central mass. (Perturbation direction set to 1) (cmd-line args \{1 0.2 14 -1 1\}) }
+\caption{Plots at 6 different times (30 units x 30 units) for a perturbing galaxy with a parabolic orbit (e = 1) of closest approach 14 units and starting angle $0.2 \times 2\pi$. Test particles initially in clockwise circular orbit around central mass. (cmd-line args \{1 0.2 14 -1 1\}) }
 \label{fig7:fig7}
 \end{figure}
 \clearpage
@@ -438,7 +438,7 @@ This program provides the means to simulate the effects the different types of o
   \caption{t = 90.0s}
   \label{fig8:sfig6}
 \end{subfigure}
-\caption{Plots at 6 different time slices (scale = 30 x 30 square units) for a perturbing galaxy with a parabolic orbit (e = 1). The perturbing galaxy has a closest approach of 14 units and starts at an angle of $0.2 \times 2\pi$. Test particles are initially in an anticlockwise circular orbit around the central mass. (Perturbation direction set to 1) (cmd-line args \{1 0.2 14 1 1\}) }
+\caption{Plots at 6 different times (30 units x 30 units) for a perturbing galaxy with a parabolic orbit (e = 1) of closest approach 14 units and starting angle $0.2 \times 2\pi$. Test particles initially in anticlockwise circular orbit around central mass. (cmd-line args \{1 0.2 14 1 1\}) }
 \label{fig8:fig8}
 \end{figure}
 \clearpage
@@ -480,7 +480,7 @@ This program provides the means to simulate the effects the different types of o
   \caption{t = 140.0s}
   \label{fig9:sfig6}
 \end{subfigure}
-\caption{Plots at 6 different time slices (scale = 36.64 x 36.64 square units) for a perturbing galaxy with a parabolic orbit (e = 1). The perturbing galaxy has a closest approach of 18 units and starts at an angle of $0.2 \times 2\pi$. Test particles are initially in a clockwise circular orbit around the central mass. (Perturbation direction set to 1) (cmd-line args \{1 0.2 18 -1 1\}) }
+\caption{Plots at 6 different times (36.64 units x 36.64 units) for a perturbing galaxy with a parabolic orbit (e = 1) of closest approach 18 units and starting angle $0.2 \times 2\pi$. Test particles initially in clockwise circular orbit around central mass. (cmd-line args \{1 0.2 18 -1 1\}) }
 \label{fig9:fig9}
 \end{figure}
 \clearpage
@@ -522,23 +522,23 @@ This program provides the means to simulate the effects the different types of o
   \caption{t = 140.0s}
   \label{fig9:sfig6}
 \end{subfigure}
-\caption{Plots at 6 different time slices (scale = 36.64 x 36.64 square units) for a perturbing galaxy with a parabolic orbit (e = 1). The perturbing galaxy has a closest approach of 18 units and starts at an angle of $0.2 \times 2\pi$. Test particles are initially in an anticlockwise circular orbit around the central mass. (Perturbation direction set to 1) (cmd-line args \{1 0.2 18 1 1\}) }
+\caption{Plots at 6 different times (36.64 units x 36.64 units) for a perturbing galaxy with a parabolic orbit (e = 1) of closest approach 18 units and starting angle $0.2 \times 2\pi$. Test particles initially in anticlockwise circular orbit around central mass. (cmd-line args \{1 0.2 18 1 1\}) }
 \label{fig9:fig9}
 \end{figure}
 
 \clearpage
 \section{Instructions}
-\subsection{Building}
-Software Required to Build Program:
+\subsection{Building and Running}
+Software Required:
 \begin{enumerate}
-\item C++ compiler (GNU g++, clang, etc. C++11 compliant)
+\item C++ compiler ( C++11 compliant)
 \item SDL2
 \item OpenGL
 \item GLEW
 \item cmake
 \end{enumerate}
 
-Instructions to build and run project:
+Instructions:
 
 \begin{lstlisting}
 	cd {project-directory}
@@ -546,28 +546,28 @@ Instructions to build and run project:
 	make
 	bin/main {optional-arguments}
 \end{lstlisting}
-\textbf{Command line arguments:} If 5 arguments supplied (Eccentricity, $\theta_0$, Closest Approach, Rotation direction of central galaxy ($-1=\circlearrowright, 1=\circlearrowleft$), Perturbation orbit direction).
+\textbf{Command line arguments:} 5 arguments supplied (Eccentricity, $\theta_0$, Closest Approach, Rotation direction of central galaxy ($-1=\circlearrowright, 1=\circlearrowleft$), Perturbation orbit direction).
 \\
 \\
-\textbf{Command line arguments:} If 4 arguments supplied (Eccentricity, $\theta_0$, Closest Approach, TESTING (1 = true, 0 = false))
+\textbf{Command line arguments:} 4 arguments supplied (Eccentricity, $\theta_0$, Closest Approach, TESTING (1 = true, 0 = false))
 \\
 \\
-\textbf{Command line arguments:} If 1 argument supplied (INTERACTIVE (1 = true, 0 = false))
+\textbf{Command line arguments:} 1 argument supplied (INTERACTIVE (1 = true, 0 = false))
 \\
 \\
-Other combinations will result in a default simulation being carried out.
+Other combinations result in a default simulation being carried out.
 \\
 \\
-\textbf{Logging Information:} Each time step during logging is output to a new line in the outputted data file so that each line is of the format t,\{x1,y1,z1\},\{x2,y2,z2\},...,\{xN,yN,zN\}. A basic Python script could easily be created to carry out basic text processing on this data file to extract all of the particle's positions at a specific time. The extracted positions could then be written to a new text file in a plot friendly format i.e. x1,y2 \{newline\} x2,y2 etc. and then plotted using matplotlib all within the same script. This script was not created as it was felt that the screenshots provided sufficient graphical information.
+\textbf{Logging Information:} Each time step is output to a new line in the data file so that each line has the format t,\{x1,y1,z1\},\{x2,y2,z2\},...,\{xN,yN,zN\}. A Python script could easily be created to carry out text processing on this data file to extract all of the particle's positions at a specific time. The extracted positions could then be written to a text file in a plot friendly format i.e. x1,y2 \{newline\} x2,y2 etc. and then plotted (matplotlib) all within the same script. This script was not created as it was felt that the screenshots provided sufficient graphical information.
 
 \subsection{Controls}
 \begin{itemize}
-\item Pan using WASD $\uparrow \leftarrow \downarrow \rightarrow$.
-\item Zoom out/in using QE $-+$.
-\item Take Screenshot using P (screenshots are automatically taken at 5.0s intervals (simulated system time)).
-\item Start/Stop data logging to text file using L.
-\item Start/Pause/Unpause simulation using SPACEBAR.
-\item If (INTERACTIVE == true) left click, drag then release to create a massive particle travelling in the direction of the drag with speed proportional to the length of the drag.
+\item Pan - WASD $(\uparrow \leftarrow \downarrow \rightarrow)$.
+\item Zoom out/in - QE $(-+)$.
+\item Take Screenshot - P (screenshots are automatically taken at 5.0s intervals (simulated system time)) (.tga file created, can be converted with convert\_png.sh script provided).
+\item Start/Stop data logging to .txt - L.
+\item Start/Pause/Unpause - SPACEBAR.
+\item INTERACTIVE == true - left click, drag then release to create a massive particle with velocity proportional to length and direction of drag.
 \end{itemize}
 
 \clearpage
