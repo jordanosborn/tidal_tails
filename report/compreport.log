@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.14)  30 APR 2017 19:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.14)  30 APR 2017 20:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2039,85 +2039,80 @@ LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
 
 ]
 (../src/main.cpp
-Overfull \hbox (6.5769pt too wide) in paragraph at lines 43--44
+Overfull \hbox (6.5769pt too wide) in paragraph at lines 44--45
 [][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [18
 
 ]
-Overfull \hbox (12.57697pt too wide) in paragraph at lines 93--95
+Overfull \hbox (12.57697pt too wide) in paragraph at lines 94--96
 [][][][][][][][][][] 
  []
 
 
-Overfull \hbox (18.57703pt too wide) in paragraph at lines 111--112
+Overfull \hbox (18.57703pt too wide) in paragraph at lines 112--113
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [19]
-Overfull \hbox (66.57751pt too wide) in paragraph at lines 146--147
+Overfull \hbox (66.57751pt too wide) in paragraph at lines 147--148
 [][][][][][][][][][][][][][][][][][] 
  []
 
 [20]
-Overfull \hbox (24.57709pt too wide) in paragraph at lines 192--193
+Overfull \hbox (24.57709pt too wide) in paragraph at lines 193--194
 [][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (24.57709pt too wide) in paragraph at lines 197--198
+Overfull \hbox (24.57709pt too wide) in paragraph at lines 198--199
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [21]
-Overfull \hbox (18.57703pt too wide) in paragraph at lines 242--243
+Overfull \hbox (18.57703pt too wide) in paragraph at lines 243--244
 [][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (6.5769pt too wide) in paragraph at lines 244--245
+Overfull \hbox (6.5769pt too wide) in paragraph at lines 245--246
 [][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (6.5769pt too wide) in paragraph at lines 265--266
+Overfull \hbox (6.5769pt too wide) in paragraph at lines 266--267
 [][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (6.5769pt too wide) in paragraph at lines 268--269
+Overfull \hbox (6.5769pt too wide) in paragraph at lines 269--270
 [][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (30.57715pt too wide) in paragraph at lines 279--280
+Overfull \hbox (30.57715pt too wide) in paragraph at lines 280--281
 [][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (6.5769pt too wide) in paragraph at lines 284--285
-[][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [22]
-Overfull \hbox (6.5769pt too wide) in paragraph at lines 286--287
+Overfull \hbox (6.5769pt too wide) in paragraph at lines 285--286
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (0.57684pt too wide) in paragraph at lines 287--288
+Overfull \hbox (6.5769pt too wide) in paragraph at lines 287--288
+[][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (0.57684pt too wide) in paragraph at lines 288--289
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 [23]
-Overfull \hbox (0.57684pt too wide) in paragraph at lines 376--377
+Overfull \hbox (0.57684pt too wide) in paragraph at lines 377--378
 [][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (48.57733pt too wide) in paragraph at lines 377--378
-[][][][][][][][][] 
  []
 
 
@@ -2131,7 +2126,12 @@ Overfull \hbox (48.57733pt too wide) in paragraph at lines 379--380
  []
 
 
-Overfull \hbox (48.57733pt too wide) in paragraph at lines 382--383
+Overfull \hbox (48.57733pt too wide) in paragraph at lines 380--381
+[][][][][][][][][] 
+ []
+
+
+Overfull \hbox (48.57733pt too wide) in paragraph at lines 383--384
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
@@ -2258,7 +2258,7 @@ ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
 16/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/201
 6/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016/
 texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on compreport.pdf (39 pages, 933651 bytes).
+Output written on compreport.pdf (39 pages, 933969 bytes).
 PDF statistics:
  313 PDF objects out of 1000 (max. 8388607)
  134 compressed objects within 2 object streams
