@@ -1,68 +1,43 @@
 # Computational Project
 Part II Computational Project: Tidal Tails
+Candidate Number: 6892V
 
 ## Required:
 
-1. C++ compiler (GNU g++)
+1. C++ compiler (C++11 compliant)
 1. SDL2
 1. OpenGL
 1. GLEW
 1. cmake
-  
-## Todo:
-
-1. Might not need FindOpenGL.cmake
-1. Screenshot ability ✓ 
-1. Particle class ✓ 
-1. Scale (G,mass,distance,time) ✓ 
-1. Camera controls (left click (pan), right click (rotate), scroll button (zoom) ✓
-1. System init (start up arguments, N, distribution...) ✓
-1. Console output and logs (can suppress?)
-1. Integrator (verlet, pointer to Force function and particles) ✓
-1. Stepping (forwards and backwards) ✓ 
-1. Window controls (q (restart, press twice),w (screenshot), s (pause/play), e (start/stop record),  a (rewind), d (forward)) ✓
-1. Optimisations
-1. Report
-1. Collisions
-
 ## Instructions to build and run project:
 
 ```bash
 	cd {project-directory}
 	cmake .
 	make
+	cd bin
+	./main {command-line-arguments}
 	bin/main
 ```
+## Controls
+1. Pan - WASD $(\uparrow \leftarrow \downarrow \rightarrow)$.
+1. Zoom out/in - QE $(-+)$.
+1. Take Screenshot - P (screenshots are automatically taken at 5.0s intervals (simulated system time)) (.tga file created, can be converted with convert\_png.sh script provided).
+1. Start/Stop data logging to .csv - L.
+1. Start/Pause/Unpause - SPACEBAR.
+1. INTERACTIVE == true - left click, drag then release to create a massive particle with velocity proportional to length and direction of drag.
+
 ## Documentation:
 
-Project executable located in bin directory and is called main.
+Project executable (main) as well as plot.p and convert_png.sh located in bin directory.
+
+Command line arguments: 5 arguments supplied (Eccentricity, $\theta_0$, Closest Approach, Rotation direction of central galaxy ($-1=\circlearrowright, 1=\circlearrowleft$), Perturbation orbit direction).
+
+Command line arguments: 4 arguments supplied (Eccentricity, $\theta_0$, Closest Approach, TESTING (1 = true, 0 = false))
+
+Command line arguments:1 argument supplied (INTERACTIVE (1 = true, 0 = false))
+
+Other combinations result in a default simulation being carried out.
+
+Logging Information: Each time step is output to a new line in the data file so that each line has the format t,{x1,y1,z1},{x2,y2,z2},...,{xN,yN,zN}. A Python script could easily be created to carry out text processing on this data file to extract all of the particle's positions at a specific time. The extracted positions could then be written to a text file in a plot friendly format i.e. x1,y2 {newline} x2,y2 etc. and then plotted (matplotlib) all within the same script. This script was not created as it was felt that the screenshots provided sufficient graphical information.
 	
-### License:
-
-MIT License
-
-Copyright (c) 2016 Jordan Osborn
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-### Acknowledgements:
-
-Files in cmake folder are used to help cmake locate the various libraries used by this project, these files were not created by me and thanks must go to their respective authors. License texts accompany each file at the top of each file's source code.
-
- 

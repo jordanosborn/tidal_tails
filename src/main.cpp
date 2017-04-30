@@ -25,9 +25,10 @@
 
 std::string PROGRAMNAME = "Tidal Tails";
 GLboolean AUTOSCREENSHOT = true;
+//Particle ring density.
 GLint N = 40;
-GLint WIDTH = 900;
-GLint HEIGHT = 900;
+GLint WIDTH = 700;
+GLint HEIGHT = 700;
 // SDL
 SDL_Window *mainWindow;
 SDL_GLContext mainContext;
@@ -391,7 +392,12 @@ void run_simulation(var eccentricity, var orbit_fraction, var closest_approach,
                                  << "_" << c.position[1]+1.0*SCALE/c.zoom
                                  << ").tga";
                 screenshot(screenshot_title.str());
-                std::cout << "Screenshot created." << std::endl;
+                std::cout << "Screenshot created. ";
+                std::cout << "(" << c.position[0]-1.0*SCALE/c.zoom << ","
+                          << c.position[0]+1.0*SCALE/c.zoom << ")";
+                std::cout << "(" << c.position[1]-1.0*SCALE/c.zoom << ","
+                          << c.position[1]+1.0*SCALE/c.zoom << ")  t = "
+                          << t << "\n";
             }
         }
 
