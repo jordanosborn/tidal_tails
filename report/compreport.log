@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.14)  26 APR 2017 02:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.10.14)  30 APR 2017 19:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1003,7 +1003,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 46--59
 
 [2
 
-] <../output/Radius.png, id=25, 903.375pt x 903.375pt>
+] <../output/Radius.png, id=24, 903.375pt x 903.375pt>
 File: ../output/Radius.png Graphic file (type png)
 
 <use ../output/Radius.png>
@@ -1133,7 +1133,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 147.
 
 
-LaTeX Warning: Float too large for page by 21.37265pt on input line 149.
+LaTeX Warning: Float too large for page by 9.37265pt on input line 149.
 
 [6 <../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-5.00_(-15.00_15.00)(-15.
 00_15.00).png> <../output/e-rmin-theta0-rot-1-2-0.35--1/screenshot-10.00_(-15.0
@@ -1224,7 +1224,7 @@ Overfull \hbox (2.2222pt too wide) in paragraph at lines 153--189
  []
 
 
-LaTeX Warning: Float too large for page by 21.37265pt on input line 191.
+LaTeX Warning: Float too large for page by 9.37265pt on input line 191.
 
 [7 <../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-5.00_(-15.00_15.00)(-15.0
 0_15.00).png> <../output/e-rmin-theta0-rot-1-2-0.35-1/screenshot-10.00_(-15.00_
@@ -1314,7 +1314,7 @@ Overfull \hbox (2.2222pt too wide) in paragraph at lines 195--231
  []
 
 
-LaTeX Warning: Float too large for page by 21.37265pt on input line 233.
+LaTeX Warning: Float too large for page by 9.37265pt on input line 233.
 
 [8 <../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-5.00_(-15.00_15.00)(-15.0
 0_15.00).png> <../output/e-rmin-theta0-rot-1-6-0.2--1/screenshot-10.00_(-15.00_
@@ -1404,7 +1404,7 @@ Overfull \hbox (2.2222pt too wide) in paragraph at lines 237--273
  []
 
 
-LaTeX Warning: Float too large for page by 21.37265pt on input line 275.
+LaTeX Warning: Float too large for page by 9.37265pt on input line 275.
 
 [9 <../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-5.00_(-15.00_15.00)(-15.00
 _15.00).png> <../output/e-rmin-theta0-rot-1-6-0.2-1/screenshot-10.00_(-15.00_15
@@ -1494,7 +1494,7 @@ Overfull \hbox (2.2222pt too wide) in paragraph at lines 279--315
  []
 
 
-LaTeX Warning: Float too large for page by 21.37265pt on input line 317.
+LaTeX Warning: Float too large for page by 9.37265pt on input line 317.
 
 [10 <../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-10.00_(-15.00_15.00)(-1
 5.00_15.00).png> <../output/e-rmin-theta0-rot-1-10-0.2--1/screenshot-20.00_(-15
@@ -1585,7 +1585,7 @@ Overfull \hbox (2.2222pt too wide) in paragraph at lines 321--357
  []
 
 
-LaTeX Warning: Float too large for page by 21.37265pt on input line 359.
+LaTeX Warning: Float too large for page by 9.37265pt on input line 359.
 
 [11 <../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-10.00_(-15.00_15.00)(-15
 .00_15.00).png> <../output/e-rmin-theta0-rot-1-10-0.2-1/screenshot-20.00_(-15.0
@@ -1675,7 +1675,7 @@ Overfull \hbox (2.2222pt too wide) in paragraph at lines 363--399
  []
 
 
-LaTeX Warning: Float too large for page by 21.37265pt on input line 401.
+LaTeX Warning: Float too large for page by 9.37265pt on input line 401.
 
 [12 <../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-15.00_(-15.00_15.00)(-1
 5.00_15.00).png> <../output/e-rmin-theta0-rot-1-14-0.2--1/screenshot-30.00_(-15
@@ -1766,7 +1766,7 @@ Overfull \hbox (2.2222pt too wide) in paragraph at lines 405--441
  []
 
 
-LaTeX Warning: Float too large for page by 21.37265pt on input line 443.
+LaTeX Warning: Float too large for page by 9.37265pt on input line 443.
 
 [13 <../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-15.00_(-15.00_15.00)(-15
 .00_15.00).png> <../output/e-rmin-theta0-rot-1-14-0.2-1/screenshot-30.00_(-15.0
@@ -1856,7 +1856,7 @@ Overfull \hbox (2.2222pt too wide) in paragraph at lines 447--483
  []
 
 
-LaTeX Warning: Float too large for page by 21.37265pt on input line 485.
+LaTeX Warning: Float too large for page by 9.37265pt on input line 485.
 
 [14 <../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-40.00_(-18.32_18.32)(-1
 8.32_18.32).png> <../output/e-rmin-theta0-rot-1-18-0.2--1/screenshot-60.00_(-18
@@ -1947,7 +1947,7 @@ Overfull \hbox (2.2222pt too wide) in paragraph at lines 489--525
  []
 
 
-LaTeX Warning: Float too large for page by 21.37265pt on input line 527.
+LaTeX Warning: Float too large for page by 9.37265pt on input line 527.
 
 [15 <../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-40.00_(-18.32_18.32)(-18
 .32_18.32).png> <../output/e-rmin-theta0-rot-1-18-0.2-1/screenshot-60.00_(-18.3
@@ -1957,22 +1957,22 @@ LaTeX Warning: Float too large for page by 21.37265pt on input line 527.
 ot-1-18-0.2-1/screenshot-120.00_(-18.32_18.32)(-18.32_18.32).png> <../output/e-
 rmin-theta0-rot-1-18-0.2-1/screenshot-140.00_(-18.32_18.32)(-18.32_18.32).png>]
 
-Underfull \hbox (badness 10000) in paragraph at lines 549--562
+Underfull \hbox (badness 10000) in paragraph at lines 550--563
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 549--562
+Underfull \hbox (badness 10000) in paragraph at lines 550--563
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 549--562
+Underfull \hbox (badness 10000) in paragraph at lines 550--563
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 549--562
+Underfull \hbox (badness 10000) in paragraph at lines 550--563
 
  []
 
@@ -2236,13 +2236,13 @@ Package logreq Info: Writing requests to 'compreport.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 12720 strings out of 493014
- 222098 string characters out of 6133350
+ 12724 strings out of 493014
+ 222144 string characters out of 6133350
  481035 words of memory out of 5000000
- 16002 multiletter control sequences out of 15000+600000
+ 16006 multiletter control sequences out of 15000+600000
  12110 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,7n,40p,1284b,1508s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,7n,40p,1151b,1508s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
@@ -2258,7 +2258,7 @@ ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
 16/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/201
 6/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016/
 texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on compreport.pdf (39 pages, 932473 bytes).
+Output written on compreport.pdf (39 pages, 933651 bytes).
 PDF statistics:
  313 PDF objects out of 1000 (max. 8388607)
  134 compressed objects within 2 object streams
