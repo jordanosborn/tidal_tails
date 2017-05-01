@@ -30,7 +30,7 @@ This program provides an interactive simulation and visualisation of the effects
 
 \clearpage
 \section{Introduction}
-The aim of this project is to simulate/observe the creation of tidal tails. Tidal tails are created when two galaxies pass one another and interact gravitationally. A tidal tail is an elongated stream of stars that extends outwards from a galaxy.  To do this an N-body simulation of massive particles was created using C++, and visualised using SDL2/OpenGL. To observe the formation of tidal tails a galaxy with a fixed central mass was created, test particles were then set in motion in a uniform distribution around this central mass such that the orbits were circular. A perturbing galaxy was then introduced on several different orbits (conic sections) with various input parameters. Tidal tail formation was observed and the results were screenshotted at various times after introduction for each of these orbits. 
+The aim of this project is to simulate/observe the creation of tidal tails. Tidal tails are created when two galaxies pass one another and interact gravitationally. A tidal tail is an elongated stream of stars that extends outwards from a galaxy. To do this an N-body simulation of massive particles was created using C++, and visualised using SDL2/OpenGL. To observe the formation of tidal tails a galaxy with a fixed central mass was created, test particles were then set in motion in a uniform distribution around this central mass such that the orbits were circular. A perturbing galaxy was then introduced on several different orbits (conic sections) with various input parameters. Tidal tail formation was observed and the results were screenshotted at various times after introduction for each orbit. 
 \\
 \\
 The computational techniques used in this program will be analysed in section 2, following this the specific implementation and how the simulation performed will be discussed in section 3. The screenshots of the Tidal Tails and discussions of them will be contained in section 4. And finally any concluding remarks will be in section 5. An appendix containing instructions and full code listings is included at the end of this document. 
@@ -52,7 +52,7 @@ Another issue is the potential for infinities to arise in simulations. These inf
 A Verlet integration method was selected for this simulation in part because it is symplectic (unlike RK4) which means it will conserve energy well, this is very important in orbital dynamics to prevent energy drift and to maintain stable orbits. Another reason it was chosen is due to it being only slightly more computationally expensive than other lower order methods (euler) while having errors of order $\Delta t^4$ rather than $\Delta t^2$. Verlet is also less computationally expensive than RK4. Finally implementing an integrator using Verlet rather than RK4 meant that the acceleration only needed to be evaluated at the particle's current position. The Verlet algorithm requires current and past information only and doesn't depend on predicting future values like RK4. This means Verlet lends itself well to the "real-time" visualisation that this program intends to achieve.
 \\
 \\
-OpenGL/SDL2 were selected to visualise the formation of tidal tails over traditional graphing solutions. This decision was made so that the simulation could be interactive (move around zoom in/out) and also so that tidal tails could be observed continuously and screenshotted during formation in "real time".
+OpenGL/SDL2 were selected to visualise the formation of tidal tails over traditional graphing solutions. This decision was made so that the simulation could be interactive (move around, zoom in/out) and also so that tidal tails could be observed continuously and screenshotted during formation in "real time".
 \\
 \\
 The suggested dark matter halo form of the perturbing galaxy (from Project Manual) can easily be implemented by setting the radius of the perturbing galaxy to a size comparable to the central mass plus its test particles and modifying the force function for test particles inside the perturbing galaxy's radius to be the same as for the inside of a uniform spherical mass. $\underline{F} \propto -|\underline{r}_{galaxy}-\underline{r}_{test}|$.
@@ -82,7 +82,7 @@ The loops that determine the accelerations of each of the particles only loop ov
 Performance was monitored to determine any possible causes of slow down. By turning off the rendering portion of the program and logging to data files instead it was seen that most of the computation time was in fact being used to render the particles to the screen after each time step. To reduce the time taken rendering particle motion was only rendered after a certain amount of CPU time had passed and not after every time step. Doing this resulted in a much smoother visualisation and allowed the simulation to run much closer to real time. The method  was adaptive in that the number of frames rendered each second scaled with the number of particles in the system, meaning larger systems are rendered less often. This helps to prevent the visualisation from slowing to a crawl.
 \\
 \\
-Finally tests were carried out to determine the maximum amount of test particles that could be created without slowing the visualisation too much. With around 8000 test particles the simulations can be completely visualised within a few of minutes (2-5). This is a reasonable time for visualisation, so approximately 8000 test particles were included. The distributions of these particles were set according to the densities given in the project manual.
+Finally tests were carried out to determine the maximum amount of test particles that could be created without slowing the visualisation too much. With around 8000 test particles the simulations can be completely visualised within a few minutes (2-5). This is a reasonable time for visualisation, so approximately 8000 test particles were included. The distributions of these particles were set according to the densities given in the project manual.
 \\
 \\
 The program was created with object orientation in mind. Four classes were created. A particle class which housed all information about each individual particle and provided a function to render the particle. A universe class which housed pointers to all of the particles in a system, contained functions to generate galaxies, and functions that handled updating particle locations and logging of particle data. A logger class which essentially acted as a data logging device and stored particle positions in a data file when requested. And finally a camera class which stored the camera's location and calculated a zoom factor, these quantities are then used during rendering to project the correct image of the scene on to the screen.
@@ -565,7 +565,7 @@ Other combinations result in a default simulation being carried out.
 \begin{itemize}
 \item Pan - WASD $(\uparrow \leftarrow \downarrow \rightarrow)$.
 \item Zoom out/in - QE $(-+)$.
-\item Take Screenshot - P (screenshots are automatically taken at 5.0s intervals (simulated system time)) (.tga file created, can be converted with convert\_png.sh script provided).
+\item Take Screenshot - P (screenshots are automatically taken at 5.0s intervals (simulated system time)) (.tga file created, can be converted to png with convert\_png.sh script provided).
 \item Start/Stop data logging to .csv - L.
 \item Start/Pause/Unpause - SPACEBAR.
 \item INTERACTIVE == true - left click, drag then release to create a massive particle with velocity proportional to length and direction of drag.
@@ -613,6 +613,5 @@ Other combinations result in a default simulation being carried out.
 \lstinputlisting{../include/utilities/utilities.h}
 \subsection{utilities.cpp}
 \lstinputlisting{../src/utilities/utilities.cpp}
-
 
 \end{document}
