@@ -1,6 +1,5 @@
 # Computational Project
 Part II Computational Project: Tidal Tails
-Candidate Number: 6892V
 
 ## Required:
 
